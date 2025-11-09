@@ -24,7 +24,7 @@ final class Person extends Model implements Auditable
 
     protected $table = 'person';
 
-    protected $primaryKey = 'id_person';
+    protected $primaryKey = 'id';
 
     protected $keyType = 'int';
 
@@ -32,30 +32,32 @@ final class Person extends Model implements Auditable
 
     protected $fillable = [
         'uuid_person',
-        'nama',
+        'nama_lengkap',
+        'nama_panggilan',
         'jk',
         'tempat_lahir',
         'tanggal_lahir',
+        'agama',
         'kewarganegaraan',
         'golongan_darah',
         'nik',
-        'nomor_kk',
+        'kk',
         'alamat',
         'rt',
         'rw',
         'id_desa',
         'npwp',
-        'nomor_hp',
+        'no_hp',
         'email',
         'foto',
     ];
 
     protected $guarded = [
-        'id_person',
+        'id',
     ];
 
     protected $casts = [
-        'id_person' => 'integer',
+        'id' => 'integer',
         'id_desa' => 'integer',
         'tanggal_lahir' => 'date',
     ];
@@ -71,9 +73,19 @@ final class Person extends Model implements Auditable
         });
     }
 
-    public function setNamaAttribute($value): void
+    public function setNamaLengkapAttribute($value): void
     {
-        $this->attributes['nama'] = strtoupper(trim(strip_tags($value)));
+        $this->attributes['nama_lengkap'] = strtoupper(trim(strip_tags($value)));
+    }
+
+    public function setNamaPanggilanAttribute($value): void
+    {
+        $this->attributes['nama_panggilan'] = strtoupper(trim(strip_tags($value)));
+    }
+
+    public function setAgamaAttribute($value): void
+    {
+        $this->attributes['agama'] = trim(strip_tags($value));
     }
 
     public function setTempatLahirAttribute($value): void
@@ -103,7 +115,7 @@ final class Person extends Model implements Auditable
 
     public function setNomorKkAttribute($value): void
     {
-        $this->attributes['nomor_kk'] = trim(strip_tags($value));
+        $this->attributes['kk'] = trim(strip_tags($value));
     }
 
     public function setIdDesaAttribute($value): void
@@ -118,7 +130,7 @@ final class Person extends Model implements Auditable
 
     public function setNomorHpAttribute($value): void
     {
-        $this->attributes['nomor_hp'] = $value ? trim(strip_tags($value)) : null;
+        $this->attributes['no_hp'] = $value ? trim(strip_tags($value)) : null;
     }
 
     public function setEmailAttribute($value): void
