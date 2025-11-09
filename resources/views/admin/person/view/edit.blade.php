@@ -53,9 +53,18 @@
 
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Nama</span>
+                                    <span>Nama Lengkap</span>
                                 </label>
-                                <input type="text" id="edit_nama" class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                <input type="text" id="edit_nama_lengkap" class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                       maxlength="50" required/>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="d-flex flex-column mb-2">
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
+                                    <span>Nama Panggilan</span>
+                                </label>
+                                <input type="text" id="edit_nama_panggilan" class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        maxlength="50" required/>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -68,8 +77,8 @@
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Jenis Kelamin" required>
                                     <option value="">Pilih Jenis Kelamin</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option value="l">Laki-laki</option>
+                                    <option value="p">Perempuan</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -129,9 +138,18 @@
 
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
+                                    <span>Agama</span>
+                                </label>
+                                <input type="text" id="edit_agama" class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                       maxlength="16"/>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="d-flex flex-column mb-2">
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
                                     <span>Nomor KK</span>
                                 </label>
-                                <input type="text" id="edit_nomor_kk"
+                                <input type="text" id="edit_kk"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        maxlength="16"/>
                                 <div class="invalid-feedback"></div>
@@ -150,7 +168,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
                                     <span>Nomor HP</span>
                                 </label>
-                                <input type="text" id="edit_nomor_hp"
+                                <input type="text" id="edit_no_hp"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        maxlength="16"/>
                                 <div class="invalid-feedback"></div>

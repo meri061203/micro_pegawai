@@ -15,17 +15,19 @@
         DataManager.fetchData(detail.replace(':id', id))
             .then(function (response) {
                 if (response.success) {
-                    $('#edit_nama').val(response.data.nama);
+                    $('#edit_nama_lengkap').val(response.data.nama_lengkap);
+                    $('#edit_nama_panggilan').val(response.data.nama_panggilan);
                     $('#edit_jk').val(response.data.jk).trigger('change');
                     $('#edit_tempat_lahir').val(response.data.tempat_lahir);
                     edit_tanggal_lahir.setDate(response.data.tanggal_lahir);
                     $('#edit_nik').val(response.data.nik);
-                    $('#edit_nomor_kk').val(response.data.nomor_kk);
+                    $('#edit_agama').val(response.data.agama);
+                    $('#edit_kk').val(response.data.kk);
                     $('#edit_alamat').val(response.data.alamat);
                     $('#edit_rt').val(response.data.rt);
                     $('#edit_rw').val(response.data.rw);
                     $('#edit_npwp').val(response.data.npwp);
-                    $('#edit_nomor_hp').val(response.data.nomor_hp);
+                    $('#edit_no_hp').val(response.data.no_hp);
                     $('#edit_email').val(response.data.email);
                     $('#edit_kewarganegaraan').val(response.data.kewarganegaraan);
                     $('#edit_golongan_darah').val(response.data.golongan_darah).trigger('change');
@@ -35,7 +37,7 @@
                         const photoUrl = '{{ route('admin.view-file', [':folder', ':filename']) }}'
                             .replace(':folder', 'person')
                             .replace(':filename', response.data.foto);
-                        $('#edit_image_preview').css('background-image', `url('${photoUrl}')`);
+                        $('#edit_image_preview').css('background-image',` url('${photoUrl}')`);
                         $('#edit_image_preview').css('background-size', 'cover');
                         $('#edit_image_preview').css('background-position', 'center');
                     } else {
@@ -47,14 +49,14 @@
                         $('#edit_id_provinsi').val(response.data.id_provinsi).trigger('change');
                         fetchDataDropdown(`{{ route('api.almt.kabupaten', ':id') }}`.replace(':id', response.data.id_provinsi), '#edit_id_kabupaten', 'kabupaten', 'kabupaten', () => {
                             $('#edit_id_kabupaten').val(response.data.id_kabupaten).trigger('change');
-                             fetchDataDropdown(`{{ route('api.almt.kecamatan', ':id') }}`.replace(':id', response.data.id_kabupaten),'#edit_id_kecamatan', 'kecamatan', 'kecamatan', () => {
+                                fetchDataDropdown(`{{ route('api.almt.kecamatan', ':id') }}`.replace(':id', response.data.id_kabupaten),'#edit_id_kecamatan', 'kecamatan', 'kecamatan', () => {
                                     $('#edit_id_kecamatan').val(response.data.id_kecamatan).trigger('change');
                                     fetchDataDropdown(`{{ route('api.almt.desa', ':id') }}`.replace(':id', response.data.id_kecamatan),'#edit_id_desa', 'desa', 'desa', () => {
                                             $('#edit_id_desa').val(response.data.id_desa).trigger('change');
                                     });
                                 });
-                         }); 
-                        
+                         });
+
                     });
                 } else {
                     Swal.fire('Warning', response.message, 'warning');
@@ -111,20 +113,22 @@
                 if (result.value) {
                     DataManager.openLoading();
                     const formData = new FormData();
-                    formData.append('nama', $('#edit_nama').val());
+                    formData.append('nama_lengkap', $('#edit_nama_lengkap').val());
+                    formData.append('nama_panggilan', $('#edit_nama_panggilan').val());
                     formData.append('jk', $('#edit_jk').val());
                     formData.append('tempat_lahir', $('#edit_tempat_lahir').val());
                     formData.append('tanggal_lahir', $('#edit_tanggal_lahir').val());
                     formData.append('kewarganegaraan', $('#edit_kewarganegaraan').val());
                     formData.append('golongan_darah', $('#edit_golongan_darah').val());
                     formData.append('nik', $('#edit_nik').val());
-                    formData.append('nomor_kk', $('#edit_nomor_kk').val());
+                    formData.append('agama', $('#edit_agama').val());
+                    formData.append('kk', $('#edit_kk').val());
                     formData.append('alamat', $('#edit_alamat').val());
                     formData.append('rt', $('#edit_rt').val());
                     formData.append('rw', $('#edit_rw').val());
                     formData.append('id_desa', $('#edit_id_desa').val());
                     formData.append('npwp', $('#edit_npwp').val());
-                    formData.append('nomor_hp', $('#edit_nomor_hp').val());
+                    formData.append('no_hp', $('#edit_no_hp').val());
                     formData.append('email', $('#edit_email').val());
 
                     const fileInput = $('#edit_foto')[0];
