@@ -16,20 +16,22 @@ class PersonSdmUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nomor_karpeg' => 'nullable|string|max:20',
-            'nomor_sk' => 'nullable|string|max:50',
-            'tmt' => 'nullable|date',
-            'tmt_pensiun' => 'nullable|date',
+           'id_person' => 'required|integer|exists:person,id_person',
+            'nip' => 'nullable|string|max:20',
+            'status_pegawai' => 'nullable|in:TETEP,KONTRAK',
+            'tipe_pegawai' => 'nullable|in:FULL TIME,PART TIME',
+            'tanggal_masuk' => 'nullable|date',
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'nomor_karpeg' => 'Nomor Karpeg',
-            'nomor_sk' => 'Nomor SK',
-            'tmt' => 'TMT',
-            'tmt_pensiun' => 'TMT Pensiun',
+           'id_person' => 'ID Person',
+            'nip' => 'NIP',
+            'status_pegawai' => 'Status Pegawai',
+            'tipe_pegawai' => 'Tipe Pegawai',
+            'tanggal_masuk' => 'Tanggal Masuk',
         ];
     }
 
@@ -47,12 +49,14 @@ class PersonSdmUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nomor_karpeg.string' => 'Field :attribute harus berupa teks.',
-            'nomor_karpeg.max' => 'Field :attribute maksimal :max karakter.',
-            'nomor_sk.string' => 'Field :attribute harus berupa teks.',
-            'nomor_sk.max' => 'Field :attribute maksimal :max karakter.',
-            'tmt.date' => 'Field :attribute harus berupa tanggal yang valid.',
-            'tmt_pensiun.date' => 'Field :attribute harus berupa tanggal yang valid.',
+             'id_person.required' => 'Field :attribute wajib diisi.',
+            'id_person.integer' => 'Field :attribute harus berupa angka.',
+            'id_person.exists' => 'Field :attribute tidak ditemukan.',
+            'nip.string' => 'Field :attribute harus berupa teks.',
+            'nip.max' => 'Field :attribute maksimal :max karakter.',
+            'status_pegawai.in' => 'Field :attribute harus TETEP atau KONTRAK.',
+            'tipe_pegawai.in' => 'Field :attribute harus FULL TIME atau PART TIME.',
+            'tanggal_masuk.date' => 'Field :attribute harus berupa tanggal yang valid.',
         ];
     }
 }

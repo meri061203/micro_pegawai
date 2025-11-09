@@ -22,9 +22,9 @@ final class PersonSdm extends Model implements Auditable
 
     public $incrementing = true;
 
-    protected $table = 'person_sdm';
+    protected $table = 'sdm';
 
-    protected $primaryKey = 'id_sdm';
+    protected $primaryKey = 'id';
 
     protected $keyType = 'int';
 
@@ -32,44 +32,36 @@ final class PersonSdm extends Model implements Auditable
 
     protected $fillable = [
         'id_person',
-        'nomor_karpeg',
-        'nomor_sk',
-        'tmt',
-        'tmt_pensiun',
+        'nip',
+        'status_pegawai',
+        'tipe_pegawai',
+        'tanggal_masuk',
     ];
 
-    protected $guarded = ['id_sdm'];
+    protected $guarded = ['id'];
 
     protected $casts = [
-        'id_sdm' => 'integer',
+        'id' => 'integer',
         'id_person' => 'integer',
-        'id_jenis_sdm' => 'integer',
-        'id_status_sdm' => 'integer',
-        'tmt' => 'date',
-        'tmt_pensiun' => 'date',
+        'tanggal_masuk' => 'date',
     ];
 
-    public function setNomorKarpegAttribute($v): void
+    public function setNipAttribute($v): void
     {
-        $this->attributes['nomor_karpeg'] = $v ? trim(strip_tags($v)) : null;
+        $this->attributes['nip'] = $v ? trim(strip_tags($v)) : null;
     }
 
-    public function setNuptkAttribute($v): void
+    public function setStatusPegawaiAttribute($v): void
     {
-        $this->attributes['nuptk'] = $v ? trim(strip_tags($v)) : null;
+        $this->attributes['status_pegawai'] = $v ? trim(strip_tags($v)) : null;
     }
 
-    public function setNomorSkAttribute($v): void
+    public function setTipePegawaiAttribute($v): void
     {
-        $this->attributes['nomor_sk'] = $v ? trim(strip_tags($v)) : null;
+        $this->attributes['tipe_pegawai'] = $v ? trim(strip_tags($v)) : null;
     }
 
-    public function getTmtAttribute($value): ?string
-    {
-        return $value ? Carbon::parse($value)->format('Y-m-d') : null;
-    }
-
-    public function getTmtPensiunAttribute($value): ?string
+      public function getTanggalMasukAttribute($value): ?string
     {
         return $value ? Carbon::parse($value)->format('Y-m-d') : null;
     }

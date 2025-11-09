@@ -33,8 +33,8 @@ final class PersonController extends Controller
             fn() => $this->personService->getListData(),
             [
                 'action' => fn($row) => implode(' ', [
-                    $this->transactionService->actionButton($row->id_person, 'detail'),
-                    $this->transactionService->actionButton($row->id_person, 'edit'),
+                    $this->transactionService->actionButton($row->id, 'detail'),
+                    $this->transactionService->actionButton($row->id, 'edit'),
                 ]),
             ]
         );

@@ -47,8 +47,8 @@ final class PersonSdmController extends Controller
             },
             [
                 'action' => fn($row) => implode(' ', [
-                    $this->transactionService->actionButton($row->id_sdm, 'detail'),
-                    $this->transactionService->actionButton($row->id_sdm, 'edit'),
+                    $this->transactionService->actionButton($row->id, 'detail'),
+                    $this->transactionService->actionButton($row->id, 'edit'),
                     $this->transactionService->actionLink(route('admin.sdm.sdm.histori', $row->uuid_person), 'histori', 'Riwayat'),
                 ]),
             ]
@@ -64,10 +64,10 @@ final class PersonSdmController extends Controller
         return $this->transactionService->handleWithTransaction(function () use ($request) {
             $data = $this->personSdmService->create($request->only([
                 'id_person',
-                'nomor_karpeg',
-                'nomor_sk',
-                'tmt',
-                'tmt_pensiun',
+                'nip',
+                'status_pegawai',
+                'tipe_pegawai',
+                'tanggal_masuk',
             ]));
 
             return $this->responseService->successResponse('Data berhasil dibuat', $data, 201);
@@ -92,10 +92,11 @@ final class PersonSdmController extends Controller
 
         return $this->transactionService->handleWithTransaction(function () use ($request, $data) {
             $updatedData = $this->personSdmService->update($data, $request->only([
-                'nomor_karpeg',
-                'nomor_sk',
-                'tmt',
-                'tmt_pensiun',
+                'id_person',
+                'nip',
+                'status_pegawai',
+                'tipe_pegawai',
+                'tanggal_masuk',
             ]));
 
             return $this->responseService->successResponse('Data berhasil diperbarui', $updatedData);
