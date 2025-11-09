@@ -1,13 +1,6 @@
 <script defer>
     $("#form_create").on("show.bs.modal", function (e) {
-        $("#tmt").flatpickr({
-            dateFormat: "Y-m-d",
-            altFormat: "d/m/Y",
-            allowInput: false,
-            altInput: true,
-        });
-
-        $("#tmt_pensiun").flatpickr({
+        $("#tanggal_masuk").flatpickr({
             dateFormat: "Y-m-d",
             altFormat: "d/m/Y",
             allowInput: false,
@@ -34,7 +27,7 @@
 
                     if (response.success) {
                         const data = response.data;
-                        $('#person_nama').text(data.nama);
+                        $('#person_nama_lengkap').text(data.nama_lengkap);
                         $('#person_nik').text(data.nik);
                         $('#person_tempat_lahir').text(data.tempat_lahir);
                         $('#person_tanggal_lahir').text(formatter.formatDate(response.data.tanggal_lahir));
@@ -89,10 +82,10 @@
                     DataManager.openLoading();
                     const input = {
                         "id_person": $("#id_person").val(),
-                        "nomor_karpeg": $("#nomor_karpeg").val(),
-                        "nomor_sk": $("#nomor_sk").val(),
-                        "tmt": $("#tmt").val(),
-                        "tmt_pensiun": $("#tmt_pensiun").val(),
+                        "nip": $("#nip").val(),
+                        "status_pegawai": $("#status_pegawai").val(),
+                        "tipe_pegawai": $("#tipe_pegawai").val(),
+                        "tanggal_masuk": $("#tanggal_masuk").val(),
                     };
                     const action = "{{ route('admin.sdm.sdm.store') }}";
                     DataManager.postData(action, input).then(response => {
@@ -131,6 +124,6 @@
         $('#btn_save').hide();
         $('#id_person').val('');
         $('#search_nik').val('');
-        $('#person_nama, #person_nik, #person_tempat_lahir, #person_tanggal_lahir, #person_alamat').text('');
+       $('#person_nama_lengkap, #person_nik, #person_tempat_lahir, #person_tanggal_lahir, #person_alamat').text('');
     }
 </script>

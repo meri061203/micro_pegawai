@@ -7,13 +7,13 @@
         DataManager.fetchData(detail.replace(':id', id))
             .then(function (response) {
                 if (response.success) {
-                    $('#detail_nama').text(response.data.nama);
+                    $('#detail_nama_lengkap').text(response.data.nama_lengkap);
                     $('#detail_nik').text(response.data.nik);
-                    $('#detail_nomor_hp').text(response.data.nomor_hp);
-                    $('#detail_nomor_karpeg').text(response.data.nomor_karpeg);
-                    $('#detail_nomor_sk').text(response.data.nomor_sk);
-                    $('#detail_tmt').text(formatter.formatDate(response.data.tmt));
-                    $('#detail_tmt_pensiun').text(formatter.formatDate(response.data.tmt_pensiun));
+                    $('#detail_no_hp').text(response.data.no_hp);
+                    $('#detail_nip').text(response.data.nip);
+                    $('#detail_status_pegawai').text(response.data.status_pegawai === 'T' ? 'TETAP' : (response.data.status_pegawai === 'K' ? 'KONTRAK' : response.data.status_pegawai));
+                    $('#detail_tipe_pegawai').text(response.data.tipe_pegawai === 'FT' ? 'FULL TIME' : (response.data.tipe_pegawai === 'PT' ? 'PART TIME' : response.data.tipe_pegawai));
+                    $('#detail_tanggal_masuk').text(formatter.formatDate(response.data.tanggal_masuk));
                 } else {
                     Swal.fire('Peringatan', response.message, 'warning');
                 }

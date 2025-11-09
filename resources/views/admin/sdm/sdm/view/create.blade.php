@@ -39,7 +39,7 @@
                             </h6>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p class="mb-1"><strong>Nama:</strong> <span id="person_nama"></span></p>
+                                    <p class="mb-1"><strong>Nama Lengkap:</strong> <span id="person_nama_lengkap"></span></p>
                                     <p class="mb-1"><strong>NIK:</strong> <span id="person_nik"></span></p>
                                     <p class="mb-1"><strong>Tempat Lahir:</strong> <span
                                                 id="person_tempat_lahir"></span>
@@ -57,39 +57,45 @@
                             <div class="col-md-4">
                                 <div class="d-flex flex-column mb-2">
                                     <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
-                                        <span>Karpeg</span>
+                                        <span>NIP</span>
                                     </label>
-                                    <input type="text" id="nomor_karpeg"
+                                    <input type="text" id="nip"
                                            class="form-control form-control-sm fs-sm-8 fs-lg-6" maxlength="20">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="d-flex flex-column mb-2">
-                                    <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
-                                        <span>Nomor SK</span>
-                                    </label>
-                                    <input type="text" id="nomor_sk"
-                                           class="form-control form-control-sm fs-sm-8 fs-lg-6" maxlength="50">
-                                    <div class="invalid-feedback"></div>
-                                </div>
+                            <div class="d-flex flex-column mb-2">
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
+                                    <span>Status Pegawai</span>
+                                </label>
+                                <select data-control="select2" id="status_pegawai"
+                                        class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
+                                        data-placeholder="Pilih Status Pegawai" required>
+                                    <option value="">Pilih Status Pegawai</option>
+                                    <option value="T">TETAP</option>
+                                    <option value="K">KONTRAK</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                             <div class="d-flex flex-column mb-2">
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
+                                    <span>Tipe Pegawai</span>
+                                </label>
+                                <select data-control="select2" id="tipe_pegawai"
+                                        class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
+                                        data-placeholder="Pilih Tipe Pegawai" required>
+                                    <option value="">Pilih Tipe Pegawai</option>
+                                    <option value="FT">FULL TIME</option>
+                                    <option value="PT">PART TIME</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
                             </div>
                             <div class="col-md-4">
                                 <div class="d-flex flex-column mb-2">
                                     <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
-                                        <span>TMT (Terhitung Mulai Tanggal)</span>
+                                        <span>Tanggal Masuk</span>
                                     </label>
-                                    <input type="text" id="tmt"
-                                           class="form-control form-control-sm fs-sm-8 fs-lg-6">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="d-flex flex-column mb-2">
-                                    <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
-                                        <span>TMT Pensiun (Terhitung Mulai Tanggal)</span>
-                                    </label>
-                                    <input type="text" id="tmt_pensiun"
+                                    <input type="date" id="tanggal_masuk"
                                            class="form-control form-control-sm fs-sm-8 fs-lg-6">
                                     <div class="invalid-feedback"></div>
                                 </div>

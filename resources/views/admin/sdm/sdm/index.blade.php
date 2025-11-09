@@ -37,11 +37,11 @@
                                 <thead>
                                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0 fs-sm-8 fs-lg-6">
                                     <th class="min-w-75px ps-5">Aksi</th>
-                                    <th class="min-w-150px">Nama</th>
-                                    <th class="min-w-150px">Nomor SK</th>
-                                    <th class="min-w-100px">KARPEG</th>
-                                    <th class="min-w-80px">TMT</th>
-                                    <th class="min-w-80px">TMT Pensiun</th>
+                                    <th class="min-w-150px">Nama Lengkap</th>
+                                    <th class="min-w-150px">NIP</th>
+                                    <th class="min-w-100px">Tipe Pegawai</th>
+                                    <th class="min-w-80px">Status Pegawai</th>
+                                    <th class="min-w-80px">Tanggal Masuk</th>
                                 </tr>
                                 </thead>
                                 <tbody class="text-gray-800 fw-bolder fs-sm-8 fs-lg-6">

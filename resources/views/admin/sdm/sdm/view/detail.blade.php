@@ -13,8 +13,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="d-flex flex-column mb-2">
-                            <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1">Nama</label>
-                            <p id="detail_nama"
+                            <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1">Nama Lengkap</label>
+                            <p id="detail_nama_lengkap"
                                class="fw-light fs-sm-8 fs-lg-6"></p>
                         </div>
                     </div>
@@ -28,37 +28,37 @@
                     <div class="col-md-4">
                         <div class="d-flex flex-column mb-2">
                             <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1">Nomor HP</label>
-                            <p id="detail_nomor_hp"
+                            <p id="detail_no_hp"
                                class="fw-light fs-sm-8 fs-lg-6"></p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">KARPEG</label>
-                            <p id="detail_nomor_karpeg"
+                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">NIP</label>
+                            <p id="detail_nip"
                                class="fw-light fs-sm-8 fs-lg-6"
                             ></p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nomor SK</label>
-                            <p id="detail_nomor_sk"
+                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Status Pegawai</label>
+                            <p id="detail_status_pegawai"
                                class="fw-light fs-sm-8 fs-lg-6"></p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">TMT</label>
-                            <p id="detail_tmt"
+                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Tipe Pegawai</label>
+                            <p id="detail_tipe_pegawai"
                                class="fw-light fs-sm-8 fs-lg-6"
                             ></p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">TMT Pensiun</label>
-                            <p id="detail_tmt_pensiun"
+                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Tanggal Masuk</label>
+                            <p id="detail_tanggal_masuk"
                                class="fw-light fs-sm-8 fs-lg-6"
                             ></p>
                         </div>

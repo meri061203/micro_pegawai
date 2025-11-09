@@ -37,10 +37,7 @@
             ajax: {
                 url: '{{ route('admin.sdm.sdm.list') }}',
                 cache: false,
-                data: function(d) {
-                    d.id_jenis_sdm = $('#list_id_jenis_sdm').val();
-                    d.id_status_sdm = $('#list_id_status_sdm').val();
-                }
+                
             },
             order: [],
             ordering: true,
@@ -51,27 +48,30 @@
                     searchable: false
                 },
                 {
-                    data: 'nama',
-                    name: 'nama'
+                    data: 'nama_lengkap',
+                    name: 'nama_lengkap'
                 },
                 {
-                    data: 'nomor_sk',
-                    name: 'nomor_sk'
+                    data: 'nip',
+                    name: 'nip'
                 },
                 {
-                    data: 'nomor_karpeg',
-                    name: 'nomor_karpeg'
-                },
-                {
-                    data: "tmt",
-                    name: "tmt",
+                    data: "status_pegawai",
+                    name: "status_pegawai",
                     render: function(data) {
-                        return data == null ? "" : formatter.formatDate(data);
+                        return data == 'T' ? "TETAP" : (data === 'K' ? 'KONTRAK' : data);
                     }
                 },
                 {
-                    data: "tmt_pensiun",
-                    name: "tmt_pensiun",
+                    data: "tipe_pegawai",
+                    name: "tipe_pegawai",
+                    render: function(data) {
+                        return data == 'FT' ? "FULL TIME" : (data === 'PT' ? 'PART TIME' : data);
+                    }
+                },
+                {
+                    data: "tanggal_masuk",
+                    name: "tanggal_masuk",
                     render: function(data) {
                         return data == null ? "" : formatter.formatDate(data);
                     }
