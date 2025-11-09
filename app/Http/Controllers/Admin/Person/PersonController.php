@@ -53,20 +53,22 @@ final class PersonController extends Controller
 
         return $this->transactionService->handleWithTransaction(function () use ($request, $foto) {
             $payload = $request->only([
-                'nama',
+                'nama_lengkap',
+                'nama_panggilan',
                 'jk',
                 'tempat_lahir',
                 'tanggal_lahir',
+                'agama',
                 'kewarganegaraan',
                 'golongan_darah',
                 'nik',
-                'nomor_kk',
+                'kk',
                 'alamat',
                 'rt',
                 'rw',
                 'id_desa',
                 'npwp',
-                'nomor_hp',
+                'no_hp',
                 'email',
             ]);
 
@@ -92,20 +94,22 @@ final class PersonController extends Controller
 
         return $this->transactionService->handleWithTransaction(function () use ($request, $data, $foto) {
             $payload = $request->only([
-                'nama',
+                'nama_lengkap',
+                'nama_panggilan',
                 'jk',
                 'tempat_lahir',
                 'tanggal_lahir',
+                'agama',
                 'kewarganegaraan',
                 'golongan_darah',
                 'nik',
-                'nomor_kk',
+                'kk',
                 'alamat',
                 'rt',
                 'rw',
                 'id_desa',
                 'npwp',
-                'nomor_hp',
+                'no_hp',
                 'email',
             ]);
 

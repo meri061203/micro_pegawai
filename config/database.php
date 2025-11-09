@@ -27,16 +27,16 @@ return [
     */
 
     'connections' => [
-      
+
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DB_URL'),
+            'url' => '',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'laravel'),
+            'database' => env('DB_DATABASE', 'micro_pegawai_sdm'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
+            'unix_socket' => '',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -55,13 +55,13 @@ return [
         ],
         'log' => [
             'driver' => 'mysql',
-            'url' => env('DB1_URL'),
+            'url' => '',
             'host' => env('DB1_HOST', '127.0.0.1'),
             'port' => env('DB1_PORT', '3306'),
-            'database' => env('DB1_DATABASE', 'laravel'),
+            'database' => env('DB1_DATABASE', 'micro_pegawai_log'),
             'username' => env('DB1_USERNAME', 'root'),
             'password' => env('DB1_PASSWORD', ''),
-            'unix_socket' => env('DB1_SOCKET', ''),
+            'unix_socket' => '',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
