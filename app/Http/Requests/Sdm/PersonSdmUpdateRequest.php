@@ -16,18 +16,18 @@ class PersonSdmUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'id_person' => 'required|integer|exists:person,id_person',
-            'nip' => 'nullable|string|max:20',
-            'status_pegawai' => 'nullable|in:TETEP,KONTRAK',
-            'tipe_pegawai' => 'nullable|in:FULL TIME,PART TIME',
-            'tanggal_masuk' => 'nullable|date',
+            'id_person' => 'nullable|integer|exists:person,id',
+            'nip' => 'nullable|string|max:16',
+            'status_pegawai' => 'required|in:TETAP,KONTRAK',
+            'tipe_pegawai' => 'required|in:FULL TIME,PART TIME',
+            'tanggal_masuk' => 'required|date',
         ];
     }
 
     public function attributes(): array
     {
         return [
-           'id_person' => 'ID Person',
+            'id_person' => 'ID Person',
             'nip' => 'NIP',
             'status_pegawai' => 'Status Pegawai',
             'tipe_pegawai' => 'Tipe Pegawai',
@@ -49,14 +49,22 @@ class PersonSdmUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-             'id_person.required' => 'Field :attribute wajib diisi.',
-            'id_person.integer' => 'Field :attribute harus berupa angka.',
-            'id_person.exists' => 'Field :attribute tidak ditemukan.',
-            'nip.string' => 'Field :attribute harus berupa teks.',
-            'nip.max' => 'Field :attribute maksimal :max karakter.',
-            'status_pegawai.in' => 'Field :attribute harus TETEP atau KONTRAK.',
-            'tipe_pegawai.in' => 'Field :attribute harus FULL TIME atau PART TIME.',
-            'tanggal_masuk.date' => 'Field :attribute harus berupa tanggal yang valid.',
+             'id_person.integer' => 'Data :attribute harus berupa angka.',
+            'id_person.exists' => 'Data :attribute yang dipilih tidak valid.',
+            'nip.string' => ':attribute harus berupa teks.',
+            'nip.max' => ':attribute tidak boleh lebih dari :max karakter.',
+            'status_pegawai.required' => ':attribute wajib dipilih.',
+            'status_pegawai.in' => ':attribute harus TETAP atau KONTRAK.',
+            'tipe_pegawai.required' => ':attribute wajib dipilih.',
+            'tipe_pegawai.in' => ':attribute harus FULL TIME atau PART TIME.',
+            'tanggal_masuk.required' => ':attribute wajib diisi.',
+            'tanggal_masuk.date' => 'Format :attribute tidak valid.',
         ];
     }
 }
+
+
+
+
+
+

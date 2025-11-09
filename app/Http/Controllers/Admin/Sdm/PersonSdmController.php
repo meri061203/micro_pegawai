@@ -55,22 +55,31 @@ final class PersonSdmController extends Controller
         );
     }
 
+     public function listApi(): JsonResponse
+    {
+        return $this->transactionService->handleWithDataTable(
+            fn()=> $this->personSdmService->getListData()
+        );
+    }
+
     public function store(PersonSdmStoreRequest $request): JsonResponse
     {
         if ($this->personSdmService->checkDuplicate($request->id_person)) {
             return $this->responseService->errorResponse('Kombinasi jenis/status SDM untuk person ini sudah terdaftar');
         }
 
-        return $this->transactionService->handleWithTransaction(function () use ($request) {
-            $data = $this->personSdmService->create($request->only([
-                'id_person',
+         return $this->transactionService->handleWithTransaction(function () use ($request) {
+            $payload = $request->only([
                 'nip',
                 'status_pegawai',
                 'tipe_pegawai',
                 'tanggal_masuk',
-            ]));
+                'id_person',
+            ]);
 
-            return $this->responseService->successResponse('Data berhasil dibuat', $data, 201);
+            $created = $this->personSdmService->create($payload);
+
+            return $this->responseService->successResponse('Data berhasil dibuat', $created, 201);
         });
     }
 
@@ -91,13 +100,15 @@ final class PersonSdmController extends Controller
         }
 
         return $this->transactionService->handleWithTransaction(function () use ($request, $data) {
-            $updatedData = $this->personSdmService->update($data, $request->only([
-                'id_person',
-                'nip',
+             $payload = $request->only([
+               'nip',
                 'status_pegawai',
                 'tipe_pegawai',
                 'tanggal_masuk',
-            ]));
+                'id_person',
+            ]);
+
+            $updatedData = $this->personSdmService->update($data, $payload);
 
             return $this->responseService->successResponse('Data berhasil diperbarui', $updatedData);
         });
@@ -115,3 +126,4 @@ final class PersonSdmController extends Controller
         });
     }
 }
+

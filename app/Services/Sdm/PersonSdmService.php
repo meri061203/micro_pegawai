@@ -4,8 +4,9 @@ namespace App\Services\Sdm;
 
 use App\Models\Person\Person;
 use App\Models\Sdm\PersonSdm;
+use App\Models\sdm\Sdm;
 use App\Services\Person\PersonService;
-use Illuminate\Http\Request;
+use App\Services\Tools\FileUploadService;
 use Illuminate\Support\Collection;
 
 final readonly class PersonSdmService
@@ -23,7 +24,7 @@ final readonly class PersonSdmService
 
     public function getHistoriByUuid(string $uuid): Collection
     {
-        return PersonSdm::query()
+       return PersonSdm::query()
             ->leftJoin('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'sdm.id',
@@ -65,11 +66,14 @@ final readonly class PersonSdmService
         return PersonSdm::query()
             ->leftJoin('person', 'person.id', '=', 'sdm.id_person')
             ->select([
-                 'sdm.*',
+                'sdm.*',
+                'person.nama_lengkap',
+                'person.tempat_lahir',
                 'person.nik',
                 'person.kk',
+                'person.tanggal_lahir',
+                'person.alamat',
                 'person.no_hp',
-                'person.nama_lengkap',
             ])
             ->where('sdm.id', $id)
             ->first();
@@ -93,8 +97,10 @@ final readonly class PersonSdmService
             ->exists();
     }
 
+
     public function findByNik(string $nik): ?Person
     {
         return $this->personService->findByNik($nik);
     }
+
 }

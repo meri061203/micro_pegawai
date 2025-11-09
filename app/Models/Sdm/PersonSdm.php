@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
 
+
 final class PersonSdm extends Model implements Auditable
 {
     use AuditableTrait;
@@ -41,28 +42,62 @@ final class PersonSdm extends Model implements Auditable
     protected $guarded = ['id'];
 
     protected $casts = [
-        'id' => 'integer',
         'id_person' => 'integer',
         'tanggal_masuk' => 'date',
     ];
 
-    public function setNipAttribute($v): void
+     public function person()
     {
-        $this->attributes['nip'] = $v ? trim(strip_tags($v)) : null;
+        return $this->belongsTo(\App\Models\Person\Person::class, 'id_person');
     }
 
-    public function setStatusPegawaiAttribute($v): void
+    public function setNipAttribute($value): void
     {
-        $this->attributes['status_pegawai'] = $v ? trim(strip_tags($v)) : null;
+        $this->attributes['nip'] = trim(strip_tags($value));
     }
 
-    public function setTipePegawaiAttribute($v): void
+    public function setStatusPegawaiAttribute($value): void
     {
-        $this->attributes['tipe_pegawai'] = $v ? trim(strip_tags($v)) : null;
+        $this->attributes['status_pegawai'] = $value ? trim(strip_tags($value)) : null;
     }
 
-      public function getTanggalMasukAttribute($value): ?string
+    public function setTipePegawaiAttribute($value): void
+    {
+        $this->attributes['tipe_pegawai'] = $value ? trim(strip_tags($value)) : null;
+    }
+
+    public function getTanggalMasukAttribute($value): ?string
     {
         return $value ? Carbon::parse($value)->format('Y-m-d') : null;
     }
+
+    public function setIdPersonAttribute($value): void
+    {
+        $this->attributes['id_person'] = trim(strip_tags($value));
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -49,14 +49,16 @@ class PersonSdmStoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id_person.required' => 'Field :attribute wajib diisi.',
-            'id_person.integer' => 'Field :attribute harus berupa angka.',
-            'id_person.exists' => 'Field :attribute tidak ditemukan.',
-            'nip.string' => 'Field :attribute harus berupa teks.',
-            'nip.max' => 'Field :attribute maksimal :max karakter.',
-            'status_pegawai.in' => 'Field :attribute harus TETEP atau KONTRAK.',
-            'tipe_pegawai.in' => 'Field :attribute harus FULL TIME atau PART TIME.',
-            'tanggal_masuk.date' => 'Field :attribute harus berupa tanggal yang valid.',
+           'id_person.integer' => 'Data Pegawai harus berupa angka.',
+            'id_person.exists' => 'Data Pegawai yang dipilih tidak valid.',
+            'nip.string' => 'NIP harus berupa teks.',
+            'nip.max' => 'NIP tidak boleh lebih dari :max karakter.',
+            'status_pegawai.required' => 'Status Pegawai wajib dipilih.',
+            'status_pegawai.in' => 'Status Pegawai harus TETAP atau KONTRAK.',
+            'tipe_pegawai.required' => 'Tipe Pegawai wajib dipilih.',
+            'tipe_pegawai.in' => 'Tipe Pegawai harus FULL TIME atau PART TIME.',
+            'tanggal_masuk.required' => 'Tanggal Masuk wajib diisi.',
+            'tanggal_masuk.date' => 'Format Tanggal Masuk tidak valid.',
         ];
     }
 }
