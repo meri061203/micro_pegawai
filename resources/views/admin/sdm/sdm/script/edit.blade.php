@@ -20,7 +20,7 @@
                 $("#edit_nip").val(data.nip);
                 $('#edit_status_pegawai').val(response.data.status_pegawai).trigger('change');
                 $('#edit_tipe_pegawai').val(response.data.tipe_pegawai).trigger('change');
-                edit_tanggal_masuk.setDate(response.data.tanggal_masuk);
+                $('#edit_tanggal_masuk').val(response.data.tanggal_masuk);
             } else {
                 Swal.fire("Warning", response.message, "warning");
             }

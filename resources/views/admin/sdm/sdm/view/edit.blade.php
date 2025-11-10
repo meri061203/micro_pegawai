@@ -55,8 +55,8 @@
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Status Pegawai" required>
                                     <option value="">Pilih Status Pegawai</option>
-                                    <option value="T">TETAP</option>
-                                    <option value="K">KONTRAK</option>
+                                    <option value="TETAP">TETAP</option>
+                                    <option value="KONTRAK">KONTRAK</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -70,8 +70,8 @@
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Tipe Pegawai" required>
                                     <option value="">Pilih Tipe Pegawai</option>
-                                    <option value="FT">FULL TIME</option>
-                                    <option value="PT">PART TIME</option>
+                                    <option value="FULL TIME">FULL TIME</option>
+                                    <option value="PART TIME">PART TIME</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -81,7 +81,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">
                                     <span>Tanggal Masuk</span>
                                 </label>
-                                <input type="text" id="edit_tanggal_masuk"
+                                <input type="date" id="edit_tanggal_masuk"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6">
                                 <div class="invalid-feedback"></div>
                             </div>

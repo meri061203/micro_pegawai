@@ -72,8 +72,8 @@
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Status Pegawai" required>
                                     <option value="">Pilih Status Pegawai</option>
-                                    <option value="T">TETAP</option>
-                                    <option value="K">KONTRAK</option>
+                                    <option value="TETEP">TETAP</option>
+                                    <option value="KONTRAK">KONTRAK</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -85,8 +85,8 @@
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Tipe Pegawai" required>
                                     <option value="">Pilih Tipe Pegawai</option>
-                                    <option value="FT">FULL TIME</option>
-                                    <option value="PT">PART TIME</option>
+                                    <option value="FULL TIME">FULL TIME</option>
+                                    <option value="PART TIME">PART TIME</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>

@@ -16,7 +16,7 @@ class PersonSdmStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_person' => 'required|integer|exists:person,id_person',
+            'id_person' => 'required|integer|exists:person,id',
             'nip' => 'nullable|string|max:20',
             'status_pegawai' => 'nullable|in:TETEP,KONTRAK',
             'tipe_pegawai' => 'nullable|in:FULL TIME,PART TIME',
