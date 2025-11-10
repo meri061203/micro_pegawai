@@ -48,9 +48,10 @@ final class RefJenisAsuransiController extends Controller
     {
         return $this->transactionService->handleWithTransaction(function () use ($request) {
             $data = $this->refJenisAsuransiService->create($request->only([
-                'jenis_asuransi',
-                'nama_produk',
-                'provider',
+                'kode_asuransi',
+                'nama_asuransi',
+                'penyelenggara',
+                'tipe_asuransi',
             ]));
             return $this->responseService->successResponse('Data berhasil dibuat', $data, 201);
         });
@@ -73,9 +74,10 @@ final class RefJenisAsuransiController extends Controller
         }
         return $this->transactionService->handleWithTransaction(function () use ($request, $data) {
             $updatedData = $this->refJenisAsuransiService->update($data, $request->only([
-                'jenis_asuransi',
-                'nama_produk',
-                'provider',
+                'kode_asuransi',
+                'nama_asuransi',
+                'penyelenggara',
+                'tipe_asuransi',
             ]));
             return $this->responseService->successResponse('Data berhasil diperbarui', $updatedData);
         });

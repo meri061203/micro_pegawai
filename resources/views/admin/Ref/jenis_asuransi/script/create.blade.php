@@ -16,9 +16,11 @@
                 if (result.value) {
                     DataManager.openLoading();
                     const input = {
-                        "jenis_asuransi": $("#jenis_asuransi").val(),
-                        "nama_produk": $("#nama_produk").val(),
-                        "provider": $("#provider").val(),
+                        
+                        "kode_asuransi": $("#kode_asuransi").val(),
+                        "nama_asuransi": $("#nama_asuransi").val(),
+                        "penyelenggara": $("#penyelenggara").val(),
+                        "tipe_asuransi": $("#tipe_asuransi").val(),
                     };
                     const action = "{{ route('admin.ref.jenis-asuransi.store') }}";
                     DataManager.postData(action, input).then(response => {

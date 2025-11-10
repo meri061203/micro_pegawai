@@ -46,9 +46,10 @@
                                 <thead>
                                 <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0 fs-sm-8 fs-lg-6">
                                     <th class="min-w-75px ps-5">Aksi</th>
-                                    <th class="min-w-150px">Jenis Asuransi</th>
-                                    <th class="min-w-150px">Nama Produk</th>
-                                    <th class="min-w-150px">Provider</th>
+                                    <th class="min-w-150px">Kode Asuransi</th>
+                                    <th class="min-w-150px">Nama Asuransi</th>
+                                    <th class="min-w-150px">Penyelenggara</th>
+                                    <th class="min-w-150px">Tipe Asuransi</th>
                                 </tr>
                                 </thead>
                                 <tbody class="text-gray-800 fw-bolder fs-sm-8 fs-lg-6">

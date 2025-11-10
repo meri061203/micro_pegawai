@@ -47,16 +47,20 @@
                 searchable: false
             },
                 {
-                    data: "jenis_asuransi",
-                    name: "jenis_asuransi"
+                    data: "kode_asuransi",
+                    name: "kode_asuransi"
                 },
                 {
-                    data: "nama_produk",
-                    name: "nama_produk"
+                    data: "nama_asuransi",
+                    name: "nama_asuransi"
                 },
                 {
-                    data: "provider",
-                    name: "provider"
+                    data: "penyelenggara",
+                    name: "penyelenggara"
+                },
+                {
+                    data: "tipe_asuransi",
+                    name: "tipe_asuransi"
                 },
             ],
         });

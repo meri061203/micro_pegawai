@@ -7,9 +7,10 @@
         DataManager.fetchData(detail.replace(':id', id))
             .then(function (response) {
                 if (response.success) {
-                    $("#detail_jenis_asuransi").text(response.data.jenis_asuransi);
-                    $("#detail_nama_produk").text(response.data.nama_produk);
-                    $("#detail_provider").text(response.data.provider);
+                    $("#detail_kode_asuransi").text(response.data.kode_asuransi);
+                    $("#detail_nama_asuransi").text(response.data.nama_asuransi);
+                    $("#detail_penyelenggara").text(response.data.penyelenggara);
+                    $("#detail_tipe_asuransi").text(response.data.tipe_asuransi);
                     $("#null_data").hide();
                     $("#show_data").show();
                 } else {

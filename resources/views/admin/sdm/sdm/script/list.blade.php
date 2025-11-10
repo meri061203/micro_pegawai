@@ -59,14 +59,14 @@
                     data: "status_pegawai",
                     name: "status_pegawai",
                     render: function(data) {
-                        return data == 'T' ? "TETAP" : (data === 'K' ? 'KONTRAK' : data);
+                        return data == 'T' ? "TETAP" : (data === 'KONTRAK' ? 'KONTRAK' : data);
                     }
                 },
                 {
                     data: "tipe_pegawai",
                     name: "tipe_pegawai",
                     render: function(data) {
-                        return data == 'FT' ? "FULL TIME" : (data === 'PT' ? 'PART TIME' : data);
+                        return data == 'FT' ? "FULL TIME" : (data === 'PART TIME' ? 'PART TIME' : data);
                     }
                 },
                 {

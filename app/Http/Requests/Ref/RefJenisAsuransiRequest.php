@@ -16,18 +16,20 @@ class RefJenisAsuransiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'jenis_asuransi' => 'required|string|max:100',
-            'nama_produk' => 'required|string|max:100',
-            'provider' => 'required|string|max:100',
+            'kode_asuransi' => 'required|string|max:100',
+            'nama_asuransi' => 'required|string|max:100',
+            'penyelenggara' => 'required|string|max:100',
+            'tipe_asuransi' => 'required|string|max:100',
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'jenis_asuransi' => 'Jenis Asuransi',
-            'nama_produk' => 'Nama Produk',
-            'provider' => 'Provider',
+            'kode_asuransi' => 'Kode Asuransi',
+            'nama_asuransi' => 'Nama Asuransi',
+            'penyelenggara' => 'Penyelenggara',
+            'tipe_asuransi' => 'Tipe Asuransi',
         ];
     }
 
@@ -44,16 +46,19 @@ class RefJenisAsuransiRequest extends FormRequest
 
     public function messages(): array
     {
-        return [
-            'jenis_asuransi.required' => 'Field :attribute wajib diisi.',
-            'jenis_asuransi.string' => 'Field :attribute harus berupa teks.',
-            'jenis_asuransi.max' => 'Field :attribute maksimal :max karakter.',
-            'nama_produk.required' => 'Field :attribute wajib diisi.',
-            'nama_produk.string' => 'Field :attribute harus berupa teks.',
-            'nama_produk.max' => 'Field :attribute maksimal :max karakter.',
-            'provider.required' => 'Field :attribute wajib diisi.',
-            'provider.string' => 'Field :attribute harus berupa teks.',
-            'provider.max' => 'Field :attribute maksimal :max karakter.',
-        ];
+       return [
+        'kode_asuransi.required' => 'Field :attribute wajib diisi.',
+        'kode_asuransi.string' => 'Field :attribute harus berupa teks.',
+        'kode_asuransi.max' => 'Field :attribute maksimal :max karakter.',
+        'nama_asuransi.required' => 'Field :attribute wajib diisi.',
+        'nama_asuransi.string' => 'Field :attribute harus berupa teks.',
+        'nama_asuransi.max' => 'Field :attribute maksimal :max karakter.',
+        'penyelenggara.required' => 'Field :attribute wajib diisi.',
+        'penyelenggara.string' => 'Field :attribute harus berupa teks.',
+        'penyelenggara.max' => 'Field :attribute maksimal :max karakter.',
+        'tipe_asuransi.required' => 'Field :attribute wajib diisi.',
+        'tipe_asuransi.string' => 'Field :attribute harus berupa teks.',
+        'tipe_asuransi.max' => 'Field :attribute maksimal :max karakter.',
+    ];
     }
 }

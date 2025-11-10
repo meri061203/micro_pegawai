@@ -4,7 +4,7 @@
         const id = button.data("id");
         const detail = "{{ route('admin.sdm.sdm.show', ':id') }}";
 
-        let edit_tmt = $("#edit_tanggal_masuk").flatpickr({
+        let edit_tanggal_masuk = $("#edit_tanggal_masuk").flatpickr({
             dateFormat: "Y-m-d",
             altFormat: "d/m/Y",
             allowInput: false,
