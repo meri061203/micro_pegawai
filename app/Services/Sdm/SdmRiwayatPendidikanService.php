@@ -27,25 +27,25 @@ final readonly class SdmRiwayatPendidikanService
     public function getListData(string $uuid, Request $request): Collection
     {
         $idSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->where('person.uuid_person', $uuid)
-            ->value('person_sdm.id_sdm');
+            ->value('sdm.id');
 
         if (!$idSdm) {
             return collect();
         }
 
         return SdmRiwayatPendidikan::query()
-            ->leftJoin('person_sdm', 'person_sdm.id_sdm', '=', 'sdm_riwayat_pendidikan.id_sdm')
-            ->leftJoin('ref_jenjang_pendidikan', 'ref_jenjang_pendidikan.id_jenjang_pendidikan', '=', 'sdm_riwayat_pendidikan.id_jenjang_pendidikan')
+            ->leftJoin('sdm', 'sdm.id', '=', 'pendidikan.id_sdm')
+            ->leftJoin('ref_jenjang_pendidikan', 'ref_jenjang_pendidikan.id_jenjang_pendidikan', '=', 'pendidikan.id_jenjang_pendidikan')
             ->select([
-                'sdm_riwayat_pendidikan.*',
+                'pendidikan.*',
                 'ref_jenjang_pendidikan.jenjang_pendidikan',
             ])
-            ->where('sdm_riwayat_pendidikan.id_sdm', $idSdm)
-            ->when($request->query('id_jenjang_pendidikan'), fn($q, $v) => $q->where('sdm_riwayat_pendidikan.id_jenjang_pendidikan', $v))
-            ->orderByDesc('sdm_riwayat_pendidikan.tahun_lulus')
-            ->orderBy('sdm_riwayat_pendidikan.nama_sekolah')
+            ->where('pendidikan.id_sdm', $idSdm)
+            ->when($request->query('id_jenjang_pendidikan'), fn($q, $v) => $q->where('pendidikan.id_jenjang_pendidikan', $v))
+            ->orderByDesc('pendidikan.tahun_lulus')
+            ->orderBy('pendidikan.institusi')
             ->get();
     }
 
@@ -57,12 +57,12 @@ final readonly class SdmRiwayatPendidikanService
     public function getDetailData(string $id): ?SdmRiwayatPendidikan
     {
         return SdmRiwayatPendidikan::query()
-            ->leftJoin('ref_jenjang_pendidikan', 'ref_jenjang_pendidikan.id_jenjang_pendidikan', '=', 'sdm_riwayat_pendidikan.id_jenjang_pendidikan')
+            ->leftJoin('ref_jenjang_pendidikan', 'ref_jenjang_pendidikan.id_jenjang_pendidikan', '=', 'pendidikan.id_jenjang_pendidikan')
             ->select([
-                'sdm_riwayat_pendidikan.*',
+                'pendidikan.*',
                 'ref_jenjang_pendidikan.jenjang_pendidikan',
             ])
-            ->where('sdm_riwayat_pendidikan.id_riwayat_pendidikan', $id)
+            ->where('pendidikan.id', $id)
             ->first();
     }
 
@@ -95,9 +95,9 @@ final readonly class SdmRiwayatPendidikanService
     public function resolveIdSdmFromUuid(string $uuid): ?int
     {
         return PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->where('person.uuid_person', $uuid)
-            ->value('person_sdm.id_sdm');
+            ->value('sdm.id');
     }
 
     public function handleFileUpload($file, int $idSdm, string $dokumen): ?array
@@ -107,19 +107,19 @@ final readonly class SdmRiwayatPendidikanService
         }
 
         $personSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'person.uuid_person',
                 'person.nama',
             ])
-            ->where('person_sdm.id_sdm', $idSdm)
+            ->where('sdm.id', $idSdm)
             ->first();
 
         $uniqueCode = substr(md5(uniqid()), 0, 6);
-        $template = '{id_sdm}_{nama}_{dokumen}_{unique_code}';
+        $template = '{id}_{nama}_{dokumen}_{unique_code}';
 
         $data = [
-            'id_sdm' => $personSdm->uuid_person ?? 'unknown',
+            'id' => $personSdm->uuid_person ?? 'unknown',
             'nama' => $personSdm->nama ?? 'unknown',
             'dokumen' => $dokumen,
             'unique_code' => $uniqueCode,
@@ -135,19 +135,19 @@ final readonly class SdmRiwayatPendidikanService
         }
 
         $personSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'person.uuid_person',
                 'person.nama',
             ])
-            ->where('person_sdm.id_sdm', $idSdm)
+            ->where('sdm.id', $idSdm)
             ->first();
 
         $uniqueCode = substr(md5(uniqid()), 0, 6);
-        $template = '{id_sdm}_{nama}_{dokumen}_{unique_code}';
+        $template = '{id}_{nama}_{dokumen}_{unique_code}';
 
         $data = [
-            'id_sdm' => $personSdm->uuid_person ?? 'unknown',
+            'id' => $personSdm->uuid_person ?? 'unknown',
             'nama' => $personSdm->nama ?? 'unknown',
             'dokumen' => $dokumen,
             'unique_code' => $uniqueCode,

@@ -21,98 +21,89 @@ final class SdmRiwayatPendidikan extends Model implements Auditable
 
     public $timestamps = false;
 
-    protected $table = 'sdm_riwayat_pendidikan';
+    protected $table = 'pendidikan';
 
-    protected $primaryKey = 'id_riwayat_pendidikan';
+    protected $primaryKey = 'id';
 
     protected $dateFormat = 'Y-m-d';
 
     protected $fillable = [
-        'id_riwayat_pendidikan_sister',
+        'id',
         'id_sdm',
         'id_jenjang_pendidikan',
-        'nama_sekolah',
-        'negara',
-        'status_sekolah',
+        'institusi',
         'jurusan',
-        'nomor_induk',
         'tahun_masuk',
         'tahun_lulus',
-        'gelar_akademik',
-        'bidang_studi',
-        'ipk',
-        'tanggal_lulus',
-        'jumlah_semester',
-        'jumlah_sks',
-        'nomor_ijazah',
-        'judul_tugas_akhir',
+        'jenis_nilai',
+        'sks',
         'sumber_biaya',
-        'nama_pembimbing',
         'file_ijazah',
         'file_transkip',
     ];
 
-    protected $guarded = ['id_riwayat_pendidikan'];
+    protected $guarded = ['id'];
 
     protected $casts = [
-        'id_riwayat_pendidikan' => 'integer',
+        'id' => 'integer',
         'id_sdm' => 'integer',
         'id_jenjang_pendidikan' => 'integer',
         'tahun_masuk' => 'integer',
         'tahun_lulus' => 'integer',
         'ipk' => 'decimal:2',
-        'tanggal_lulus' => 'date',
-        'jumlah_semester' => 'integer',
-        'jumlah_sks' => 'integer',
+        'sks' => 'integer',
     ];
 
-    public function setNamaSekolahAttribute($v): void
-    {
-        $this->attributes['nama_sekolah'] = $v ? trim(strip_tags($v)) : null;
-    }
 
-    public function setJurusanAttribute($v): void
-    {
-        $this->attributes['jurusan'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setIdJenjangPendidikanAttribute($v): void
+{
+    $this->attributes['id_jenjang_pendidikan'] = is_numeric($v) ? (int)$v : null;
+}
 
-    public function setNomorIndukAttribute($v): void
-    {
-        $this->attributes['nomor_induk'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setInstitusiAttribute($v): void
+{
+    $this->attributes['institusi'] = $v ? trim(strip_tags($v)) : null;
+}
 
-    public function setGelarAkademikAttribute($v): void
-    {
-        $this->attributes['gelar_akademik'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setJurusanAttribute($v): void
+{
+    $this->attributes['jurusan'] = $v ? trim(strip_tags($v)) : null;
+}
 
-    public function setBidangStudiAttribute($v): void
-    {
-        $this->attributes['bidang_studi'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setTahunMasukAttribute($v): void
+{
+    $this->attributes['tahun_masuk'] = is_numeric($v) ? (int)$v : null;
+}
 
-    public function setNomorIjazahAttribute($v): void
-    {
-        $this->attributes['nomor_ijazah'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setTahunLulusAttribute($v): void
+{
+    $this->attributes['tahun_lulus'] = is_numeric($v) ? (int)$v : null;
+}
 
-    public function setJudulTugasAkhirAttribute($v): void
-    {
-        $this->attributes['judul_tugas_akhir'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setSksAttribute($v): void
+{
+    $this->attributes['sks'] = is_numeric($v) ? (int)$v : null;
+}
 
-    public function setNamaPembimbingAttribute($v): void
-    {
-        $this->attributes['nama_pembimbing'] = $v ? trim(strip_tags($v)) : null;
-    }
+public function setSumberBiayaAttribute($v): void
+{
+    $this->attributes['sumber_biaya'] = in_array($v, ['MANDIRI', 'BEASISWA']) ? $v : null;
+}
 
-    public function setNegaraAttribute($v): void
-    {
-        $this->attributes['negara'] = $v ? trim($v) : 'Indonesia';
-    }
+public function setJenisNilaiAttribute($v): void
+{
+    $this->attributes['jenis_nilai'] = in_array($v, ['IPK', 'NILAI']) ? $v : null;
+}
 
-    public function getTanggalLulusAttribute($v): ?string
-    {
-        return $v ? Carbon::parse($v)->format('Y-m-d') : null;
-    }
+public function setFileIjazahAttribute($v): void
+{
+    $this->attributes['file_ijazah'] = $v ? trim($v) : null;
+}
+
+public function setFileTranskipAttribute($v): void
+{
+    $this->attributes['file_transkip'] = $v ? trim($v) : null;
+}
+
+    
 }

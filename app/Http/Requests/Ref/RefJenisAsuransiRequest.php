@@ -26,7 +26,7 @@ class RefJenisAsuransiRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'kode_asuransi' => 'Kode Asuransi',
+            'kode_asuransi' => 'kode Asuransi',
             'nama_asuransi' => 'Nama Asuransi',
             'penyelenggara' => 'Penyelenggara',
             'tipe_asuransi' => 'Tipe Asuransi',

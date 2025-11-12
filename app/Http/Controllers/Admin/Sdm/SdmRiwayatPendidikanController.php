@@ -81,9 +81,7 @@ final class SdmRiwayatPendidikanController extends Controller
         }
         return $this->transactionService->handleWithTransaction(function () use ($request, $idSdm, $fileIjazah, $fileTranskip) {
             $payload = $request->only([
-                'id_jenjang_pendidikan', 'nama_sekolah', 'negara', 'status_sekolah', 'jurusan', 'nomor_induk',
-                'tahun_masuk', 'tahun_lulus', 'gelar_akademik', 'bidang_studi', 'ipk', 'tanggal_lulus',
-                'jumlah_semester', 'jumlah_sks', 'nomor_ijazah', 'judul_tugas_akhir', 'sumber_biaya', 'nama_pembimbing',
+                'id_jenjang_pendidikan', 'institusi', 'jurusan','tahun_masuk', 'tahun_lulus', 'jenis_nilai', 'sks', 'sumber_biaya',
             ]);
             $payload['id_sdm'] = $idSdm;
             $data = $this->sdmRiwayatPendidikanService->create($payload);
@@ -127,9 +125,7 @@ final class SdmRiwayatPendidikanController extends Controller
         }
         return $this->transactionService->handleWithTransaction(function () use ($request, $data, $fileIjazah, $fileTranskip) {
             $payload = $request->only([
-                'id_jenjang_pendidikan', 'nama_sekolah', 'negara', 'status_sekolah', 'jurusan', 'nomor_induk',
-                'tahun_masuk', 'tahun_lulus', 'gelar_akademik', 'bidang_studi', 'ipk', 'tanggal_lulus',
-                'jumlah_semester', 'jumlah_sks', 'nomor_ijazah', 'judul_tugas_akhir', 'sumber_biaya', 'nama_pembimbing',
+                'id_jenjang_pendidikan', 'institusi', 'jurusan','tahun_masuk', 'tahun_lulus', 'jenis_nilai','sks', 'sumber_biaya',
             ]);
             $updatedData = $this->sdmRiwayatPendidikanService->update($data, $payload);
             if ($fileIjazah) {

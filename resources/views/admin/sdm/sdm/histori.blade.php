@@ -46,7 +46,7 @@
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center text-gray-600">
 
-                                            <span class="fs-7">No. KK: {{ $person->nomor_kk ?? '-' }}</span>
+                                            <span class="fs-7">No. KK: {{ $person->kk ?? '-' }}</span>
                                         </div>
                                     </div>
                                     @if ($person->npwp)
@@ -149,8 +149,8 @@
                                 <td class="text-gray-900 fw-bold">{{ $item->nama_lengkap ?? '-' }}</td>
                                 <td>{{ $item->nip ?? '-' }}</td>
                                 <td>{{ $item->tipe_pegawai ?? '-' }}</td>
-                                <td class="">{{ $item->status_pegawai ? Carbon::parse($item->status_pegawai)->format('d M Y') : '-' }}</td>
-                                <td class="">{{ $item->tanggal_masuk? Carbon::parse($item->tmt_tanggal_masuk)->format('d M Y') : '-' }}</td>
+                                <td>{{ $item->status_pegawai ?? '-' }}</td>
+                                <td class="">{{ $item->tanggal_masuk? Carbon::parse($item->tanggal_masuk)->format('d M Y') : '-' }}</td>
                             </tr>
                         @empty
                             <tr>
@@ -171,8 +171,17 @@
 
 @section('javascript')
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/lodash.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.colReorder.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+
+    <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/print.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
     <script>
         $('#example').DataTable();
