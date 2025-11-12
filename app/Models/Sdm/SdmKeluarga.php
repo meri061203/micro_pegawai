@@ -20,9 +20,9 @@ final class SdmKeluarga extends Model implements Auditable
 
     public $timestamps = false;
 
-    protected $table = 'sdm_keluarga';
+    protected $table = 'keluarga';
 
-    protected $primaryKey = 'id_keluarga';
+    protected $primaryKey = 'id';
 
     protected $keyType = 'int';
 
@@ -36,10 +36,10 @@ final class SdmKeluarga extends Model implements Auditable
         'penghasilan',
     ];
 
-    protected $guarded = ['id_keluarga'];
+    protected $guarded = ['id'];
 
     protected $casts = [
-        'id_keluarga' => 'integer',
+        'id' => 'integer',
         'id_sdm' => 'integer',
         'id_person' => 'integer',
         'id_hubungan_keluarga' => 'integer',

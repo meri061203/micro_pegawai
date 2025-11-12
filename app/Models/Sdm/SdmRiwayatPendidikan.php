@@ -55,12 +55,7 @@ final class SdmRiwayatPendidikan extends Model implements Auditable
     ];
 
 
-public function setIdJenjangPendidikanAttribute($v): void
-{
-    $this->attributes['id_jenjang_pendidikan'] = is_numeric($v) ? (int)$v : null;
-}
-
-public function setInstitusiAttribute($v): void
+    public function setInstitusiAttribute($v): void
 {
     $this->attributes['institusi'] = $v ? trim(strip_tags($v)) : null;
 }

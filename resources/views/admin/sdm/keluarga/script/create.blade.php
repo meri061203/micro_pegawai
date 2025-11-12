@@ -25,7 +25,7 @@
 
                     if (response.success) {
                         const data = response.data;
-                        $('#person_nama').text(data.nama);
+                        $('#person_nama_lengkap').text(data.nama_lengkap);
                         $('#person_nik').text(data.nik);
                         $('#person_tempat_lahir').text(data.tempat_lahir);
                         $('#person_tanggal_lahir').text(formatter.formatDate(response.data.tanggal_lahir));
@@ -129,6 +129,6 @@
         $('#id_person').val('');
         $('#id_sdm').val('');
         $('#search_nik').val('');
-        $('#person_nama, #person_nik, #person_tempat_lahir, #person_tanggal_lahir, #person_alamat').text('');
+        $('#person_nama_lengkap, #person_nik, #person_tempat_lahir, #person_tanggal_lahir, #person_alamat').text('');
     }
 </script>

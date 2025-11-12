@@ -36,7 +36,7 @@
                         <h6 class="text-success mb-2">Data Ditemukan:</h6>
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="mb-1"><strong>Nama:</strong> <span id="person_nama"></span></p>
+                                <p class="mb-1"><strong>Nama:</strong> <span id="person_nama_lengkap"></span></p>
                                 <p class="mb-1"><strong>NIK:</strong> <span id="person_nik"></span></p>
                                 <p class="mb-1"><strong>Tempat Lahir:</strong> <span id="person_tempat_lahir"></span>
                                 </p>
@@ -71,8 +71,8 @@
                                 <select data-control="select2" id="status_tanggungan"
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Status">
-                                    <option value="Ya">Ya</option>
-                                    <option value="Tidak">Tidak</option>
+                                    <option value="YA">Ya</option>
+                                    <option value="TIDAK">Tidak</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>

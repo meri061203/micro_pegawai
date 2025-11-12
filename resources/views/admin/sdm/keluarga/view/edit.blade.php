@@ -47,8 +47,8 @@
                                 <select data-control="select2" id="edit_status_tanggungan"
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Status">
-                                    <option value="Ya">Ya</option>
-                                    <option value="Tidak">Tidak</option>
+                                    <option value="YA">Ya</option>
+                                    <option value="TIDAK">Tidak</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>

@@ -37,9 +37,9 @@ final class SdmKeluargaController extends Controller
             },
             [
                 'action' => fn($row) => implode(' ', [
-                    $this->transactionService->actionButton($row->id_keluarga, 'detail'),
-                    $this->transactionService->actionButton($row->id_keluarga, 'edit'),
-                    $this->transactionService->actionButton($row->id_keluarga, 'delete'),
+                    $this->transactionService->actionButton($row->id, 'detail'),
+                    $this->transactionService->actionButton($row->id, 'edit'),
+                    $this->transactionService->actionButton($row->id, 'delete'),
                 ]),
             ]
         );

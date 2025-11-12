@@ -16,7 +16,7 @@ class SdmKeluargaUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_hubungan_keluarga' => 'required|integer|exists:ref_hubungan_keluarga,id_hubungan_keluarga',
+            'id' => 'required|integer|exists:ref_hubungan_keluarga,id_hubungan_keluarga',
             'status_tanggungan' => 'nullable|in:Ya,Tidak',
             'pekerjaan' => 'nullable|string|max:100',
             'pendidikan_terakhir' => 'nullable|string|max:100',
@@ -27,7 +27,7 @@ class SdmKeluargaUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'id_hubungan_keluarga' => 'Hubungan Keluarga',
+            'id' => 'Hubungan Keluarga',
             'status_tanggungan' => 'Status Tanggungan',
             'pekerjaan' => 'Pekerjaan',
             'pendidikan_terakhir' => 'Pendidikan Terakhir',
@@ -49,9 +49,9 @@ class SdmKeluargaUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id_hubungan_keluarga.required' => 'Field :attribute wajib diisi.',
-            'id_hubungan_keluarga.integer' => 'Field :attribute harus berupa angka.',
-            'id_hubungan_keluarga.exists' => 'Field :attribute tidak ditemukan.',
+            'id_keluarga.required' => 'Field :attribute wajib diisi.',
+            'id_keluarga.integer' => 'Field :attribute harus berupa angka.',
+            'id_keluarga.exists' => 'Field :attribute tidak ditemukan.',
             'status_tanggungan.in' => 'Field :attribute harus Ya atau Tidak.',
             'pekerjaan.string' => 'Field :attribute harus berupa teks.',
             'pekerjaan.max' => 'Field :attribute maksimal :max karakter.',
