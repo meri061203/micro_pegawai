@@ -110,17 +110,17 @@ final readonly class SdmRiwayatPendidikanService
             ->join('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'person.uuid_person',
-                'person.nama',
+                'person.nama_lengkap',
             ])
             ->where('sdm.id', $idSdm)
             ->first();
 
         $uniqueCode = substr(md5(uniqid()), 0, 6);
-        $template = '{id}_{nama}_{dokumen}_{unique_code}';
+        $template = '{id}_{nama_lengkap}_{dokumen}_{unique_code}';
 
         $data = [
             'id' => $personSdm->uuid_person ?? 'unknown',
-            'nama' => $personSdm->nama ?? 'unknown',
+            'nama_lengkap' => $personSdm->nama_lengkap ?? 'unknown',
             'dokumen' => $dokumen,
             'unique_code' => $uniqueCode,
         ];
@@ -138,17 +138,17 @@ final readonly class SdmRiwayatPendidikanService
             ->join('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'person.uuid_person',
-                'person.nama',
+                'person.nama_lengkap',
             ])
             ->where('sdm.id', $idSdm)
             ->first();
 
         $uniqueCode = substr(md5(uniqid()), 0, 6);
-        $template = '{id}_{nama}_{dokumen}_{unique_code}';
+        $template = '{id}_{nama_lengkap}_{dokumen}_{unique_code}';
 
         $data = [
             'id' => $personSdm->uuid_person ?? 'unknown',
-            'nama' => $personSdm->nama ?? 'unknown',
+            'nama_lengkap' => $personSdm->nama_lengkap ?? 'unknown',
             'dokumen' => $dokumen,
             'unique_code' => $uniqueCode,
         ];

@@ -25,9 +25,9 @@ final readonly class SdmRekeningService
     public function getListData(string $uuid, Request $request): Collection
     {
         $idSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->where('person.uuid_person', $uuid)
-            ->value('person_sdm.id_sdm');
+            ->value('sdm.id');
 
         if (!$idSdm) {
             return collect();
@@ -88,9 +88,9 @@ final readonly class SdmRekeningService
     public function resolveIdSdmFromUuid(string $uuid): ?int
     {
         return PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->where('person.uuid_person', $uuid)
-            ->value('person_sdm.id_sdm');
+            ->value('sdm.id');
     }
 
     public function checkDuplicate(int $idSdm, string $noRekening): bool

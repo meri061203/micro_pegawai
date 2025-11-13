@@ -35,7 +35,7 @@
                             <div class="d-flex flex-column flex-grow-1">
                                 <div class="d-flex align-items-center mb-3">
                                     <h2 class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">
-                                        {{ $person->nama ?? 'Nama tidak tersedia' }}
+                                        {{ $person->nama_lengkap ?? 'Nama tidak tersedia' }}
                                     </h2>
                                 </div>
                                 <div class="row g-3">
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="d-flex align-items-center text-gray-600">
-                                            <span class="fs-7">No. KK: {{ $person->nomor_kk ?? '-' }}</span>
+                                            <span class="fs-7">No. KK: {{ $person->kk ?? '-' }}</span>
                                         </div>
                                     </div>
                                     @if ($person->npwp)
@@ -60,7 +60,7 @@
                                     @if ($person->nomor_hp)
                                         <div class="col-md-6">
                                             <div class="d-flex align-items-center text-gray-600">
-                                                <span class="fs-7">HP: {{ $person->nomor_hp }}</span>
+                                                <span class="fs-7">HP: {{ $person->no_hp }}</span>
                                             </div>
                                         </div>
                                     @endif

@@ -9,24 +9,14 @@
                     const data = response.data;
 
                     $("#detail_jenjang").text(data.jenjang_pendidikan);
-                    $("#detail_nama_sekolah").text(data.nama_sekolah);
-                    $("#detail_negara").text(data.negara || 'Indonesia');
-                    $("#detail_status_sekolah").text(data.status_sekolah);
+                    $("#detail_institusi").text(data.institusi);
+                    $("#detail_jenis_nilai").text(data.jenis_nilai);
                     $("#detail_jurusan").text(data.jurusan);
-                    $("#detail_nomor_induk").text(data.nomor_induk);
                     $("#detail_tahun_masuk").text(data.tahun_masuk);
                     $("#detail_tahun_lulus").text(data.tahun_lulus);
-                    $("#detail_gelar_akademik").text(data.gelar_akademik);
-                    $("#detail_bidang_studi").text(data.bidang_studi);
-                    $("#detail_ipk").text(data.ipk ? parseFloat(data.ipk).toFixed(2) : '-');
-                    $('#detail_tanggal_lulus').text(formatter.formatDate(data.tanggal_lulus) ?? '-');
-                    $("#detail_jumlah_semester").text(data.jumlah_semester);
-                    $("#detail_jumlah_sks").text(data.jumlah_sks);
-                    $("#detail_nomor_ijazah").text(data.nomor_ijazah);
+                    $("#detail_sks").text(data.sks);
                     $("#detail_sumber_biaya").text(data.sumber_biaya);
-                    $("#detail_nama_pembimbing").text(data.nama_pembimbing);
-                    $("#detail_judul_tugas_akhir").text(data.judul_tugas_akhir);
-
+        
                     if (data.file_ijazah) {
                         $('#detail_file_ijazah_name').text(data.file_ijazah);
                         const fileUrl = '{{ route('admin.view-file', [':folder', ':filename']) }}'

@@ -40,9 +40,9 @@ final class SdmRiwayatPendidikanController extends Controller
             },
             [
                 'action' => fn($row) => implode(' ', [
-                    $this->transactionService->actionButton($row->id_riwayat_pendidikan, 'detail'),
-                    $this->transactionService->actionButton($row->id_riwayat_pendidikan, 'edit'),
-                    $this->transactionService->actionButton($row->id_riwayat_pendidikan, 'delete'),
+                    $this->transactionService->actionButton($row->id, 'detail'),
+                    $this->transactionService->actionButton($row->id, 'edit'),
+                    $this->transactionService->actionButton($row->id, 'delete'),
                 ]),
             ]
         );

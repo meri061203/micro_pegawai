@@ -5,33 +5,16 @@
         const id = button.data("id");
         const detail = "{{ route('admin.sdm.riwayat-pendidikan.show', ':id') }}";
 
-        let edit_tanggal_lulus = $("#edit_tanggal_lulus").flatpickr({
-            dateFormat: "Y-m-d",
-            altFormat: "d/m/Y",
-            allowInput: false,
-            altInput: true,
-        });
-
         DataManager.fetchData(detail.replace(':id', id)).then(response => {
             if (response.success) {
                 const data = response.data;
-                $("#edit_nama_sekolah").val(data.nama_sekolah);
-                $("#edit_negara").val(data.negara);
-                $("#edit_status_sekolah").val(data.status_sekolah).trigger('change');
+                $("#edit_institusi").val(data.institusi);
+                $("#edit_jenis_nilai").val(data.jenis_nilai).trigger('change');
                 $("#edit_jurusan").val(data.jurusan);
-                $("#edit_nomor_induk").val(data.nomor_induk);
                 $("#edit_tahun_masuk").val(data.tahun_masuk);
                 $("#edit_tahun_lulus").val(data.tahun_lulus);
-                $("#edit_gelar_akademik").val(data.gelar_akademik);
-                $("#edit_bidang_studi").val(data.bidang_studi);
-                $("#edit_ipk").val(data.ipk);
-                edit_tanggal_lulus.setDate(data.tanggal_lulus);
-                $("#edit_jumlah_semester").val(data.jumlah_semester);
-                $("#edit_jumlah_sks").val(data.jumlah_sks);
-                $("#edit_nomor_ijazah").val(data.nomor_ijazah);
-                $("#edit_judul_tugas_akhir").val(data.judul_tugas_akhir);
+                $("#edit_sks").val(data.sks);
                 $("#edit_sumber_biaya").val(data.sumber_biaya).trigger('change');
-                $("#edit_nama_pembimbing").val(data.nama_pembimbing);
                 if (data.file_ijazah) {
                     $('#current_file_ijazah_name').text(data.file_ijazah);
                     const fileUrl = '{{ route('admin.view-file', [':folder', ':filename']) }}'
@@ -113,23 +96,14 @@
 
                     const formData = new FormData();
                     formData.append('id_jenjang_pendidikan', $('#edit_id_jenjang_pendidikan').val());
-                    formData.append('nama_sekolah', $('#edit_nama_sekolah').val());
-                    formData.append('negara', $('#edit_negara').val());
-                    formData.append('status_sekolah', $('#edit_status_sekolah').val());
+                    formData.append('institusi', $('#edit_institusi').val());
+                    formData.append('jenis_nilai', $('#edit_jenis_nilai').val());
                     formData.append('jurusan', $('#edit_jurusan').val());
-                    formData.append('nomor_induk', $('#edit_nomor_induk').val());
                     formData.append('tahun_masuk', $('#edit_tahun_masuk').val());
                     formData.append('tahun_lulus', $('#edit_tahun_lulus').val());
-                    formData.append('gelar_akademik', $('#edit_gelar_akademik').val());
-                    formData.append('bidang_studi', $('#edit_bidang_studi').val());
-                    formData.append('ipk', $('#edit_ipk').val());
-                    formData.append('tanggal_lulus', $('#edit_tanggal_lulus').val());
-                    formData.append('jumlah_semester', $('#edit_jumlah_semester').val());
-                    formData.append('jumlah_sks', $('#edit_jumlah_sks').val());
-                    formData.append('nomor_ijazah', $('#edit_nomor_ijazah').val());
-                    formData.append('judul_tugas_akhir', $('#edit_judul_tugas_akhir').val());
+                    formData.append('sks', $('#edit_sks').val());
                     formData.append('sumber_biaya', $('#edit_sumber_biaya').val());
-                    formData.append('nama_pembimbing', $('#edit_nama_pembimbing').val());
+                    
                     if (fileIjazah) {
                         formData.append('file_ijazah', fileIjazah);
                     }

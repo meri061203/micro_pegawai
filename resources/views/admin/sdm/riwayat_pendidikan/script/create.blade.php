@@ -2,13 +2,6 @@
     $("#form_create").on("show.bs.modal", function (e) {
         fetchDataDropdown("{{ route('api.ref.jenjang-pendidikan') }}", '#id_jenjang_pendidikan', 'jenjang_pendidikan', 'jenjang_pendidikan');
 
-        $("#tanggal_lulus").flatpickr({
-            dateFormat: "Y-m-d",
-            altFormat: "d/m/Y",
-            allowInput: false,
-            altInput: true,
-        });
-
         $("#bt_submit_create").on("submit", function (e) {
             e.preventDefault();
             const fileIjazahInput = document.getElementById('file_ijazah');
@@ -57,23 +50,13 @@
                     const formData = new FormData();
                     formData.append('uuid_person', '{{ $id }}');
                     formData.append('id_jenjang_pendidikan', $('#id_jenjang_pendidikan').val());
-                    formData.append('nama_sekolah', $('#nama_sekolah').val());
-                    formData.append('negara', $('#negara').val());
-                    formData.append('status_sekolah', $('#status_sekolah').val());
+                    formData.append('institusi', $('#institusi').val());
+                    formData.append('jenis_nilai', $('#jenis_nilai').val());
                     formData.append('jurusan', $('#jurusan').val());
-                    formData.append('nomor_induk', $('#nomor_induk').val());
                     formData.append('tahun_masuk', $('#tahun_masuk').val());
                     formData.append('tahun_lulus', $('#tahun_lulus').val());
-                    formData.append('gelar_akademik', $('#gelar_akademik').val());
-                    formData.append('bidang_studi', $('#bidang_studi').val());
-                    formData.append('ipk', $('#ipk').val());
-                    formData.append('tanggal_lulus', $('#tanggal_lulus').val());
-                    formData.append('jumlah_semester', $('#jumlah_semester').val());
-                    formData.append('jumlah_sks', $('#jumlah_sks').val());
-                    formData.append('nomor_ijazah', $('#nomor_ijazah').val());
-                    formData.append('judul_tugas_akhir', $('#judul_tugas_akhir').val());
+                    formData.append('sks', $('#sks').val());
                     formData.append('sumber_biaya', $('#sumber_biaya').val());
-                    formData.append('nama_pembimbing', $('#nama_pembimbing').val());
                     if (fileIjazah) {     
                         formData.append('file_ijazah', fileIjazah);
                     }

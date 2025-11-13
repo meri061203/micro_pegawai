@@ -26,9 +26,9 @@ final readonly class SdmStrukturalService
     public function getListData(string $uuid): Collection
     {
         $idSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->where('person.uuid_person', $uuid)
-            ->value('person_sdm.id_sdm');
+            ->value('sdm.id');
 
         if (!$idSdm) {
             return collect();
@@ -105,9 +105,9 @@ final readonly class SdmStrukturalService
     public function resolveIdSdmFromUuid(string $uuid): ?int
     {
         return PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->where('person.uuid_person', $uuid)
-            ->value('person_sdm.id_sdm');
+            ->value('sdm.id');
     }
 
     public function isLatestRecord(SdmStruktural $struktural): bool
@@ -151,20 +151,20 @@ final readonly class SdmStrukturalService
         }
 
         $personSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'person.uuid_person',
-                'person.nama',
+                'person.nama_lengkap',
             ])
-            ->where('person_sdm.id_sdm', $idSdm)
+            ->where('sdm.id', $idSdm)
             ->first();
 
         $uniqueCode = substr(md5(uniqid()), 0, 6);
-        $template = '{id_sdm}_{nama}_{dokumen}_{unique_code}';
+        $template = '{id_sdm}_{nama_lengkap}_{dokumen}_{unique_code}';
 
         $data = [
             'id_sdm' => $personSdm->uuid_person ?? 'unknown',
-            'nama' => $personSdm->nama ?? 'unknown',
+            'nama_lengkap' => $personSdm->nama_lengkap ?? 'unknown',
             'dokumen' => $dokumen,
             'unique_code' => $uniqueCode,
         ];
@@ -179,20 +179,20 @@ final readonly class SdmStrukturalService
         }
 
         $personSdm = PersonSdm::query()
-            ->join('person', 'person.id_person', '=', 'person_sdm.id_person')
+            ->join('person', 'person.id', '=', 'sdm.id_person')
             ->select([
                 'person.uuid_person',
-                'person.nama',
+                'person.nama_lengkap',
             ])
-            ->where('person_sdm.id_sdm', $idSdm)
+            ->where('sdm.id', $idSdm)
             ->first();
 
         $uniqueCode = substr(md5(uniqid()), 0, 6);
-        $template = '{id_sdm}_{nama}_{dokumen}_{unique_code}';
+        $template = '{id_sdm}_{nama_lengkap}_{dokumen}_{unique_code}';
 
         $data = [
             'id_sdm' => $personSdm->uuid_person ?? 'unknown',
-            'nama' => $personSdm->nama ?? 'unknown',
+            'nama_lengkap' => $personSdm->nama_lengkap ?? 'unknown',
             'dokumen' => $dokumen,
             'unique_code' => $uniqueCode,
         ];

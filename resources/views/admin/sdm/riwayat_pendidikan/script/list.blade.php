@@ -54,22 +54,15 @@
                     }
                 },
                 {
-                    data: 'nama_sekolah',
-                    name: 'nama_sekolah',
+                    data: 'institusi',
+                    name: 'institusi',
                     render: function (data) {
                         return data;
                     }
                 },
                 {
-                    data: 'negara',
-                    name: 'negara',
-                    render: function (data) {
-                        return data || 'Indonesia';
-                    }
-                },
-                {
-                    data: 'status_sekolah',
-                    name: 'status_sekolah',
+                    data: 'jenis_nilai',
+                    name: 'jenis_nilai',
                     render: function (data) {
                         return data;
                     }
@@ -88,31 +81,7 @@
                         return data;
                     }
                 },
-                {
-                    data: 'gelar_akademik',
-                    name: 'gelar_akademik',
-                    render: function (data) {
-                        return data;
-                    }
-                },
-                {
-                    data: 'ipk',
-                    name: 'ipk',
-                    render: function (data) {
-                        try {
-                            return data ? parseFloat(data).toFixed(2) : '-';
-                        } catch (e) {
-                            return data;
-                        }
-                    }
-                },
-                {
-                    data: 'tanggal_lulus',
-                    name: 'tanggal_lulus',
-                    render: function (data) {
-                        return data == null ? "" : formatter.formatDate(data);
-                    }
-                },
+               
                 {
                     data: 'file_ijazah',
                     name: 'file_ijazah',

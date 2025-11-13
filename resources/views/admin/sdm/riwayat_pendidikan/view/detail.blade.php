@@ -23,24 +23,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nama Sekolah</label>
+                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Institusi</label>
                             <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_nama_sekolah"></p>
+                               id="detail_institusi"></p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Negara</label>
+                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Jenis Nilai</label>
                             <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_negara"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Status
-                                Sekolah</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_status_sekolah"></p>
+                               id="detail_jenis_nilai"></p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -48,13 +40,6 @@
                             <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Jurusan</label>
                             <p class="fw-light fs-sm-8 fs-lg-6"
                                id="detail_jurusan"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nomor Induk</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_nomor_induk"></p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -73,54 +58,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Gelar
-                                Akademik</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_gelar_akademik"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Bidang Studi</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_bidang_studi"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">IPK</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_ipk"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Tanggal
-                                Lulus</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_tanggal_lulus"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Jumlah
-                                Semester</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_jumlah_semester"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
                             <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Jumlah SKS</label>
                             <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_jumlah_sks"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nomor Ijazah</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_nomor_ijazah"></p>
+                               id="detail_sks"></p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -128,22 +68,6 @@
                             <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Sumber Biaya</label>
                             <p class="fw-light fs-sm-8 fs-lg-6"
                                id="detail_sumber_biaya"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nama
-                                Pembimbing</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_nama_pembimbing"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="d-flex flex-column mb-2">
-                            <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Judul Tugas
-                                Akhir</label>
-                            <p class="fw-light fs-sm-8 fs-lg-6"
-                               id="detail_judul_tugas_akhir"></p>
                         </div>
                     </div>
                 </div>
