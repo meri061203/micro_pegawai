@@ -35,17 +35,17 @@ final class PortalController extends Controller
 
     public function logindb(Request $request): RedirectResponse
     {
-        $username = $request->input('username');
-        $password = $request->input('password');
-
         $validationRules = [
             'username' => 'required',
             'password' => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ];
 
         $customMessages = [
-            'username.required' => 'Nama Pengguna harus diisi.',
-            'password.required' => 'Kata Kunci harus diisi.',
+            'username.required' => 'Username wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'g-recaptcha-response.required' => 'Silakan centang captcha terlebih dahulu',
+            'g-recaptcha-response.captcha' => 'Verifikasi captcha gagal, coba lagi.'
         ];
 
         $validator = Validator::make($request->all(), $validationRules, $customMessages);
@@ -54,10 +54,13 @@ final class PortalController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $username = $request->input('username');
+        $password = $request->input('password');
+
         if (Auth::guard('admin')->attempt(['email' => $username, 'password' => $password])) {
-            return redirect()->intended();
+            return redirect()->intended(); // arahkan ke halaman tujuan
         } else {
-            return redirect()->back()->with('error', 'nama pengguna dan kata kunci salah');
+            return redirect()->back()->with('error', 'Nama pengguna atau kata sandi salah');
         }
     }
 

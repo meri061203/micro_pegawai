@@ -21,9 +21,9 @@ final class PersonAsuransi extends Model implements Auditable
 
     public $incrementing = true;
 
-    protected $table = 'person_asuransi';
+    protected $table = 'asuransi_karyawan';
 
-    protected $primaryKey = 'id_person_asuransi';
+    protected $primaryKey = 'id';
 
     protected $keyType = 'int';
 
@@ -40,10 +40,10 @@ final class PersonAsuransi extends Model implements Auditable
         'keterangan',
     ];
 
-    protected $guarded = ['id_person_asuransi'];
+    protected $guarded = ['id'];
 
     protected $casts = [
-        'id_person_asuransi' => 'integer',
+        'id' => 'integer',
         'id_jenis_asuransi' => 'integer',
         'id_person' => 'integer',
         'tanggal_mulai' => 'date',

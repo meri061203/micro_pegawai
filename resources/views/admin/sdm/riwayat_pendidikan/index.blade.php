@@ -141,14 +141,12 @@
                             <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0 fs-sm-8 fs-lg-6">
                                 <th class="min-w-75px ps-5">Aksi</th>
                                 <th class="min-w-150px">Jenjang</th>
-                                <th class="min-w-150px">Nama Sekolah</th>
-                                <th class="min-w-120px">Negara</th>
-                                <th class="min-w-100px">Status Sekolah</th>
+                                <th class="min-w-150px">Institusi</th>
+                                <th class="min-w-100px">Jenis Nilai</th>
                                 <th class="min-w-120px">Jurusan</th>
+                                <th class="min-w-80px">Sumber Biaya</th>
+                                <th class="min-w-100px">Tahun Masuk</th>
                                 <th class="min-w-100px">Tahun Lulus</th>
-                                <th class="min-w-100px">Gelar</th>
-                                <th class="min-w-80px">IPK</th>
-                                <th class="min-w-120px">Tanggal Lulus</th>
                                 <th class="min-w-120px">Ijazah</th>
                                 <th class="min-w-120px">Traskip</th>
                             </tr>

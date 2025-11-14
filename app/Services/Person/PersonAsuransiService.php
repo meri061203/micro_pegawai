@@ -22,37 +22,37 @@ final readonly class PersonAsuransiService
 
     public function getListData(string $uuid, Request $request): Collection
     {
-        $nomorKK = Person::where('uuid_person', $uuid)->value('nomor_kk');
+        $nomorKK = Person::where('uuid_person', $uuid)->value('kk');
 
         if (!$nomorKK) {
             return collect();
         }
 
         return PersonAsuransi::query()
-            ->leftJoin('person', 'person.id_person', '=', 'person_asuransi.id_person')
-            ->leftJoin('ref_jenis_asuransi', 'ref_jenis_asuransi.id_jenis_asuransi', '=', 'person_asuransi.id_jenis_asuransi')
+            ->leftJoin('person', 'person.id', '=', 'asuransi_karyawan.id_person')
+            ->leftJoin('ref_jenis_asuransi', 'ref_jenis_asuransi.id_jenis_asuransi', '=', 'asuransi_karyawan.id_jenis_asuransi')
             ->select([
-                'person_asuransi.id_person_asuransi',
-                'person_asuransi.id_jenis_asuransi',
+                'asuransi_karyawan.id',
+                'asuransi_karyawan.id_jenis_asuransi',
                 'ref_jenis_asuransi.jenis_asuransi',
-                'ref_jenis_asuransi.nama_produk',
-                'person_asuransi.nomor_registrasi',
-                'person_asuransi.kartu_anggota',
-                'person_asuransi.status_aktif',
-                'person_asuransi.tanggal_mulai',
-                'person_asuransi.tanggal_berakhir',
-                'person.id_person',
-                'person.nama',
+                'ref_jenis_asuransi.nama_asuransi',
+                'asuransi_karyawan.nomor_registrasi',
+                'asuransi_karyawan.kartu_anggota',
+                'asuransi_karyawan.status_aktif',
+                'asuransi_karyawan.tanggal_mulai',
+                'asuransi_karyawan.tanggal_berakhir',
+                'person.id',
+                'person.nama_lengkap',
                 'person.nik',
                 'person.uuid_person',
             ])
             ->where(function ($q) use ($nomorKK, $uuid) {
-                $q->where('person_asuransi.kartu_anggota', $nomorKK)
+                $q->where('asuransi_karyawan.kartu_anggota', $nomorKK)
                     ->orWhere('person.uuid_person', $uuid);
             })
-            ->when($request->query('id_jenis_asuransi'), fn($q, $v) => $q->where('person_asuransi.id_jenis_asuransi', $v))
-            ->when($request->query('status'), fn($q, $v) => $q->where('person_asuransi.status_aktif', $v))
-            ->orderBy('person.nama')
+            ->when($request->query('id_jenis_asuransi'), fn($q, $v) => $q->where('asuransi_karyawan.id_jenis_asuransi', $v))
+            ->when($request->query('status'), fn($q, $v) => $q->where('asuransi_karyawan.status_aktif', $v))
+            ->orderBy('person.nama_lengkap')
             ->get();
     }
 
@@ -64,14 +64,14 @@ final readonly class PersonAsuransiService
     public function getDetailData(string $id): ?PersonAsuransi
     {
         return PersonAsuransi::query()
-            ->leftJoin('person', 'person.id_person', '=', 'person_asuransi.id_person')
-            ->leftJoin('ref_jenis_asuransi', 'ref_jenis_asuransi.id_jenis_asuransi', '=', 'person_asuransi.id_jenis_asuransi')
+            ->leftJoin('person', 'person.id', '=', 'asuransi_karyawan.id_person')
+            ->leftJoin('ref_jenis_asuransi', 'ref_jenis_asuransi.id_jenis_asuransi', '=', 'asuransi_karyawan.id_jenis_asuransi')
             ->select([
-                'person_asuransi.*',
-                'person.nama', 'person.nik', 'person.uuid_person',
-                'ref_jenis_asuransi.jenis_asuransi', 'ref_jenis_asuransi.nama_produk',
+                'asuransi_karyawan.*',
+                'person.nama_lengkap', 'person.nik', 'person.uuid_person',
+                'ref_jenis_asuransi.jenis_asuransi', 'ref_jenis_asuransi.nama_asuransi',
             ])
-            ->where('person_asuransi.id_person_asuransi', $id)
+            ->where('asuransi_karyawan.id', $id)
             ->first();
     }
 
@@ -99,7 +99,7 @@ final readonly class PersonAsuransiService
         }
 
         if ($uuid_person) {
-            return Person::where('uuid_person', $uuid_person)->value('id_person');
+            return Person::where('uuid_person', $uuid_person)->value('id');
         }
         return null;
     }

@@ -50,15 +50,18 @@ class RefJenisAsuransiRequest extends FormRequest
         'kode_asuransi.required' => 'Field :attribute wajib diisi.',
         'kode_asuransi.string' => 'Field :attribute harus berupa teks.',
         'kode_asuransi.max' => 'Field :attribute maksimal :max karakter.',
+
         'nama_asuransi.required' => 'Field :attribute wajib diisi.',
         'nama_asuransi.string' => 'Field :attribute harus berupa teks.',
         'nama_asuransi.max' => 'Field :attribute maksimal :max karakter.',
+
         'penyelenggara.required' => 'Field :attribute wajib diisi.',
         'penyelenggara.string' => 'Field :attribute harus berupa teks.',
         'penyelenggara.max' => 'Field :attribute maksimal :max karakter.',
+
         'tipe_asuransi.required' => 'Field :attribute wajib diisi.',
         'tipe_asuransi.string' => 'Field :attribute harus berupa teks.',
         'tipe_asuransi.max' => 'Field :attribute maksimal :max karakter.',
-    ];
+        ];
     }
 }

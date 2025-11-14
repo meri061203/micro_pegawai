@@ -47,8 +47,8 @@
                                 <p class="mb-1"><strong>Alamat:</strong> <span id="person_alamat"></span></p>
                             </div>
                         </div>
-                        <input type="hidden" id="id_person" name="id_person">
-                        <input type="hidden" id="id_sdm" name="id_sdm">
+                        <input type="hidden" id="id_person" name="id">
+                        <input type="hidden" id="id_sdm" name="id">
                     </div>
                     <div class="row" id="keluarga_form" style="display:none;">
                         <div class="col-md-6">

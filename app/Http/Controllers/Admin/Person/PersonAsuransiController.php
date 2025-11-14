@@ -37,9 +37,9 @@ final class PersonAsuransiController extends Controller
             },
             [
                 'action' => fn($row) => implode(' ', [
-                    $this->transactionService->actionButton($row->id_person_asuransi, 'detail'),
-                    $this->transactionService->actionButton($row->id_person_asuransi, 'edit'),
-                    $this->transactionService->actionButton($row->id_person_asuransi, 'delete'),
+                    $this->transactionService->actionButton($row->id, 'detail'),
+                    $this->transactionService->actionButton($row->id, 'edit'),
+                    $this->transactionService->actionButton($row->id, 'delete'),
                 ]),
             ]
         );

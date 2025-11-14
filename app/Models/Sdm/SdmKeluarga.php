@@ -2,6 +2,7 @@
 
 namespace App\Models\Sdm;
 
+use App\Models\Person\Person;
 use App\Traits\SkipsEmptyAudit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -45,6 +46,11 @@ final class SdmKeluarga extends Model implements Auditable
         'id_hubungan_keluarga' => 'integer',
         'penghasilan' => 'integer',
     ];
+
+    public function person()
+    {
+        $this->belongsTo(Person::class, 'id_person', 'id');
+    }
 
     public function setPekerjaanAttribute($v): void
     {

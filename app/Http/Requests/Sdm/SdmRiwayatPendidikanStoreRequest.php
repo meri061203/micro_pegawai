@@ -16,7 +16,8 @@ class SdmRiwayatPendidikanStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'uuid_person' => 'required|uuid|exists:person,uuid_person',
+            'uuid_person' => 'required_without:id_sdm|uuid|exists:person,uuid_person',
+            'id_sdm' => 'required_without:uuid_person|integer|exists:sdm,id_sdm',
             'id_jenjang_pendidikan' => 'nullable|integer|exists:ref_jenjang_pendidikan,id_jenjang_pendidikan',
             'institusi' => 'nullable|string|max:100',
             'jurusan' => 'nullable|string|max:100',
@@ -34,6 +35,7 @@ class SdmRiwayatPendidikanStoreRequest extends FormRequest
     {
         return [
             'uuid_person' => 'UUID Person',
+            'id_sdm' => 'ID SDM',
             'id_jenjang_pendidikan' => 'Jenjang Pendidikan',
             'institusi' => 'Nama Sekolah',
             'jurusan' => 'Jurusan',
@@ -61,9 +63,12 @@ class SdmRiwayatPendidikanStoreRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'uuid_person.required' => 'UUID person wajib diisi.',
-            'uuid_person.uuid' => 'UUID person tidak valid.',
-            'uuid_person.exists' => 'UUID person tidak ditemukan.',
+            'uuid_person.required_without' => 'Field :attribute wajib diisi jika id_sdm tidak diisi.',
+            'uuid_person.uuid' => 'Field :UUID person tidak valid.',
+            'uuid_person.exists' => 'Field :UUID person tidak ditemukan.',
+            'id_sdm.required_without' => 'Field :attribute wajib diisi jika uuid_person tidak diisi.',
+            'id_sdm.integer' => 'Field :attribute harus berupa angka.',
+            'id_sdm.exists' => 'Field :attribute tidak ditemukan.',
             'id_jenjang_pendidikan.integer' => 'Jenjang pendidikan harus berupa angka.',
             'id_jenjang_pendidikan.exists' => 'Jenjang pendidikan tidak ditemukan.',
             'institusi.string' => 'Nama institusi harus berupa teks.',

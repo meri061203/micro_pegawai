@@ -30,7 +30,7 @@
                         $('#person_tempat_lahir').text(data.tempat_lahir);
                         $('#person_tanggal_lahir').text(formatter.formatDate(response.data.tanggal_lahir));
                         $('#person_alamat').text(`${data.desa}, ${data.kecamatan}, ${data.kabupaten}, ${data.provinsi}`.replace(/^,\s*|,\s*$/g, '').replace(/,\s*,/g, ','));
-                        $('#id_person').val(data.id_person);
+                        $('#id_person').val(data.id);
                         $('#person_info').show();
                         $('#keluarga_form').show();
                         $('#btn_save').show();

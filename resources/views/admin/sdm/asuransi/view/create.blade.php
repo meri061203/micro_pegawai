@@ -33,7 +33,7 @@
                         <h6 class="text-success mb-2">Data Ditemukan:</h6>
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="mb-1"><strong>Nama:</strong> <span id="person_nama"></span></p>
+                                <p class="mb-1"><strong>Nama:</strong> <span id="person_nama_lengkap"></span></p>
                                 <p class="mb-1"><strong>NIK:</strong> <span id="person_nik"></span></p>
                                 <p class="mb-1"><strong>Tempat Lahir:</strong> <span id="person_tempat_lahir"></span>
                                 </p>

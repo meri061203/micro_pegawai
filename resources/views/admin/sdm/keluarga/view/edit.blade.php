@@ -44,7 +44,7 @@
                                 <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1">
                                     <span>Status Tanggungan</span>
                                 </label>
-                                <select data-control="select2" id="edit_status_tanggungan"
+                                <select data-control="select2" id="edit_status_tanggungan" name="status_tanggungan"
                                         class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
                                         data-placeholder="Pilih Status">
                                     <option value="YA">Ya</option>

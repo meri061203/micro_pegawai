@@ -1,19 +1,7 @@
 <script defer>
     $("#form_create").on("show.bs.modal", function (e) {
         fetchDataDropdown("{{ route('api.ref.jenis-asuransi') }}", '#id_jenis_asuransi', 'jenis_asuransi', 'jenis_asuransi');
-        $("#tanggal_mulai").flatpickr({
-            dateFormat: "Y-m-d",
-            altFormat: "d/m/Y",
-            allowInput: false,
-            altInput: true,
-        });
-
-        $("#tanggal_berakhir").flatpickr({
-            dateFormat: "Y-m-d",
-            altFormat: "d/m/Y",
-            allowInput: false,
-            altInput: true,
-        });
+        
 
         $('#btn_search_person').on('click', function () {
             const nik = $('#search_nik').val().trim();
@@ -35,7 +23,7 @@
 
                     if (response.success) {
                         const data = response.data;
-                        $('#person_nama').text(data.nama);
+                        $('#person_nama_lengkap').text(data.nama_lengkap);
                         $('#person_nik').text(data.nik);
                         $('#person_tempat_lahir').text(data.tempat_lahir);
                         $('#person_tanggal_lahir').text(formatter.formatDate(response.data.tanggal_lahir));

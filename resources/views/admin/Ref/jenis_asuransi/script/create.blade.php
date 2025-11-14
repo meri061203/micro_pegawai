@@ -17,10 +17,10 @@
                     DataManager.openLoading();
                     const input = {
                         
-                        "kode_asuransi": $("#kode_asuransi").val(),
-                        "nama_asuransi": $("#nama_asuransi").val(),
-                        "penyelenggara": $("#penyelenggara").val(),
-                        "tipe_asuransi": $("#tipe_asuransi").val(),
+                        "kode_asuransi": $("#tambah_kode_asuransi").val(),
+                        "nama_asuransi": $("#tambah_nama_asuransi").val(),
+                        "penyelenggara": $("#tambah_penyelenggara").val(),
+                        "tipe_asuransi": $("#tambah_tipe_asuransi").val(),
                     };
                     const action = "{{ route('admin.ref.jenis-asuransi.store') }}";
                     DataManager.postData(action, input).then(response => {

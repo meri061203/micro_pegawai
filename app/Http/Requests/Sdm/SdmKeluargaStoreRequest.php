@@ -18,7 +18,7 @@ class SdmKeluargaStoreRequest extends FormRequest
         return [
             'uuid_person' => 'required_without:id_sdm|uuid|exists:person,uuid_person',
             'id_sdm' => 'required_without:uuid_person|integer|exists:person_sdm,id_sdm',
-            'id_person' => 'required|integer|exists:person,id_person',
+            'id_person' => 'required|exists:person,id',
             'id_hubungan_keluarga' => 'required|integer|exists:ref_hubungan_keluarga,id_hubungan_keluarga',
             'status_tanggungan' => 'nullable|in:YA,TIDAK',
             'pekerjaan' => 'nullable|string|max:100',

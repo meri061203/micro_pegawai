@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AlmtController;
 use App\Http\Controllers\Api\MasterController;
 use App\Http\Controllers\Api\RefController;
+use App\Http\Controllers\MailerController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('almt')->group(function () {
@@ -31,3 +32,6 @@ Route::prefix('master')->group(function () {
     Route::get('unit', [MasterController::class, 'unit'])->name('api.master.unit');
     Route::get('jabatan', [MasterController::class, 'jabatan'])->name('api.master.jabatan');
 });
+
+Route::post('/send', [MailerController::class, 'send']); 
+Route::post('/verifikasi', [MailerController::class, 'verifikasi']);

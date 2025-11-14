@@ -21,7 +21,7 @@
         DataManager.fetchData(detail.replace(':id', id)).then(response => {
             if (response.success) {
                 const data = response.data;
-                $("#edit_nama").text(data.nama);
+                $("#edit_nama_lengkap").text(data.nama_lengkap);
                 $("#edit_nik").text(data.nik);
                 $("#edit_nomor_registrasi").val(data.nomor_registrasi);
                 $("#edit_kartu_anggota").val(data.kartu_anggota);

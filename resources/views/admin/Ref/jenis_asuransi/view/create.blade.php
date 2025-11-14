@@ -14,7 +14,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required ">
                                     <span>Kode Asuransi</span>
                                 </label>
-                                <input type="text" id="kode_asuransi"
+                                <input type="text" id="tambah_kode_asuransi" name="kode_asuransi"
                                        class="form-control form-control-sm  fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
@@ -25,7 +25,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required ">
                                     <span>Nama Asuransi</span>
                                 </label>
-                                <input type="text" id="nama_asuransi"
+                                <input type="text" id="tambah_nama_asuransi" name="nama_asuransi"
                                        class="form-control form-control-sm  fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
@@ -36,7 +36,8 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required ">
                                     <span>Penyelenggara</span>
                                 </label>
-                                <input type="text" id="penyelenggara" class="form-control form-control-sm  fs-sm-8 fs-lg-6"
+                                <input type="text" id="tambah_penyelenggara" name="penyelenggara"
+                                        class="form-control form-control-sm  fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -46,7 +47,8 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required ">
                                     <span>Tipe Asuransi</span>
                                 </label>
-                                <input type="text" id="tipe_asuransi" class="form-control form-control-sm  fs-sm-8 fs-lg-6"
+                                <input type="text" id="tambah_tipe_asuransi" name="tipe_asuransi"
+                                        class="form-control form-control-sm  fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
                             </div>

@@ -104,14 +104,14 @@ final readonly class SdmKeluargaService
     public function checkDuplicate(int $idSdm, int $idPerson): bool
     {
         return SdmKeluarga::where('id_sdm', $idSdm)
-            ->where('id_person', $idPerson)
+            ->where('id', $idPerson)
             ->exists();
     }
 
     public function checkDuplicateForUpdate(SdmKeluarga $keluarga, int $idPerson): bool
     {
         return SdmKeluarga::where('id_sdm', $keluarga->id_sdm)
-            ->where('id_person', $idPerson)
+            ->where('id', $idPerson)
             ->where('id', '!=', $keluarga->id_keluarga)
             ->exists();
     }

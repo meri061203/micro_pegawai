@@ -75,8 +75,22 @@
                     }
                 },
                 {
+                    data: 'sumber_biaya',
+                    name: 'sumber_biaya',
+                    render: function (data) {
+                        return data;
+                    }
+                },
+                {
                     data: 'tahun_lulus',
                     name: 'tahun_lulus',
+                    render: function (data) {
+                        return data;
+                    }
+                },
+                {
+                    data: 'tahun_masuk',
+                    name: 'tahun_masuk',
                     render: function (data) {
                         return data;
                     }
