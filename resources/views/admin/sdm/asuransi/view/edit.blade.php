@@ -105,6 +105,7 @@
                                 <div class="invalid-feedback"></div>
                             </div>
                         </div>
+                       <input type="hidden" id="id_person" name="id_person">
                     </div>
                 </div>
                 <div class="modal-footer">

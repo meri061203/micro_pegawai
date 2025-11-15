@@ -20,7 +20,7 @@ final readonly class PersonAsuransiService
         return $this->personService->getPersonDetailByUuid($uuid);
     }
 
-    public function getListData(string $uuid, Request $request): Collection
+    public function getListData(string $uuid, Request $request): mixed
     {
         $nomorKK = Person::where('uuid_person', $uuid)->value('kk');
 
@@ -51,8 +51,9 @@ final readonly class PersonAsuransiService
             })
             ->when($request->query('id_jenis_asuransi'), fn($q, $v) => $q->where('asuransi_karyawan.id_jenis_asuransi', $v))
             ->when($request->query('status'), fn($q, $v) => $q->where('asuransi_karyawan.status_aktif', $v))
-            ->orderBy('person.nama_lengkap')
-            ->get();
+            ->orderBy('person.nama_lengkap');
+
+            return $query; 
     }
 
     public function create(array $data): PersonAsuransi

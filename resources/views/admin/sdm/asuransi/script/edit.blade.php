@@ -30,7 +30,7 @@
                 edit_tanggal_berakhir.setDate(response.data.tanggal_berakhir);
                 $("#edit_keterangan").val(data.keterangan);
 
-                fetchDataDropdown("{{ route('api.ref.jenis-asuransi') }}", "#edit_id_jenis_asuransi", "jenis_asuransi", "jenis_asuransi", function () {
+                fetchDataDropdown("{{ route('api.ref.jenis-asuransi') }}", "#edit_id_jenis_asuransi", "jenis_asuransi", "nama_asuransi",  function () {
                     $("#edit_id_jenis_asuransi").val(data.id_jenis_asuransi).trigger("change");
                 });
 
