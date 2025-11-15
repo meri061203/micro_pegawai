@@ -52,8 +52,8 @@
                 searchable: false
             },
                 {
-                    data: 'nama',
-                    name: 'nama'
+                    data: 'nama_lengkap',
+                    name: 'nama_lengkap'
                 },
                 {
                     data: 'nik',
@@ -71,10 +71,7 @@
                     data: 'jenis_asuransi',
                     name: 'jenis_asuransi'
                 },
-                {
-                    data: 'nama_produk',
-                    name: 'nama_produk'
-                },
+    
                 {
                     data: 'status_aktif',
                     name: 'status_aktif'

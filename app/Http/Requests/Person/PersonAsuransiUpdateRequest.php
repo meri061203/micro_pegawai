@@ -16,6 +16,8 @@ class PersonAsuransiUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'uuid_person' => 'required_without:id_person|uuid|exists:person,uuid_person',
+            'id_person' => 'sometimes|integer|exists:person,id',
             'id_jenis_asuransi' => 'sometimes|integer|exists:ref_jenis_asuransi,id_jenis_asuransi',
             'nomor_registrasi' => 'nullable|string|max:16',
             'kartu_anggota' => 'nullable|string|max:16',
@@ -29,6 +31,7 @@ class PersonAsuransiUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
+             'uuid_person' => 'UUID Person',
             'id_jenis_asuransi' => 'Jenis Asuransi',
             'nomor_registrasi' => 'Nomor Registrasi',
             'kartu_anggota' => 'Kartu Anggota',
@@ -53,6 +56,9 @@ class PersonAsuransiUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'uuid_person.required_without' => 'Field :attribute wajib diisi jika id_person tidak diisi.',
+            'uuid_person.uuid' => 'Field :attribute harus berupa UUID.',
+            'uuid_person.exists' => 'Field :attribute tidak ditemukan.',
             'id_jenis_asuransi.integer' => 'Field :attribute harus berupa angka.',
             'id_jenis_asuransi.exists' => 'Field :attribute tidak ditemukan.',
             'nomor_registrasi.string' => 'Field :attribute harus berupa teks.',

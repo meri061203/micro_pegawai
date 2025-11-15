@@ -28,11 +28,19 @@
                         </div>
                         <div class="col-md-6">
                             <div class="d-flex flex-column mb-2">
-                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nama
-                                    Sekolah</label>
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Institusi</label>
                                 <input type="text" name="institusi"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        id="edit_institusi" placeholder="Masukkan Nama Institusi" maxlength="100">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column mb-2">
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Jurusan</label>
+                                <input type="text" name="jurusan"
+                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                       id="edit_jurusan" placeholder="Masukkan Jurusan" maxlength="100">
                                 <div class="invalid-feedback"></div>
                             </div>
                         </div>

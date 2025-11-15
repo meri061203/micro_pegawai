@@ -1,6 +1,6 @@
 <script defer>
     $("#form_create").on("show.bs.modal", function (e) {
-        fetchDataDropdown("{{ route('api.ref.jenis-asuransi') }}", '#id_jenis_asuransi', 'jenis_asuransi', 'jenis_asuransi');
+        fetchDataDropdown("{{ route('api.ref.jenis-asuransi') }}", '#id_jenis_asuransi', 'jenis_asuransi', 'nama_asuransi');
         
 
         $('#btn_search_person').on('click', function () {
@@ -28,7 +28,7 @@
                         $('#person_tempat_lahir').text(data.tempat_lahir);
                         $('#person_tanggal_lahir').text(formatter.formatDate(response.data.tanggal_lahir));
                         $('#person_alamat').text(`${data.desa}, ${data.kecamatan}, ${data.kabupaten}, ${data.provinsi}`.replace(/^,\s*|,\s*$/g, '').replace(/,\s*,/g, ','));
-                        $('#id_person').val(data.id_person);
+                        $('#id_person').val(data.id);
                         $('#person_info').show();
                         $('#asuransi_form').show();
                         $('#btn_save').show();
@@ -127,6 +127,6 @@
         $('#btn_save').hide();
         $('#id_person').val('');
         $('#search_nik').val('');
-        $('#person_nama, #person_nik, #person_tempat_lahir, #person_tanggal_lahir, #person_alamat').text('');
+        $('#person_nama_lengkap, #person_nik, #person_tempat_lahir, #person_tanggal_lahir, #person_alamat').text('');
     }
 </script>

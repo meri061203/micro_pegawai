@@ -33,15 +33,14 @@ final readonly class PersonAsuransiService
             ->leftJoin('ref_jenis_asuransi', 'ref_jenis_asuransi.id_jenis_asuransi', '=', 'asuransi_karyawan.id_jenis_asuransi')
             ->select([
                 'asuransi_karyawan.id',
+                'asuransi_karyawan.id as id_asuransi',
                 'asuransi_karyawan.id_jenis_asuransi',
-                'ref_jenis_asuransi.jenis_asuransi',
-                'ref_jenis_asuransi.nama_asuransi',
+                'ref_jenis_asuransi.nama_asuransi as jenis_asuransi',
                 'asuransi_karyawan.nomor_registrasi',
                 'asuransi_karyawan.kartu_anggota',
                 'asuransi_karyawan.status_aktif',
                 'asuransi_karyawan.tanggal_mulai',
                 'asuransi_karyawan.tanggal_berakhir',
-                'person.id',
                 'person.nama_lengkap',
                 'person.nik',
                 'person.uuid_person',
@@ -69,7 +68,7 @@ final readonly class PersonAsuransiService
             ->select([
                 'asuransi_karyawan.*',
                 'person.nama_lengkap', 'person.nik', 'person.uuid_person',
-                'ref_jenis_asuransi.jenis_asuransi', 'ref_jenis_asuransi.nama_asuransi',
+                'ref_jenis_asuransi.id_jenis_asuransi', 'ref_jenis_asuransi.nama_asuransi',
             ])
             ->where('asuransi_karyawan.id', $id)
             ->first();
@@ -117,7 +116,7 @@ final readonly class PersonAsuransiService
         return PersonAsuransi::where('id_person', $personAsuransi->id_person)
             ->where('id_jenis_asuransi', $idJenisAsuransi)
             ->where('status_aktif', 'Aktif')
-            ->where('id_person_asuransi', '!=', $personAsuransi->id_person_asuransi)
+            ->where('id', '!=', $personAsuransi->id)
             ->exists();
     }
 
@@ -126,3 +125,5 @@ final readonly class PersonAsuransiService
         return $this->personService->findByNik($nik);
     }
 }
+
+

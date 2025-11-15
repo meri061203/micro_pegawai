@@ -16,7 +16,7 @@ class SdmRiwayatPendidikanUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'uuid_person' => 'required|uuid|exists:person,uuid_person',
+            
             'id_jenjang_pendidikan' => 'nullable|integer|exists:ref_jenjang_pendidikan,id_jenjang_pendidikan',
             'institusi' => 'nullable|string|max:100',
             'jurusan' => 'nullable|string|max:100',
@@ -33,7 +33,7 @@ class SdmRiwayatPendidikanUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'uuid_person' => 'UUID Person',
+            
             'id_jenjang_pendidikan' => 'Jenjang Pendidikan',
             'institusi' => 'Nama Sekolah',
             'jurusan' => 'Jurusan',
@@ -61,9 +61,7 @@ class SdmRiwayatPendidikanUpdateRequest extends FormRequest
     public function messages(): array
     {
         return [
-             'uuid_person.required' => 'UUID person wajib diisi.',
-            'uuid_person.uuid' => 'UUID person tidak valid.',
-            'uuid_person.exists' => 'UUID person tidak ditemukan.',
+
             'id_jenjang_pendidikan.integer' => 'Jenjang pendidikan harus berupa angka.',
             'id_jenjang_pendidikan.exists' => 'Jenjang pendidikan tidak ditemukan.',
             'institusi.string' => 'Nama institusi harus berupa teks.',
