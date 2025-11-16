@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Content;
 
 use App\Http\Controllers\Controller;
+use App\Models\App\Admin;
 use App\Services\Tools\FileUploadService;
 use App\Services\Tools\ResponseService;
 use Illuminate\Contracts\View\View;
@@ -13,6 +14,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Rules\Password;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -31,6 +33,44 @@ final class PortalController extends Controller
         }
 
         return view('portal');
+    }
+
+    public function resetpassword(Request $request){
+        $request->validate([
+        'email' => 'required|string|email',
+        'otp' => 'required|string',
+        'new_password' => [
+            'required',
+            'string',
+            'confirmed',
+            
+        'password' => 'required|string|min:10|max:64|letters|mixedCase|numbers|symbols|uncompromised|confirmed',   
+        ],
+    ], [
+        'new_password.required' => 'Kata sandi baru wajib diisi.',
+        'new_password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
+    ]);
+
+        $user = Admin::where('email', $request->email)->where('otp',
+        $request->otp)->first();
+        if (!$user){
+            return response()->json([
+                'message'=> 'user tidak ditemukan'
+            ], 404);
+        }
+
+        $user->password = bcrypt($request->new_password);
+        $user->otp = NULL;
+
+        if($user->save()) {
+            return response()->json([
+                'message' => 'Password update success'
+            ], 200);
+        }else{
+            return response()->json([
+                'message'=>'ada eror'
+            ],500);
+        }
     }
 
     public function logindb(Request $request): RedirectResponse

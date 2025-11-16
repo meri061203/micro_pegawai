@@ -21,6 +21,7 @@ final class Admin extends Authenticatable
         'nama',
         'email',
         'role',
+        'otp',
     ];
 
     protected $guarded = [

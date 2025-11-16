@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end mb-3">
-                                <a href="#" class="form-label fs-6 fw-bold mb-2 text-black">
+                                <a href="{{ route('lupa') }}" class="form-label fs-6 fw-bold mb-2 text-black">
                                     Lupa Kata Sandi?
                                 </a>
                             </div>

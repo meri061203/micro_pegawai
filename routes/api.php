@@ -3,8 +3,12 @@
 use App\Http\Controllers\Api\AlmtController;
 use App\Http\Controllers\Api\MasterController;
 use App\Http\Controllers\Api\RefController;
-use App\Http\Controllers\MailerController;
+use App\Http\Controllers\AuthController as ControllersAuthController;
+use App\Http\Controllers\Content\PortalController;
+use App\Http\Controllers\MailerController\AuthController;
 use Illuminate\Support\Facades\Route;
+
+
 
 Route::prefix('almt')->group(function () {
     Route::get('provinsi', [AlmtController::class, 'provinsi'])
@@ -33,5 +37,7 @@ Route::prefix('master')->group(function () {
     Route::get('jabatan', [MasterController::class, 'jabatan'])->name('api.master.jabatan');
 });
 
-Route::post('/send', [MailerController::class, 'send']); 
-Route::post('/verifikasi', [MailerController::class, 'verifikasi']);
+
+Route::post('/send', [ControllersAuthController::class, 'send']);
+Route::post('/verifikasii', [ControllersAuthController::class, 'verifikasi']);
+Route::post('/reset-password', [PortalController::class, 'resetpassword'])->name('reset-password');

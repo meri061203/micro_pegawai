@@ -31,8 +31,15 @@ class PersonUpdateRequest extends FormRequest
             'rw' => 'nullable|string|max:3',
             'id_desa' => 'nullable|integer|exists:ref_almt_desa,id_desa',
             'npwp' => 'nullable|string|max:30',
-            'no_hp' => 'nullable|string|max:16',
-            'email' => 'nullable|email|max:100',
+            'no_hp' => [
+    'nullable',
+    'regex:/^(0[8][0-9]{8,11}|[0-9]{8,15})$/'
+], 
+            'email' => [
+    'nullable',
+    'max:254',
+    'regex:/^(?!.*\.\.)[A-Za-z0-9._+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/'
+],
             'foto' => 'nullable|image|max:2048|mimes:jpg,jpeg,png|mimetypes:image/jpeg,image/png',
         ];
     }
@@ -107,8 +114,10 @@ class PersonUpdateRequest extends FormRequest
             'npwp.max' => 'Field :attribute maksimal :max karakter.',
             'no_hp.string' => 'Field :attribute harus berupa teks.',
             'no_hp.max' => 'Field :attribute maksimal :max karakter.',
+            'no_hp.regex' => 'Nomor HP tidak valid. Hanya boleh angka 0–9, panjang 8–15 digit. Khusus Indonesia harus dimulai dengan 08 dengan panjang 10–13 digit.',
             'email.email' => 'Field :attribute harus berupa email yang valid.',
             'email.max' => 'Field :attribute maksimal :max karakter.',
+            'email.regex' => 'Format email tidak valid. Gunakan format local-part@domain (contoh: nama+tag@contoh.co.id).',
             'foto.image' => 'Field :attribute harus berupa gambar.',
             'foto.max' => 'Field :attribute maksimal :max KB.',
             'foto.mimes' => 'Field :attribute harus bertipe: jpg, jpeg, png.',
