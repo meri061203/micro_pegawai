@@ -66,6 +66,7 @@
                 if (result.value) {
                     DataManager.openLoading();
                     const input = {
+                        "uuid_person": $("#uuid_person").val(),
                         "id_jenis_asuransi": $("#edit_id_jenis_asuransi").val(),
                         "nomor_registrasi": $("#edit_nomor_registrasi").val(),
                         "kartu_anggota": $("#edit_kartu_anggota").val(),

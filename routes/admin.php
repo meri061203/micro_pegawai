@@ -30,6 +30,8 @@ Route::prefix('person')->group(function () {
         ->name('person.show');
     Route::post('/store', [PersonController::class, 'store'])
         ->name('person.store');
+    Route::post('destroy/{id}', [PersonController::class, 'destroy'])
+        ->name('person.destroy');
     Route::post('update/{id}', [PersonController::class, 'update'])
         ->name('person.update');
 });
@@ -47,6 +49,8 @@ Route::prefix('sdm')->group(function () {
         ->name('sdm.sdm.update');
     Route::get('histori/{id}', [PersonSdmController::class, 'histori'])
         ->name('sdm.sdm.histori');
+    Route::post('destroy/{id}', [PersonSdmController::class, 'destroy'])
+        ->name('sdm.sdm.destroy');
     Route::get('find/by/nik/{id}', [PersonSdmController::class, 'find_by_nik'])
         ->name('sdm.sdm.find_by_nik');
 

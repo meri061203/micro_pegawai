@@ -77,6 +77,7 @@
                                        id="tahun_lulus" placeholder="Masukkan tahun lulus" min="1900" max="2100">
                                 <div class="invalid-feedback"></div>
                             </div>
+                        </div>    
                         <div class="col-md-6">
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">SKS</label>

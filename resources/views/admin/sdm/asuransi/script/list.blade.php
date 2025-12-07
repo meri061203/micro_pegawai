@@ -90,6 +90,10 @@
                         return formatter.formatDate(data);
                     }
                 },
+                {
+                    data: 'keterangan',
+                    name: 'keterangan'
+                },
             ],
         });
         const performOptimizedSearch = _.debounce(function (query) {

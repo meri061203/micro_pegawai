@@ -105,4 +105,6 @@
     @include('admin.person.script.create')
     @include('admin.person.script.edit')
     @include('admin.person.script.detail')
+    @include('admin.sdm.sdm.script.delete')
+
 @endsection

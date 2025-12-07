@@ -103,4 +103,10 @@ final readonly class PersonSdmService
         return $this->personService->findByNik($nik);
     }
 
+    public function delete($data): bool
+    {
+        return $data->delete();
+    }
+
+
 }
