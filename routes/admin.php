@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\admin\Absensi\JadwalKerjaController;
+use App\Http\Controllers\admin\Absensi\JenisAbsensiController;
+use App\Http\Controllers\admin\gaji\GajiJabatanController;
+use App\Http\Controllers\admin\gaji\GajiPeriodeController;
+use App\Http\Controllers\admin\gaji\GajiUmumController;
+use App\Http\Controllers\admin\gaji\KomponenGajiController;
+use App\Http\Controllers\admin\gaji\TarifLemburController;
+use App\Http\Controllers\admin\gaji\TarifPotonganController;
 use App\Http\Controllers\Admin\Master\MasterJabatanController;
 use App\Http\Controllers\Admin\Master\MasterPeriodeController;
 use App\Http\Controllers\Admin\Master\MasterUnitController;
@@ -9,6 +17,7 @@ use App\Http\Controllers\Admin\Ref\RefEselonController;
 use App\Http\Controllers\Admin\Ref\RefHubunganKeluargaController;
 use App\Http\Controllers\Admin\Ref\RefJenisAsuransiController;
 use App\Http\Controllers\Admin\Ref\RefJenjangPendidikanController;
+use App\Http\Controllers\admin\sdm\DokumenController;
 use App\Http\Controllers\Admin\Sdm\PersonSdmController;
 use App\Http\Controllers\Admin\Sdm\SdmKeluargaController;
 use App\Http\Controllers\Admin\Sdm\SdmRekeningController;
@@ -132,6 +141,21 @@ Route::prefix('sdm')->group(function () {
         Route::post('destroy/{id}', [SdmStrukturalController::class, 'destroy'])
             ->name('sdm.struktural.destroy');
     });
+
+    Route::prefix('dokumen')->group(function () {
+        Route::get('/{id}', [DokumenController::class, 'index'])
+            ->name('sdm.dokumen.index');
+        Route::get('data/{id}', [DokumenController::class, 'list'])
+            ->name('sdm.dokumen.list');
+        Route::get('show/{id}', [DokumenController::class, 'show'])
+            ->name('sdm.dokumen.show');
+        Route::post('/store', [DokumenController::class, 'store'])
+            ->name('sdm.dokumen.store');
+        Route::post('update/{id}', [DokumenController::class, 'update'])
+            ->name('sdm.dokumen.update');
+        Route::post('destroy/{id}', [DokumenController::class, 'destroy'])
+            ->name('sdm.dokumen.destroy');
+    });
 });
 
 Route::prefix('master')->group(function () {
@@ -228,4 +252,118 @@ Route::prefix('ref')->group(function () {
         Route::post('update/{id}', [RefEselonController::class, 'update'])
             ->name('ref.eselon.update');
     });
+});
+
+Route::prefix('gaji')->group(function () {
+    Route::prefix('gaji_umum')->group(function () {
+        Route::get('/', [GajiUmumController::class, 'index'])
+            ->name('gaji.gaji_umum.index');
+        Route::get('data', [GajiUmumController::class, 'list'])
+            ->name('gaji.gaji_umum.list');
+        Route::get('show/{id}', [GajiUmumController::class, 'show'])
+            ->name('gaji.gaji_umum.show');
+        Route::post('/store', [GajiUmumController::class, 'store'])
+            ->name('gaji.gaji_umum.store');
+        Route::post('update/{id}', [GajiUmumController::class, 'update'])
+            ->name('gaji.gaji_umum.update');
+    });
+
+    Route::prefix('gaji_periode')->group(function () {
+        Route::get('/', [GajiPeriodeController::class, 'index'])
+            ->name('gaji.gaji_periode.index');
+        Route::get('data', [GajiPeriodeController::class, 'list'])
+            ->name('gaji.gaji_periode.list');
+        Route::get('show/{id}', [GajiPeriodeController::class, 'show'])
+            ->name('gaji.gaji_periode.show');
+        Route::post('/store', [GajiPeriodeController::class, 'store'])
+            ->name('gaji.gaji_periode.store');
+        Route::post('update/{id}', [GajiPeriodeController::class, 'update'])
+            ->name('gaji.gaji_periode.update');
+    }); 
+
+    Route::prefix('tarif_lembur')->group(function () {
+        Route::get('/', [TarifLemburController::class, 'index'])
+            ->name('gaji.tarif_lembur.index');
+        Route::get('data', [TarifLemburController::class, 'list'])
+            ->name('gaji.tarif_lembur.list');
+        Route::get('show/{id}', [TarifLemburController::class, 'show'])
+            ->name('gaji.tarif_lembur.show');
+        Route::post('/store', [TarifLemburController::class, 'store'])
+            ->name('gaji.tarif_lembur.store');
+        Route::post('update/{id}', [TarifLemburController::class, 'update'])
+            ->name('gaji.tarif_lembur.update');
+    }); 
+
+    Route::prefix('tarif_potongan')->group(function () {
+        Route::get('/', [TarifPotonganController::class, 'index'])
+            ->name('gaji.tarif_potongan.index');
+        Route::get('data', [TarifPotonganController::class, 'list'])
+            ->name('gaji.tarif_potongan.list');
+        Route::get('show/{id}', [TarifPotonganController::class, 'show'])
+            ->name('gaji.tarif_potongan.show');
+        Route::post('/store', [TarifPotonganController::class, 'store'])
+            ->name('gaji.tarif_potongan.store');
+        Route::post('update/{id}', [TarifPotonganController::class, 'update'])
+            ->name('gaji.tarif_potongan.update');
+    }); 
+
+    Route::prefix('komponen_gaji')->group(function () {
+        Route::get('/', [KomponenGajiController::class, 'index'])
+            ->name('gaji.komponen_gaji.index');
+        Route::get('data', [KomponenGajiController::class, 'list'])
+            ->name('gaji.komponen_gaji.list');
+        Route::get('show/{id}', [KomponenGajiController::class, 'show'])
+            ->name('gaji.komponen_gaji.show');
+        Route::post('/store', [KomponenGajiController::class, 'store'])
+            ->name('gaji.komponen_gaji.store');
+        Route::post('update/{id}', [KomponenGajiController::class, 'update'])
+            ->name('gaji.komponen_gaji.update');
+    });
+
+    Route::prefix('gaji_jabatan')->group(function () {
+        Route::get('/', [GajiJabatanController::class, 'index'])
+            ->name('gaji.gaji_jabatan.index');
+        Route::get('data', [GajiJabatanController::class, 'list'])
+            ->name('gaji.gaji_jabatan.list');
+        Route::get('show/{id}', [GajiJabatanController::class, 'show'])
+            ->name('gaji.gaji_jabatan.show');
+        Route::post('/store', [GajiJabatanController::class, 'store'])
+            ->name('gaji.gaji_jabatan.store');
+        Route::post('update/{id}', [GajiJabatanController::class, 'update'])
+            ->name('gaji.gaji_jabatan.update');
+       
+    });
+  
+});
+
+Route::prefix('absensi')->group(function () {
+    Route::prefix('jenis_absensi')->group(function () {
+        Route::get('/', [JenisAbsensiController::class, 'index'])
+            ->name('absensi.jenis_absensi.index');
+        Route::get('data', [JenisAbsensiController::class, 'list'])
+            ->name('absensi.jenis_absensi.list');
+        Route::get('show/{id}', [JenisAbsensiController::class, 'show'])
+            ->name('absensi.jenis_absensi.show');
+        Route::post('/store', [JenisAbsensiController::class, 'store'])
+            ->name('absensi.jenis_absensi.store');
+        Route::post('update/{id}', [JenisAbsensiController::class, 'update'])
+            ->name('absensi.jenis_absensi.update');
+    });
+
+    Route::prefix('jadwal_kerja')->group(function () {
+        Route::get('/', [JadwalKerjaController::class, 'index'])
+            ->name('absensi.jadwal_kerja.index');
+        Route::get('data', [JadwalKerjaController::class, 'list'])
+            ->name('absensi.jadwal_kerja.list');
+        Route::get('show/{id}', [JadwalKerjaController::class, 'show'])
+            ->name('absensi.jadwal_kerja.show');
+        Route::post('/store', [JadwalKerjaController::class, 'store'])
+            ->name('absensi.jadwal_kerja.store');
+        Route::post('update/{id}', [JadwalKerjaController::class, 'update'])
+            ->name('absensi.jadwal_kerja.update');
+    });
+
+
+    
+
 });

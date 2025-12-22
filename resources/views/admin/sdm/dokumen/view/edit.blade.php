@@ -1,0 +1,72 @@
+<div class="modal fade" id="form_edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Edit Dokumen
+                </h5>
+                <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+            </div>
+
+            <form method="post" id="bt_submit_edit" novalidate enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column mb-2">
+                                <label class="required d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Jenis Dokumen</label>
+                               <input type="text" name="jenis_dokumen"
+                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                       id="edit_jenis_dokumen" placeholder="Masukkan Jenis Dokumen" maxlength="100">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column mb-2">
+                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1">Nama File</label>
+                                <input type="text" name="nama_file"
+                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                       id="edit_nama_file" placeholder="Masukkan Nama File" maxlength="100">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column mb-2">
+                                <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1">File</label>
+                                <input type="file" id="edit_file" name="file"
+                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
+                                       accept=".pdf,.jpg,.jpeg,.png">
+                                <div class="form-text fs-sm-9 fs-lg-7 text-muted">
+                                    Format file: PDF, JPG, JPEG, PNG. Maksimal 5MB
+                                </div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col-md-6" id="current_file_info">
+                                <div class="alert alert-info">
+                                    <strong>File Saat Ini:</strong> <span id="current_file_name"></span>
+                                    <a href="#" id="current_file_link" target="_blank"
+                                    class="btn btn-sm btn-light-primary ms-2">
+                                        Lihat
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-dark fs-sm-8 fs-lg-6" data-bs-dismiss="modal">
+                        Batal
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-primary fs-sm-8 fs-lg-6">
+                        <span class="indicator-label">Update</span>
+                        <span class="indicator-progress">Mohon tunggu...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

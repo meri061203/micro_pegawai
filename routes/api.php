@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\admin\gaji\KomponenGajiController;
 use App\Http\Controllers\Api\AlmtController;
 use App\Http\Controllers\Api\MasterController;
 use App\Http\Controllers\Api\RefController;
+use App\Http\Controllers\Api\RefGajiController;
 use App\Http\Controllers\AuthController as ControllersAuthController;
 use App\Http\Controllers\Content\PortalController;
 use App\Http\Controllers\MailerController\AuthController;
@@ -41,3 +43,9 @@ Route::prefix('master')->group(function () {
 Route::post('/send', [ControllersAuthController::class, 'send']);
 Route::post('/verifikasii', [ControllersAuthController::class, 'verifikasi']);
 Route::post('/reset-password', [PortalController::class, 'resetpassword'])->name('reset-password');
+
+Route::prefix('gaji')->group(function () {
+    Route::get('gajiumum', [RefGajiController::class, 'gajiumum'])->name('api.gaji.gajiumum');
+    Route::get('komponengaji', [RefGajiController::class, 'komponengaji'])->name('api.gaji.komponengaji');
+    Route::get('gajiperiode', [RefGajiController::class, 'gajiperiode'])->name('api.gaji.gajiperiode');
+});

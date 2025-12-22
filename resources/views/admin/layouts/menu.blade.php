@@ -72,6 +72,97 @@
                     </a>
                 </div>
             </div>
+            @php
+                $gajiActive =   request()->routeIs('admin.gaji.gaji_umum.*')||
+                                request()->routeIs('admin.gaji.gaji_periode.*')||
+                                request()->routeIs('admin.gaji.tarif_lembur.*')||
+                                request()->routeIs('admin.gaji.tarif_potongan.*')||
+                                request()->routeIs('admin.gaji.komponen_gaji.*')||
+                                request()->routeIs('admin.gaji.gaji_jabatan.*');
+                                
+
+            @endphp
+            <div data-kt-menu-trigger="click"
+                 class="menu-item menu-accordion {{ $gajiActive ? 'here show' : '' }}">
+                <span class="menu-link">
+                    <span class="menu-title">Referensi Gaji</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.gaji.gaji_umum.*') ? 'active' : '' }}"
+                       href="{{ route('admin.gaji.gaji_umum.index') }}">
+                        <span class="menu-title px-4">Gaji Umum</span>
+                    </a>
+                    
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.gaji.gaji_periode.*') ? 'active' : '' }}"
+                       href="{{ route('admin.gaji.gaji_periode.index') }}">
+                        <span class="menu-title px-4">Gaji Periode</span>
+                    </a>
+                    
+                </div>
+
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.gaji.tarif_lembur.*') ? 'active' : '' }}"
+                       href="{{ route('admin.gaji.tarif_lembur.index') }}">
+                        <span class="menu-title px-4">Tarif Lembur</span>
+                    </a>
+                    
+                </div>
+
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.gaji.tarif_potongan.*') ? 'active' : '' }}"
+                       href="{{ route('admin.gaji.tarif_potongan.index') }}">
+                        <span class="menu-title px-4">Tarif Potongan</span>
+                    </a>
+                    
+                </div>
+
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.gaji.komponen_gaji.*') ? 'active' : '' }}"
+                       href="{{ route('admin.gaji.komponen_gaji.index') }}">
+                        <span class="menu-title px-4">Komponen Gaji</span>
+                    </a>
+                    
+                </div>
+
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.gaji.gaji_jabatan.*') ? 'active' : '' }}"
+                       href="{{ route('admin.gaji.gaji_jabatan.index') }}">
+                        <span class="menu-title px-4">Gaji Jabatan</span>
+                    </a>
+                    
+                </div>
+            </div>
+
+             @php
+                $absensiActive =   request()->routeIs('admin.absensi.jenis_absensi.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.jadwal_kerja.*');
+
+            @endphp
+
+            <div data-kt-menu-trigger="click"
+                 class="menu-item menu-accordion {{ $absensiActive ? 'here show' : '' }}">
+                <span class="menu-link">
+                    <span class="menu-title">Referensi Absensi</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.jenis_absensi.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.jenis_absensi.index') }}">
+                        <span class="menu-title px-4">Jenis Absensi</span>
+                    </a>
+                    
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.jadwal_kerja.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.jadwal_kerja.index') }}">
+                        <span class="menu-title px-4">Jadwal Kerja</span>
+                    </a>
+                    
+                </div>
+            </div>    
         </div>
     </div>
 </div>
