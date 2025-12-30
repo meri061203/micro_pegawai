@@ -138,7 +138,12 @@
 
              @php
                 $absensiActive =   request()->routeIs('admin.absensi.jenis_absensi.*')||
-                $absensiActive =   request()->routeIs('admin.absensi.jadwal_kerja.*');
+                $absensiActive =   request()->routeIs('admin.absensi.jadwal_kerja.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.libur_nasional.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.libur_perusahaan.*');
+               
+
+;
 
             @endphp
 
@@ -159,8 +164,19 @@
                     <a class="menu-link {{ request()->routeIs('admin.absensi.jadwal_kerja.*') ? 'active' : '' }}"
                        href="{{ route('admin.absensi.jadwal_kerja.index') }}">
                         <span class="menu-title px-4">Jadwal Kerja</span>
-                    </a>
-                    
+                    </a>   
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.libur_nasional.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.libur_nasional.index') }}">
+                        <span class="menu-title px-4">Libur Nasional</span>
+                    </a>   
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.libur_perusahaan.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.libur_perusahaan.index') }}">
+                        <span class="menu-title px-4">Libur Perusahaan</span>
+                    </a>   
                 </div>
             </div>    
         </div>

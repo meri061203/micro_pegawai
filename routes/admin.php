@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\admin\Absensi\JadwalKerjaController;
 use App\Http\Controllers\admin\Absensi\JenisAbsensiController;
+use App\Http\Controllers\admin\Absensi\LiburNasionalController;
+use App\Http\Controllers\admin\Absensi\LiburPerusahaanController;
+use App\Http\Controllers\admin\Absensi\PengajuanIzinController as AbsensiPengajuanIzinController;
 use App\Http\Controllers\admin\gaji\GajiJabatanController;
 use App\Http\Controllers\admin\gaji\GajiPeriodeController;
 use App\Http\Controllers\admin\gaji\GajiUmumController;
 use App\Http\Controllers\admin\gaji\KomponenGajiController;
+use App\Http\Controllers\admin\gaji\PengajuanIzinController;
 use App\Http\Controllers\admin\gaji\TarifLemburController;
 use App\Http\Controllers\admin\gaji\TarifPotonganController;
 use App\Http\Controllers\Admin\Master\MasterJabatanController;
@@ -24,6 +28,7 @@ use App\Http\Controllers\Admin\Sdm\SdmRekeningController;
 use App\Http\Controllers\Admin\Sdm\SdmRiwayatPendidikanController;
 use App\Http\Controllers\Admin\Sdm\SdmStrukturalController;
 use App\Http\Controllers\Content\PortalController;
+use App\Models\Absensi\PengajuanIzin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('view-file/{folder}/{filename}', [PortalController::class, 'viewFile'])
@@ -363,7 +368,30 @@ Route::prefix('absensi')->group(function () {
             ->name('absensi.jadwal_kerja.update');
     });
 
+     Route::prefix('libur_nasional')->group(function () {
+        Route::get('/', [LiburNasionalController::class, 'index'])
+            ->name('absensi.libur_nasional.index');
+        Route::get('data', [LiburNasionalController::class, 'list'])
+            ->name('absensi.libur_nasional.list');
+        Route::get('show/{id}', [LiburNasionalController::class, 'show'])
+            ->name('absensi.libur_nasional.show');
+        Route::post('/store', [LiburNasionalController::class, 'store'])
+            ->name('absensi.libur_nasional.store');
+        Route::post('update/{id}', [LiburNasionalController::class, 'update'])
+            ->name('absensi.libur_nasional.update');
+    });
 
-    
+    Route::prefix('libur_perusahaan')->group(function () {
+        Route::get('/', [LiburPerusahaanController::class, 'index'])
+            ->name('absensi.libur_perusahaan.index');
+        Route::get('data', [LiburPerusahaanController::class, 'list'])
+            ->name('absensi.libur_perusahaan.list');
+        Route::get('show/{id}', [LiburPerusahaanController::class, 'show'])
+            ->name('absensi.libur_perusahaan.show');
+        Route::post('/store', [LiburPerusahaanController::class, 'store'])
+            ->name('absensi.libur_perusahaan.store');
+        Route::post('update/{id}', [LiburPerusahaanController::class, 'update'])
+            ->name('absensi.libur_perusahaan.update');
+    });
 
 });
