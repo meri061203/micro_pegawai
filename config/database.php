@@ -78,7 +78,7 @@ return [
                 PDO::ATTR_PERSISTENT => false,
             ]) : [],
         ],
-        'absensi' => [
+        'att' => [
             'driver' => 'mysql',
             'url' => '',
             'host' => env('DB2_HOST', '127.0.0.1'),

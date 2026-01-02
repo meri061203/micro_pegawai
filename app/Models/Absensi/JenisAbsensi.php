@@ -16,7 +16,7 @@ final class JenisAbsensi extends Model implements Auditable
         SkipsEmptyAudit::transformAudit insteadof AuditableTrait;
     }
 
-    protected $connection = 'absensi';
+    protected $connection = 'att';
     public $incrementing = true;
     public $timestamps = false;
     protected $table = 'jenis_absensi';

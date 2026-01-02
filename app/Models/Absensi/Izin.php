@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 
-final class Cuti extends Model implements Auditable
+final class Izin extends Model implements Auditable
 {
     use AuditableTrait;
     use HasFactory;
@@ -19,21 +19,21 @@ final class Cuti extends Model implements Auditable
 
     protected $connection = 'att';
 
-    protected $table = 'cuti';
+    protected $table = 'izin';
     protected $primaryKey = 'id';
     protected $increamenting = true;
     public $timestamps = false;
 
     protected $fillable = [
-        'cuti_id',
-        'jenis_cuti',
-        'tanggal_mulai',
-        'tanggal_selesai',
+        'izin_id',
+        'jenis_izin',
+        'tanggal',
+        'jam_mulai',
+        'jam_selesai',
         'status',
         'keterangan',
         'disetujui_oleh',
         'disetujui_pada',
-        'total_hari',
         'sdm_id',
     ];
 
@@ -43,8 +43,9 @@ final class Cuti extends Model implements Auditable
 
     protected $casts = [
         'id' => 'integer',
-        'tanggal_mulai' => 'date',
-        'tanggal_selesai' => 'date',
+        'tanggal' => 'date',
+        'jam_mulai' => 'datetime:H:i',
+        'jam_selesai' => 'datetime:H:i',
         'disetujui_pada' => 'datetime',
     ];
 
@@ -53,13 +54,18 @@ final class Cuti extends Model implements Auditable
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function getTanggalMulaiAttribute($value): ?string
+    public function getTanggalAttribute($value): ?string
     {
         return $value ? Carbon::parse($value)->format('Y-m-d') : null;
     }
 
-    public function getTanggalSelesaiAttribute($value): ?string
+    public function getJamMulaiAttribute($value): ?string
     {
-        return $value ? Carbon::parse($value)->format('Y-m-d') : null;
+        return $value ? Carbon::parse($value)->format('H:i') : null;
+    }
+
+    public function getJamSelesaiAttribute($value): ?string
+    {
+        return $value ? Carbon::parse($value)->format('H:i') : null;
     }
 }

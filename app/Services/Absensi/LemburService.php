@@ -2,17 +2,18 @@
 
 namespace App\Services\Absensi;
 
-use App\Models\Absensi\cuti;
+use App\Models\Absensi\Izin;
+use App\Models\Absensi\Lembur;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-final class CutiService
+final class LemburService
 {
     public function getListData(): Collection
     {
-        // 1. Ambil cuti dari koneksi att
-        $cuti = DB::connection('att')
-            ->table('cuti')
+        // 1. Ambil izin dari koneksi att
+        $lembur = DB::connection('att')
+            ->table('lembur')
             ->get();
 
         // 2. Ambil sdm + person dari mysql
@@ -27,25 +28,25 @@ final class CutiService
             ->keyBy('id'); // key = sdm.id
 
         // 3. Mapping manual
-        $cuti->transform(function ($row) use ($sdm) {
+        $lembur->transform(function ($row) use ($sdm) {
             $row->nama_lengkap = $sdm[$row->sdm_id]->nama_lengkap ?? null;
             return $row;
         });
 
-        return $cuti;
+        return $lembur;
     }
 
-    public function create(array $data): cuti
+    public function create(array $data): Lembur
     {
-        $data['cuti_id'] = $this->generateId();
+        $data['lembur_id'] = $this->generateId();
         $data['status'] = 'PENGAJUAN';
 
-        return cuti::create($data);
+        return Lembur::create($data);
     }
 
     public function getDetailData(string $id)
     {
-        $cuti = cuti::findOrFail($id);
+        $lembur = Lembur::findOrFail($id);
 
         $sdm = DB::connection('mysql')
             ->table('sdm')
@@ -54,21 +55,21 @@ final class CutiService
                 'sdm.id',
                 'person.nama_lengkap'
             )
-            ->where('sdm.id', $cuti->sdm_id)
+            ->where('sdm.id', $lembur->sdm_id)
             ->first();
 
         // field tambahan
-        $cuti->nama_lengkap = $sdm->nama_lengkap ?? '-';
+        $lembur->nama_lengkap = $sdm->nama_lengkap ?? '-';
 
-        return $cuti;
+        return $lembur;
     }
 
-    public function findById(string $id): ?cuti
+    public function findById(string $id): ?Lembur
     {
-        return cuti::find($id);
+        return Lembur::find($id);
     }
 
-    public function update(cuti $model, array $data): cuti
+    public function update(Lembur $model, array $data): Lembur
     {
         $model->update($data);
         return $model;
@@ -76,20 +77,20 @@ final class CutiService
 
     public function getListDataOrdered(string $orderBy): Collection
     {
-        return cuti::orderBy($orderBy)->get();
+        return Lembur::orderBy($orderBy)->get();
     }
 
     private function generateId(): string
     {
-        $last = cuti::orderBy('cuti_id', 'desc')->first();
+        $last = Lembur::orderBy('lembur_id', 'desc')->first();
 
         if (!$last) {
-            return 'CT-001';
+            return 'LM-001';
         }
 
-        $lastNumber = intval(substr($last->cuti_id, 4));
+        $lastNumber = intval(substr($last->lembur_id, 4));
         $newNumber = $lastNumber + 1;
 
-        return 'CT-' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+        return 'LM-' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
     }
 }

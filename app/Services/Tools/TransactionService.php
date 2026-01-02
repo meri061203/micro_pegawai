@@ -43,16 +43,16 @@ final class TransactionService
 
     public function actionButton(string $encryptedId, string $type): string
     {
-        $icons = ['detail' => 'bi-file-text', 'edit' => 'bi-pencil', 'delete' => 'bi-trash'];
+        $icons = ['detail' => 'bi-file-text', 'edit' => 'bi-pencil', 'delete' => 'bi-trash', 'approval' => 'bi bi-folder-check'];
 
-        $targets = ['detail' => '#form_detail', 'edit' => '#form_edit'];
+        $targets = ['detail' => '#form_detail', 'edit' => '#form_edit','approval' => '#form_approval'];
 
         $icon = $icons[$type] ?? 'bi-question-circle';
         $target = $targets[$type] ?? '#';
 
         if ($type === 'delete') {
             return " <button type='button'
-                    title='" . ucfirst($type) . "' 
+                    title='" . ucfirst($type) . "'
                     onclick='deleteConfirmation(\"$encryptedId\")'
                     class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm m-1 '>
                     <span class='bi $icon' aria-hidden='true'></span>
@@ -61,11 +61,11 @@ final class TransactionService
 
         return "
         <button type='button'
-            data-id='$encryptedId' 
-            title='" . ucfirst($type) . "' 
-            data-bs-toggle='modal' 
-            data-bs-target='$target' 
-            aria-label='" . ucfirst($type) . "' 
+            data-id='$encryptedId'
+            title='" . ucfirst($type) . "'
+            data-bs-toggle='modal'
+            data-bs-target='$target'
+            aria-label='" . ucfirst($type) . "'
             class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm m-1 '>
             <span class='bi $icon' aria-hidden='true'></span>
         </button>";

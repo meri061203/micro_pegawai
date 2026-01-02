@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/buttons.dataTables.min.css') }}">
 @endsection
 @section('list')
-    <li class="breadcrumb-item text-muted">Referensi</li>
+    <li class="breadcrumb-item text-muted">Lembur</li>
     <li class="breadcrumb-item">
         <span class="bullet bg-gray-200 w-5px h-2px"></span>
     </li>
 
-    <li class="breadcrumb-item text-dark">Gaji Jabatan</li>
+    <li class="breadcrumb-item text-dark">Lembur</li>
 @endsection
 
 @section('content')
@@ -20,13 +20,13 @@
             <div class="card mb-xl-8 mb-5 border-2 shadow">
                 <div class="card-header">
                     <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bolder mb-1">Data Gaji Jabatan</span>
+                        <span class="card-label fw-bolder mb-1">Data Lembur</span>
                     </h3>
                     <div class="card-toolbar">
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <a type="button" class="btn btn-sm btn-primary fs-sm-8 fs-lg-6"
                                data-bs-toggle="modal" data-bs-target="#form_create"
-                               title="Tambah Gaji Jabatan">Tambah Gaji Jabatan</a>
+                               title="Tambah Bank">Tambah Lembur</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="notice d-flex border-primary mb-4 rounded border border-dashed p-4 shadow bg-hover-light-dark">
                         <div class="d-flex flex-stack fs-sm-8 fs-lg-6">
                             <div class="row">
-                                <span class="text-gray-700">Berikut ini adalah data gaji Jabatan.</span>
+                                <span class="text-gray-700">Berikut ini adalah data Lembur.</span>
                             </div>
                         </div>
                     </div>
@@ -44,10 +44,12 @@
                             <thead>
                             <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0 fs-sm-8 fs-lg-6">
                                 <th class="min-w-75px ps-5">Aksi</th>
-                                <th class="min-w-150px">ID Gaji Master</th>
-                                <th class="min-w-150px">ID Komponen</th>
-                                <th class="min-w-150px">ID Jabatan</th>
-                                <th class="min-w-120px">Nominal</th>
+                                <th class="min-w-150px">Lembur ID</th>
+                                <th class="min-w-120px">Nama Sdm</th>
+                                <th class="min-w-120px">Durasi Jam</th>
+                                <th class="min-w-120px">Tanggal</th>
+                                <th class="min-w-120px">Jam Mulai</th>
+                                <th class="min-w-120px">Status</th>
                             </tr>
                             </thead>
                             <tbody class="text-gray-800 fw-bolder fs-sm-8 fs-lg-6">
@@ -58,9 +60,10 @@
             </div>
         </div>
     </div>
-    @include('admin.gaji.gaji_jabatan.view.detail')
-    @include('admin.gaji.gaji_jabatan.view.create')
-    @include('admin.gaji.gaji_jabatan.view.edit')
+    @include('admin.absensi.pengajuan_lembur.view.detail')
+    @include('admin.absensi.pengajuan_lembur.view.create')
+    @include('admin.absensi.pengajuan_lembur.view.edit')
+    @include('admin.absensi.pengajuan_lembur.view.approval')
 @endsection
 
 @section('javascript')
@@ -77,53 +80,29 @@
     <script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/print.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap.min.js') }}"></script>
-
     <script>
-    function fetchDataDropdown(
-    url,
-    selector,
-    valueField,
-    textField,
-    callback = null
-    ) {
-    DataManager.executeOperations(url, "admin_" + url, 120)
-        .then(response => {
-            const $el = $(selector);
-            $el.empty().append('<option value=""></option>');
-
-            if (!response.success) {
-                if (!response.errors) {
+        function fetchDataDropdown(url, id, placeholder, name, callback) {
+            DataManager.executeOperations(url, 'admin_' + url, 120).then(response => {
+                $(id).empty().append('<option></option>');
+                if (response.success) {
+                    response.data.forEach(item => {
+                        $(id).append(`<option value="${item['id_' + placeholder]}">${item[name]}</option>`);
+                    });
+                    $(id).select2();
+                    if (callback) {
+                        callback();
+                    }
+                } else if (!response.errors) {
                     Swal.fire('Warning', response.message, 'warning');
                 }
-                return;
-            }
-
-            response.data.forEach(item => {
-                const value = item[valueField] ?? '';
-                const text  = item[textField] ?? '';
-                $el.append(
-                    `<option value="${value}">${text}</option>`
-                );
+            }).catch(error => {
+                ErrorHandler.handleError(error);
             });
-
-            // init / re-init select2
-            if ($el.hasClass("select2-hidden-accessible")) {
-                $el.trigger("change");
-            } else {
-                $el.select2({ width: '100%' });
-            }
-
-            if (typeof callback === 'function') {
-                callback();
-            }
-        })
-        .catch(error => {
-            ErrorHandler.handleError(error);
-        });
-    }
+        }
     </script>
-    @include('admin.gaji.gaji_jabatan.script.list')
-    @include('admin.gaji.gaji_jabatan.script.create')
-    @include('admin.gaji.gaji_jabatan.script.edit')
-    @include('admin.gaji.gaji_jabatan.script.detail')
+    @include('admin.absensi.pengajuan_lembur.script.list')
+    @include('admin.absensi.pengajuan_lembur.script.create')
+    @include('admin.absensi.pengajuan_lembur.script.edit')
+    @include('admin.absensi.pengajuan_lembur.script.detail')
+    @include('admin.absensi.pengajuan_lembur.script.approval')
 @endsection

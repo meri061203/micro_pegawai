@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 
-final class JadwalKerja extends Model implements Auditable
+final class Absensi extends Model implements Auditable
 {
     use AuditableTrait;
     use HasFactory;
@@ -19,15 +19,14 @@ final class JadwalKerja extends Model implements Auditable
     protected $connection = 'att';
     public $incrementing = true;
     public $timestamps = false;
-    protected $table = 'jadwal_kerja';
+    protected $table = 'absensi';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'jadwal_kerja_id',
-        'hari',
-        'jam_masuk',
-        'jam_pulang',
-        'toleransi_menit',
-
+        'absensi_id',
+        'id_sdm',
+        'id_jenis_absensi',
+        'tanggal',
+        'keterangan',
         ];
 
     protected $guarded = [
@@ -35,7 +34,10 @@ final class JadwalKerja extends Model implements Auditable
     ];
 
     protected $casts = [
-        'id' => 'integer'
+        'id' => 'integer',
+        'id_sdm' => 'integer',
+        'id_jenis_absensi' => 'integer',
     ];
 
 }
+

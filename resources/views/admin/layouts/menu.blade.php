@@ -140,9 +140,12 @@
                 $absensiActive =   request()->routeIs('admin.absensi.jenis_absensi.*')||
                 $absensiActive =   request()->routeIs('admin.absensi.jadwal_kerja.*')||
                 $absensiActive =   request()->routeIs('admin.absensi.libur_nasional.*')||
-                $absensiActive =   request()->routeIs('admin.absensi.libur_perusahaan.*');
+                $absensiActive =   request()->routeIs('admin.absensi.libur_perusahaan.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.pengajuan_izin.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.pengajuan_lembur.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.absensi.*')||
+                $absensiActive =   request()->routeIs('admin.absensi.pengajuan_cuti.*');
                
-
 ;
 
             @endphp
@@ -176,6 +179,30 @@
                     <a class="menu-link {{ request()->routeIs('admin.absensi.libur_perusahaan.*') ? 'active' : '' }}"
                        href="{{ route('admin.absensi.libur_perusahaan.index') }}">
                         <span class="menu-title px-4">Libur Perusahaan</span>
+                    </a>   
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.pengajuan_izin.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.pengajuan_izin.index') }}">
+                        <span class="menu-title px-4">Izin</span>
+                    </a>   
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.pengajuan_lembur.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.pengajuan_lembur.index') }}">
+                        <span class="menu-title px-4">Lembur</span>
+                    </a>   
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.absensi.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.absensi.index') }}">
+                        <span class="menu-title px-4">Absensi</span>
+                    </a>   
+                </div>
+                <div class="menu-sub menu-sub-accordion menu-active-bg">
+                    <a class="menu-link {{ request()->routeIs('admin.absensi.pengajuan_cuti.*') ? 'active' : '' }}"
+                       href="{{ route('admin.absensi.pengajuan_cuti.index') }}">
+                        <span class="menu-title px-4">Cuti</span>
                     </a>   
                 </div>
             </div>    

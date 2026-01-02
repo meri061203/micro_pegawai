@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Services\Absensi\JenisAbsensiService;
 use App\Services\Ref\RefEselonService;
 use App\Services\Ref\RefHubunganKeluargaService;
 use App\Services\Ref\RefJenisAsuransiService;
 use App\Services\Ref\RefJenjangPendidikanService;
+use App\Services\Sdm\PersonSdmService;
 use App\Services\Tools\ResponseService;
 use App\Services\Tools\TransactionService;
 use Illuminate\Http\JsonResponse;
@@ -20,6 +22,8 @@ final class RefController extends Controller
         private readonly RefEselonService            $refEselonService,
         private readonly TransactionService          $transactionService,
         private readonly ResponseService             $responseService,
+        private readonly JenisAbsensiService         $jenisabsensiService,
+        private readonly PersonSdmService            $personsdmService,
     ) {}
 
     public function hubunganKeluarga(): JsonResponse
@@ -61,4 +65,24 @@ final class RefController extends Controller
             return $this->responseService->successResponse('Data berhasil diambil', $data);
         });
     }
+
+    public function jenisabsensi(): JsonResponse
+    {
+        return $this->transactionService->handleWithShow(function () {
+            $data = $this->jenisabsensiService->getListDataOrdered('jenis_absensi_id');
+
+            return $this->responseService->successResponse('Data berhasil diambil', $data);
+        });
+    }
+
+    public function personsdm(): JsonResponse
+    {
+        return $this->transactionService->handleWithShow(function () {
+            $data = $this->personsdmService->getListDataOrdered('id');
+
+            return $this->responseService->successResponse('Data berhasil diambil', $data);
+        });
+    }
+
+    
 }

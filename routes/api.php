@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\Absensi\AbsensiController;
 use App\Http\Controllers\admin\gaji\KomponenGajiController;
 use App\Http\Controllers\Api\AlmtController;
 use App\Http\Controllers\Api\MasterController;
@@ -31,6 +32,8 @@ Route::prefix('ref')->group(function () {
     Route::get('hubungan-keluarga', [RefController::class, 'hubunganKeluarga'])->name('api.ref.hubungan-keluarga');
     Route::get('jenis-asuransi', [RefController::class, 'jenisAsuransi'])->name('api.ref.jenis-asuransi');
     Route::get('eselon', [RefController::class, 'eselon'])->name('api.ref.eselon');
+    Route::get('jenisabsensi', [RefController::class, 'jenisabsensi'])->name('api.ref.jenisabsensi');
+    Route::get('personsdm', [RefController::class, 'personsdm'])->name('api.ref.personsdm');
 });
 
 Route::prefix('master')->group(function () {
@@ -49,3 +52,4 @@ Route::prefix('gaji')->group(function () {
     Route::get('komponengaji', [RefGajiController::class, 'komponengaji'])->name('api.gaji.komponengaji');
     Route::get('gajiperiode', [RefGajiController::class, 'gajiperiode'])->name('api.gaji.gajiperiode');
 });
+

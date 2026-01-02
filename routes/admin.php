@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\Absensi\AbsensiController;
+use App\Http\Controllers\admin\absensi\CutiController;
+use App\Http\Controllers\admin\absensi\IzinController;
 use App\Http\Controllers\admin\Absensi\JadwalKerjaController;
 use App\Http\Controllers\admin\Absensi\JenisAbsensiController;
+use App\Http\Controllers\admin\absensi\LemburController;
 use App\Http\Controllers\admin\Absensi\LiburNasionalController;
 use App\Http\Controllers\admin\Absensi\LiburPerusahaanController;
 use App\Http\Controllers\admin\Absensi\PengajuanIzinController as AbsensiPengajuanIzinController;
@@ -28,7 +32,9 @@ use App\Http\Controllers\Admin\Sdm\SdmRekeningController;
 use App\Http\Controllers\Admin\Sdm\SdmRiwayatPendidikanController;
 use App\Http\Controllers\Admin\Sdm\SdmStrukturalController;
 use App\Http\Controllers\Content\PortalController;
+use App\Models\Absensi\Izin;
 use App\Models\Absensi\PengajuanIzin;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 Route::get('view-file/{folder}/{filename}', [PortalController::class, 'viewFile'])
@@ -392,6 +398,62 @@ Route::prefix('absensi')->group(function () {
             ->name('absensi.libur_perusahaan.store');
         Route::post('update/{id}', [LiburPerusahaanController::class, 'update'])
             ->name('absensi.libur_perusahaan.update');
+    });
+
+    Route::prefix('absensi')->group(function () {
+        Route::get('/', [AbsensiController::class, 'index'])
+            ->name('absensi.absensi.index');
+        Route::get('data', [AbsensiController::class, 'list'])
+            ->name('absensi.absensi.list');
+        Route::get('show/{id}', [AbsensiController::class, 'show'])
+            ->name('absensi.absensi.show');
+        Route::post('/store', [AbsensiController::class, 'store'])
+            ->name('absensi.absensi.store');
+        Route::post('update/{id}', [AbsensiController::class, 'update'])
+            ->name('absensi.absensi.update');
+       
+    });
+
+    Route::prefix('pengajuan_izin')->group(function () {
+        Route::get('/', [IzinController::class, 'index'])
+            ->name('absensi.pengajuan_izin.index');
+        Route::get('data', [IzinController::class, 'list'])
+            ->name('absensi.pengajuan_izin.list');
+        Route::get('show/{id}', [IzinController::class, 'show'])
+            ->name('absensi.pengajuan_izin.show');
+        Route::post('/store', [IzinController::class, 'store'])
+            ->name('absensi.pengajuan_izin.store');
+        Route::post('update/{id}', [IzinController::class, 'update'])
+            ->name('absensi.pengajuan_izin.update');
+        Route::post('approval/{id}', [IzinController::class, 'approval'])->name('absensi.pengajuan_izin.approval');
+    });
+
+    Route::prefix('pengajuan_lembur')->group(function () {
+        Route::get('/', [LemburController::class, 'index'])
+            ->name('absensi.pengajuan_lembur.index');
+        Route::get('data', [LemburController::class, 'list'])
+            ->name('absensi.pengajuan_lembur.list');
+        Route::get('show/{id}', [LemburController::class, 'show'])
+            ->name('absensi.pengajuan_lembur.show');
+        Route::post('/store', [LemburController::class, 'store'])
+            ->name('absensi.pengajuan_lembur.store');
+        Route::post('update/{id}', [LemburController::class, 'update'])
+            ->name('absensi.pengajuan_lembur.update');
+        Route::post('approval/{id}', [LemburController::class, 'approval'])->name('absensi.pengajuan_lembur.approval');
+    });
+
+    Route::prefix('pengajuan_cuti')->group(function () {
+        Route::get('/', [CutiController::class, 'index'])
+            ->name('absensi.pengajuan_cuti.index');
+        Route::get('data', [CutiController::class, 'list'])
+            ->name('absensi.pengajuan_cuti.list');
+        Route::get('show/{id}', [CutiController::class, 'show'])
+            ->name('absensi.pengajuan_cuti.show');
+        Route::post('/store', [CutiController::class, 'store'])
+            ->name('absensi.pengajuan_cuti.store');
+        Route::post('update/{id}', [CutiController::class, 'update'])
+            ->name('absensi.pengajuan_cuti.update');
+        Route::post('approval/{id}', [CutiController::class, 'approval'])->name('absensi.pengajuan_cuti.approval');
     });
 
 });

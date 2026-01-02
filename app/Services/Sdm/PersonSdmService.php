@@ -108,5 +108,25 @@ final readonly class PersonSdmService
         return $data->delete();
     }
 
+    public function getListDataOrdered(
+    string $orderBy = 'sdm.id',
+    string $direction = 'asc'
+    ): Collection {
+    return PersonSdm::query()
+        ->leftJoin('person', 'person.id', '=', 'sdm.id_person')
+        ->select([
+            'sdm.id',
+            'sdm.nip',
+            'sdm.status_pegawai',
+            'sdm.tipe_pegawai',
+            'sdm.tanggal_masuk',
+            'person.nama_lengkap',
+            'person.uuid_person',
+        ])
+        ->orderBy($orderBy, $direction)
+        ->get();
+    }
+
+
 
 }
