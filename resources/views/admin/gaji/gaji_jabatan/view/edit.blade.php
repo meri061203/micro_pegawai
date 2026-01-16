@@ -14,7 +14,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
                                     <span>ID Gaji Master</span>
                                 </label>
-                                <input type="text" id="edit_gaji_master_id"
+                                <input type="text" id="edit_gaji_master_id" name="gaji_master_id"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
@@ -25,7 +25,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
                                     <span>ID Komponen</span>
                                 </label>
-                                <input type="text" id="edit_komponen_id"
+                                <input type="text" id="edit_komponen_id" name="komponen_id"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
@@ -36,7 +36,7 @@
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
                                     <span>ID Jabatan</span>
                                 </label>
-                                <input type="text" id="edit_id_jabatan"
+                                <input type="text" id="edit_id_jabatan" name="id_jabatan"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>

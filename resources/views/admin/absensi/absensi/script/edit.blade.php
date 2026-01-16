@@ -1,77 +1,124 @@
 <script defer>
-    $('#form_edit').on('show.bs.modal', function (e) {
+$('#form_edit')
+
+    // ✅ GANTI KE shown.bs.modal
+    .on('shown.bs.modal', function (e) {
+
+        const $modal = $(this);
         const button = $(e.relatedTarget);
         const id = button.data('id');
-        const detail = '{{ route('admin.absensi.absensi.show', [':id']) }}';
 
-        DataManager.fetchData(detail.replace(':id', id))
-            .then(function (response) {
-                if (response.success) {
-                    $('#edit_absensi_id').val(response.data.absensi_id);
-                    $('#edit_id_jenis_absensi').val(response.data.id_jenis_absensi);
-                    $('#edit_id_sdm').val(response.data.id_sdm);
-                    $('#edit_tanggal').val(response.data.tanggal);
-                    $('#edit_keterangan').val(response.data.keterangan);
-            
-                } else {
+        const detailUrl =
+            '{{ route('admin.absensi.absensi.show', [':id']) }}'
+                .replace(':id', id);
+
+        // 🔄 reset validasi saja (JANGAN EMPTY SELECT)
+        $modal.find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
+        $modal.find('.invalid-feedback, .text-danger').remove();
+
+        // 🔥 FETCH DETAIL
+        DataManager.fetchData(detailUrl)
+            .then(response => {
+
+                if (!response.success) {
                     Swal.fire('Warning', response.message, 'warning');
+                    return;
                 }
-            }).catch(function (error) {
-            ErrorHandler.handleError(error);
-        });
 
-        $('#bt_submit_edit').on('submit', function (e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Kamu yakin?',
-                text: 'Apakah datanya benar dan apa yang anda inginkan?',
-                icon: 'warning',
-                confirmButtonColor: '#3085d6',
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                showCancelButton: true,
-                cancelButtonColor: '#dd3333',
-                confirmButtonText: 'Ya, Simpan',
-                cancelButtonText: 'Batal',
-                focusCancel: true
-            }).then((result) => {
-                if (result.value) {
+                const data = response.data;
+
+                // FIELD BIASA
+                $('#edit_absensi_id').val(data.absensi_id);
+                $('#edit_tanggal').val(data.tanggal);
+                $('#edit_keterangan').val(data.keterangan);
+
+                // 🔽 JENIS ABSENSI
+                fetchDataDropdown(
+                    '{{ route('api.ref.jenisabsensi') }}',
+                    '#edit_id_jenis_absensi',
+                    'id',
+                    'nama',
+                    function () {
+                        $('#edit_id_jenis_absensi')
+                            .val(data.id_jenis_absensi)
+                            .trigger('change');
+                    }
+                );
+
+
+                // 🔽 SDM
+                fetchDataDropdown(
+                    '{{ route('api.ref.personsdm') }}',
+                    '#edit_id_sdm',
+                    'id',
+                    'nama_lengkap',
+                    function () {
+                        $('#edit_id_sdm')
+                            .val(data.id_sdm)
+                            .trigger('change');
+                    }
+                );
+            })
+            .catch(ErrorHandler.handleError);
+
+        // 🧠 submit aman
+        $('#bt_submit_edit')
+            .off('submit')
+            .on('submit', function (e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Kamu yakin?',
+                    text: 'Apakah datanya benar?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Simpan',
+                    cancelButtonText: 'Batal'
+                }).then(result => {
+
+                    if (!result.value) return;
+
                     DataManager.openLoading();
+
                     const input = {
                         absensi_id: $('#edit_absensi_id').val(),
                         id_jenis_absensi: $('#edit_id_jenis_absensi').val(),
                         id_sdm: $('#edit_id_sdm').val(),
                         tanggal: $('#edit_tanggal').val(),
                         keterangan: $('#edit_keterangan').val(),
-                                            
                     };
-                    const update = '{{ route('admin.absensi.absensi.update', [':id']) }}';
-                    DataManager.putData(update.replace(':id', id), input).then(response => {
-                        if (response.success) {
-                            Swal.fire('Success', response.message, 'success');
-                            setTimeout(function () {
-                                location.reload();
-                            }, 1000);
-                        }
-                        if (!response.success && response.errors) {
-                            const validationErrorFilter = new ValidationErrorFilter('edit_');
-                            validationErrorFilter.filterValidationErrors(response);
-                            Swal.fire('Peringatan', 'Isian Anda belum lengkap atau tidak valid.', 'warning');
-                        }
-                        if (!response.success && !response.errors) {
-                            Swal.fire('Warning', response.message, 'warning');
-                        }
-                    }).catch(error => {
-                        ErrorHandler.handleError(error);
-                    });
-                }
+
+                    const updateUrl =
+                        '{{ route('admin.absensi.absensi.update', [':id']) }}'
+                            .replace(':id', id);
+
+                    DataManager.putData(updateUrl, input)
+                        .then(res => {
+                            if (res.success) {
+                                Swal.fire('Success', res.message, 'success');
+                                setTimeout(() => location.reload(), 800);
+                                return;
+                            }
+
+                            if (res.errors) {
+                                new ValidationErrorFilter('edit_')
+                                    .filterValidationErrors(res);
+                                Swal.fire('Peringatan', 'Data tidak valid', 'warning');
+                                return;
+                            }
+
+                            Swal.fire('Warning', res.message, 'warning');
+                        })
+                        .catch(ErrorHandler.handleError);
+                });
             });
-        });
-    }).on('hidden.bs.modal', function () {
+    })
+
+    // ❌ JANGAN EMPTY SELECT
+    .on('hidden.bs.modal', function () {
         const $m = $(this);
-        $m.find('form').trigger('reset');
-        $m.find('select, textarea').val('').trigger('change');
+        $m.find('form')[0].reset();
         $m.find('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
-        $m.find('.invalid-feedback, .valid-feedback, .text-danger').remove();
+        $m.find('.invalid-feedback, .text-danger').remove();
     });
 </script>

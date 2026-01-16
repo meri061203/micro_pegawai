@@ -22,32 +22,38 @@
                         </div>
                         <div class="col-md-12">
                             <div class="d-flex flex-column mb-2">
-                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
+                                <label class="fw-bolder mb-1 required">
                                     <span>ID Jenis Absensi</span>
                                 </label>
-                                <input type="text" id="edit_id_jenis_absensi"
-                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
-                                       required>
+                                <select id="edit_id_jenis_absensi"
+                                        class="form-select form-select-sm fs-sm-8 fs-lg-6 select2"
+                                        required>
+                                    <option value="">-- Pilih Jenis Absensi --</option>
+                                </select>
                                 <div class="invalid-feedback"></div>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="d-flex flex-column mb-2">
-                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
+                                <label class="fw-bolder mb-1 required">
                                     <span>ID SDM</span>
                                 </label>
-                                <input type="text" id="edit_id_sdm"
-                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
-                                       required>
+                                <select id="edit_id_sdm"
+                                        class="form-select form-select-sm fs-sm-8 fs-lg-6 select2"
+                                        required>
+                                    <option value="">-- Pilih SDM --</option>
+                                </select>
                                 <div class="invalid-feedback"></div>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
                                     <span>Tanggal</span>
                                 </label>
-                                <input type="text" id="edit_tanggal"
+                                <input type="date" id="edit_tanggal"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>

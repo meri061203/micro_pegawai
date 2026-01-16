@@ -42,6 +42,10 @@ final class GajiJabatanService
 
     public function create(array $data): GajiJabatan
     {
+        if (!$data['komponen_id'] || !$data['id_jabatan']) {
+        throw new \Exception('Komponen dan Jabatan wajib dipilih');
+        }
+
         return GajiJabatan::create($data);
     }
 

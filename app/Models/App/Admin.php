@@ -20,6 +20,7 @@ final class Admin extends Authenticatable
     protected $fillable = [
         'nama',
         'email',
+        'password',
         'role',
         'otp',
     ];

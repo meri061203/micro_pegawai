@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const input = {
                 gaji_master_id: $('#gaji_master_id').val(),
                 nominal: $('#nominal').val(),
-                komponen_id: $('#komponen_id').val() || null,
-                id_jabatan: $('#id_jabatan').val() || null
+                komponen_id: $('#komponen_id').val(),
+                id_jabatan: $('#id_jabatan').val()
             };
 
             console.log('Data yang akan dikirim:', input);

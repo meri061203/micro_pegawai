@@ -14,7 +14,7 @@ use Illuminate\View\View;
 final class GajiJabatanController extends Controller
 {
     public function __construct(
-        private readonly GajiJabatanService $Gajijabatanservice,
+        private readonly GajiJabatanService $gajiJabatanService,
         private readonly TransactionService $transactionService,
         private readonly ResponseService    $responseService,
     )
@@ -30,7 +30,7 @@ final class GajiJabatanController extends Controller
     {
         return $this->transactionService->handleWithDataTable(
             function () use ($request) {
-                return $this->Gajijabatanservice->getListData($request);
+                return $this->gajiJabatanService->getListData($request);
             },
             [
                 'action' => function ($row) {
@@ -48,7 +48,7 @@ final class GajiJabatanController extends Controller
     public function store(GajiJabatanRequest $request) : JsonResponse {
 
         return $this->transactionService->handleWithTransaction(function () use ($request) {
-            $data = $this->Gajijabatanservice->create($request->only([
+            $data = $this->gajiJabatanService->create($request->only([
                 'gaji_master_id',
                 'komponen_id',
                 'nominal',
@@ -62,7 +62,7 @@ final class GajiJabatanController extends Controller
     public function show(string $id): JsonResponse
     {
         return $this->transactionService->handleWithShow(function () use ($id) {
-            $data = $this->Gajijabatanservice->getDetailData($id);
+            $data = $this->gajiJabatanService->getDetailData($id);
 
             return $this->responseService->successResponse('Data berhasil diambil', $data);
         });
@@ -70,16 +70,16 @@ final class GajiJabatanController extends Controller
 
     public function update(GajiJabatanRequest $request, string $id): JsonResponse
     {
-        $data = $this->Gajijabatanservice->findById($id);
+        $data = $this->gajiJabatanService->findById($id);
         if (!$data) {
             return $this->responseService->errorResponse('Data tidak ditemukan');
         }
         return $this->transactionService->handleWithTransaction(function () use ($request, $data) {
-            $updatedData = $this->Gajijabatanservice->update($data, $request->only([
+            $updatedData = $this->gajiJabatanService->update($data, $request->only([
                 'gaji_master_id',
                 'komponen_id',
-                'nominal',
                 'id_jabatan',
+                'nominal',
             ]));
             return $this->responseService->successResponse('Data berhasil diperbarui', $updatedData);
         });
