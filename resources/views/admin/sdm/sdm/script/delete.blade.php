@@ -13,7 +13,7 @@
         }).then((result) => {
             if (result.value) {
                 DataManager.openLoading();
-                const destroy = '{{ route('admin.sdm.rekening.destroy', [':id']) }}';
+                const destroy = '{{ route('admin.sdm.sdm.destroy', [':id']) }}';
 
                 DataManager.deleteData(destroy.replace(':id', id)).then(response => {
                     if (response.success) {

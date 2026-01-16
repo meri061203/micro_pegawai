@@ -50,7 +50,7 @@ Route::prefix('person')->group(function () {
         ->name('person.show');
     Route::post('/store', [PersonController::class, 'store'])
         ->name('person.store');
-    Route::post('destroy/{id}', [PersonController::class, 'destroy'])
+    Route::delete('destroy/{id}', [PersonController::class, 'destroy'])
         ->name('person.destroy');
     Route::post('update/{id}', [PersonController::class, 'update'])
         ->name('person.update');
