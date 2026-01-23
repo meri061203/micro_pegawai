@@ -6,32 +6,36 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class JadwalKerjaRequest extends FormRequest
+final class JadwalKerjaRequest extends FormRequest
 {
-   public function authorize(): bool
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
     public function rules(): array
     {
         return [
-            'jadwal_kerja_id'  => 'required|string|max:10',
-            'hari'             => 'required|string|max:20',
-            'jam_masuk'        => 'required|date_format:H:i',
-            'jam_pulang'       => 'required|date_format:H:i|after:jam_masuk',
-            'toleransi_menit'  => 'required|integer|min:0|max:180',
+            'nama' => 'required|string|max:255',
+            'jam_mulai' => 'required|date_format:H:i',
+            'jam_selesai' => 'required|date_format:H:i',
         ];
     }
 
-    public function attributes(): array
+    public function attributes()
     {
         return [
-            'jadwal_kerja_id' => 'ID Jadwal Kerja',
-            'hari'            => 'Hari',
-            'jam_masuk'       => 'Jam Masuk',
-            'jam_pulang'      => 'Jam Pulang',
-            'toleransi_menit' => 'Toleransi (Menit)',
+            'nama' => 'Nama Jadwal',
+            'jam_mulai' => 'Jam Mulai',
+            'jam_selesai' => 'Jam Selesai',
         ];
     }
 
@@ -46,28 +50,14 @@ class JadwalKerjaRequest extends FormRequest
         );
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'jadwal_kerja_id.required' => 'Field :attribute wajib diisi.',
-            'jadwal_kerja_id.string'   => 'Field :attribute harus berupa teks.',
-            'jadwal_kerja_id.max'      => 'Field :attribute maksimal :max karakter.',
-
-            'hari.required' => 'Field :attribute wajib diisi.',
-            'hari.string'   => 'Field :attribute harus berupa teks.',
-            'hari.max'      => 'Field :attribute maksimal :max karakter.',
-
-            'jam_masuk.required'    => 'Field :attribute wajib diisi.',
-            'jam_masuk.date_format' => 'Field :attribute harus berformat HH:MM.',
-
-            'jam_pulang.required'    => 'Field :attribute wajib diisi.',
-            'jam_pulang.date_format' => 'Field :attribute harus berformat HH:MM.',
-            'jam_pulang.after'       => 'Field :attribute harus setelah Jam Masuk.',
-
-            'toleransi_menit.required' => 'Field :attribute wajib diisi.',
-            'toleransi_menit.integer'  => 'Field :attribute harus berupa angka.',
-            'toleransi_menit.min'      => 'Field :attribute minimal :min menit.',
-            'toleransi_menit.max'      => 'Field :attribute maksimal :max menit.',
+            'nama.required' => 'Field :attribute wajib diisi.',
+            'jam_mulai.required' => 'Field :attribute wajib diisi.',
+            'jam_mulai.date_format' => 'Field :attribute harus berupa waktu (HH:mm).',
+            'jam_selesai.required' => 'Field :attribute wajib diisi.',
+            'jam_selesai.date_format' => 'Field :attribute harus berupa waktu (HH:mm).',
         ];
     }
 }

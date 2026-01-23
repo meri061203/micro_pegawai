@@ -21,6 +21,8 @@ final class Person extends Model implements Auditable
     public $incrementing = true;
 
     public $timestamps = false;
+    
+    protected $connection = 'mysql';
 
     protected $table = 'person';
 

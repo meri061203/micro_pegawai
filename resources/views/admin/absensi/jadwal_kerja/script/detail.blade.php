@@ -7,11 +7,10 @@
         DataManager.fetchData(detail.replace(':id', id))
             .then(function (response) {
                 if (response.success) {
-                    $('#detail_jadwal_kerja_id').text(response.data.jadwal_kerja_id);
-                    $('#detail_hari').text(response.data.hari);
-                    $('#detail_jam_masuk').text(response.data.jam_masuk);
-                    $('#detail_jam_pulang').text(response.data.jam_pulang);
-                    $('#detail_toleransi_menit').text(response.data.toleransi_menit);
+                    $('#detail_jadwal_id').text(response.data.jadwal_id);
+                    $('#detail_nama').text(response.data.nama);
+                    $('#detail_jam_mulai').text(response.data.jam_mulai);
+                    $('#detail_jam_selesai').text(response.data.jam_selesai);
                     $('#null_data').hide();
                     $('#show_data').show();
                 } else {

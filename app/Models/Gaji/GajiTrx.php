@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 
-final class GajiJabatan extends Model implements Auditable
+final class GajiTrx extends Model implements Auditable
 {
     use AuditableTrait;
     use HasFactory;
@@ -19,13 +19,15 @@ final class GajiJabatan extends Model implements Auditable
     protected $connection = 'gaji';
     public $incrementing = true;
     public $timestamps = false;
-    protected $table = 'gaji_jabatan';
+    protected $table = 'gaji_trx';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'gaji_master_id',
-        'komponen_id',
-        'id_jabatan',
-        'nominal',
+        'transaksi_id',
+        'periode_id',
+        'sdm_id',
+        'total_penghasil',
+        'total_potongan',
+        'total_dibayar',
         ];
 
     protected $guarded = [
@@ -34,11 +36,21 @@ final class GajiJabatan extends Model implements Auditable
 
     protected $casts = [
         'id' => 'integer',
-        'id_jabatan' => 'integer',
     ];
 
-    public function komponen()
+    public function details()
     {
-        return $this->belongsTo(KomponenGaji::class, 'komponen_id', 'komponen_id');
+        return $this->hasMany(GajiDetail::class, 'transaksi_id', 'transaksi_id');
     }
+
+    public function sdm()
+    {
+        return $this->belongsTo(\App\Models\Sdm\PersonSdm::class, 'sdm_id', 'id');
+    }
+
+    public function gaji_periode()
+    {
+        return $this->belongsTo(GajiPeriode::class, 'periode_id', 'periode_id');
+    }
+
 }

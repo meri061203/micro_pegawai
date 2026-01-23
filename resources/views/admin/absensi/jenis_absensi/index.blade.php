@@ -26,7 +26,7 @@
                         <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                             <a type="button" class="btn btn-sm btn-primary fs-sm-8 fs-lg-6"
                                data-bs-toggle="modal" data-bs-target="#form_create"
-                               title="Tambah Jenis Absensi">Tambah Jenis Absensi</a>
+                               title="Tambah Bank">Tambah Jenis Absensi</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="notice d-flex border-primary mb-4 rounded border border-dashed p-4 shadow bg-hover-light-dark">
                         <div class="d-flex flex-stack fs-sm-8 fs-lg-6">
                             <div class="row">
-                                <span class="text-gray-700">Berikut ini adalah data jenis absensi .</span>
+                                <span class="text-gray-700">Berikut ini adalah data Jenis Absensi.</span>
                             </div>
                         </div>
                     </div>
@@ -44,8 +44,11 @@
                             <thead>
                             <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0 fs-sm-8 fs-lg-6">
                                 <th class="min-w-75px ps-5">Aksi</th>
-                                <th class="min-w-150px">ID Jenis Absensi</th>
-                                <th class="min-w-120px">Nama</th>
+                                <th class="min-w-150px">Jenis Absen Id</th>
+                                <th class="min-w-120px">Nama Absen</th>
+                                <th class="min-w-120px">Kategori</th>
+                                <th class="min-w-120px">Potongan Gaji</th>
+                                <th class="min-w-120px">Warna</th>
                             </tr>
                             </thead>
                             <tbody class="text-gray-800 fw-bolder fs-sm-8 fs-lg-6">

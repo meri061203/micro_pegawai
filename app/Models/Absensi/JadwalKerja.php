@@ -3,6 +3,7 @@
 namespace App\Models\Absensi;
 
 use App\Traits\SkipsEmptyAudit;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -17,25 +18,37 @@ final class JadwalKerja extends Model implements Auditable
     }
 
     protected $connection = 'att';
-    public $incrementing = true;
-    public $timestamps = false;
+
     protected $table = 'jadwal_kerja';
     protected $primaryKey = 'id';
+    protected $timeFormat = 'H:i';
+    public $incrementing = true;
+    public $timestamps = false;
     protected $fillable = [
-        'jadwal_kerja_id',
-        'hari',
-        'jam_masuk',
-        'jam_pulang',
-        'toleransi_menit',
-
-        ];
+        'jadwal_id',
+        'nama',
+        'jam_mulai',
+        'jam_selesai',
+    ];
 
     protected $guarded = [
-        'id',
+        'id'
     ];
 
     protected $casts = [
-        'id' => 'integer'
+        'id' => 'integer',
     ];
+
+    public function getJamMulaiAttribute($value): ?string
+    {
+        return $value ? Carbon::parse($value)->format('H:i') : null;
+    }
+
+    public function getJamSelesaiAttribute($value): ?string
+    {
+        return $value ? Carbon::parse($value)->format('H:i') : null;
+    }
+
+
 
 }

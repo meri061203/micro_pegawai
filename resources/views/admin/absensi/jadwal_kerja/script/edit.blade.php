@@ -7,11 +7,10 @@
         DataManager.fetchData(detail.replace(':id', id))
             .then(function (response) {
                 if (response.success) {
-                    $('#edit_jadwal_kerja_id').val(response.data.jadwal_kerja_id);
-                    $('#edit_hari').val(response.data.hari);
-                    $('#edit_jam_masuk').val(response.data.jam_masuk.substring(0, 5));
-                    $('#edit_jam_pulang').val(response.data.jam_pulang.substring(0, 5));
-                    $('#edit_toleransi_menit').val(response.data.toleransi_menit);
+                    $('#edit_jadwal_id').val(response.data.jadwal_id);
+                    $('#edit_nama').val(response.data.nama);
+                    $('#edit_jam_mulai').val(response.data.jam_mulai);
+                    $('#edit_jam_selesai').val(response.data.jam_selesai);
                 } else {
                     Swal.fire('Warning', response.message, 'warning');
                 }
@@ -19,7 +18,7 @@
             ErrorHandler.handleError(error);
         });
 
-    $('#bt_submit_edit').off('submit').on('submit', function (e) {
+        $('#bt_submit_edit').on('submit', function (e) {
             e.preventDefault();
             Swal.fire({
                 title: 'Kamu yakin?',
@@ -37,11 +36,10 @@
                 if (result.value) {
                     DataManager.openLoading();
                     const input = {
-                        jadwal_kerja_id: $('#edit_jadwal_kerja_id').val(),
-                        hari: $('#edit_hari').val(),
-                        jam_masuk: $('#edit_jam_masuk').val(),
-                        jam_pulang: $('#edit_jam_pulang').val(),
-                        toleransi_menit: $('#edit_toleransi_menit').val(),
+                        jadwal_id: $('#edit_jadwal_id').val(),
+                        nama: $('#edit_nama').val(),
+                        jam_mulai: $('#edit_jam_mulai').val(),
+                        jam_selesai: $('#edit_jam_selesai').val(),
 
                     };
                     const update = '{{ route('admin.absensi.jadwal_kerja.update', [':id']) }}';

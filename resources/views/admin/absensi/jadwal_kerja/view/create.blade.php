@@ -10,47 +10,32 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
+
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>ID Jadwal Kerja</span>
+                                    <span>Nama Jadwal</span>
                                 </label>
-                                <input type="text" id="jadwal_kerja_id"
+                                <input type="text" id="nama"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
                             </div>
+
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Hari</span>
+                                    <span>Jam Mulai</span>
                                 </label>
-                                <input type="text" id="hari"
+                                <input type="time" id="jam_mulai"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
                             </div>
+
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Jam Masuk</span>
+                                    <span>Jam Selesai</span>
                                 </label>
-                                <input type="time" id="jam_masuk"
-                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
-                                       required>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="d-flex flex-column mb-2">
-                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Jam Pulang</span>
-                                </label>
-                                <input type="time" id="jam_pulang"
-                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
-                                       required>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="d-flex flex-column mb-2">
-                                <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Toleransi Menit</span>
-                                </label>
-                                <input type="text" id="toleransi_menit"
+                                <input type="time" id="jam_selesai"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\admin\Absensi;
+namespace App\Http\Controllers\admin\absensi;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Absensi\JadwalKerjaRequest;
+use App\Http\Requests\absensi\JadwalKerjaRequest;
 use App\Services\Absensi\JadwalKerjaService;
 use App\Services\Tools\ResponseService;
 use App\Services\Tools\TransactionService;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 final class JadwalKerjaController extends Controller
 {
@@ -33,6 +33,7 @@ final class JadwalKerjaController extends Controller
                 return $this->jadwalkerjaservice->getListData($request);
             },
             [
+
                 'action' => function ($row) {
                     $rowId = $row->id;
 
@@ -49,11 +50,10 @@ final class JadwalKerjaController extends Controller
     {
         return $this->transactionService->handleWithTransaction(function () use ($request) {
             $data = $this->jadwalkerjaservice->create($request->only([
-                'jadwal_kerja_id',
-                'hari',
-                'jam_masuk',
-                'jam_pulang',
-                'toleransi_menit',
+                'jadwal_id',
+                'nama',
+                'jam_mulai',
+                'jam_selesai',
             ]));
             return $this->responseService->successResponse('Data berhasil dibuat', $data, 201);
         });
@@ -76,11 +76,10 @@ final class JadwalKerjaController extends Controller
         }
         return $this->transactionService->handleWithTransaction(function () use ($request, $data) {
             $updatedData = $this->jadwalkerjaservice->update($data, $request->only([
-                'jadwal_kerja_id',
-                'hari',
-                'jam_masuk',
-                'jam_pulang',
-                'toleransi_menit',
+                'jadwal_id',
+                'nama',
+                'jam_mulai',
+                'jam_selesai',
             ]));
             return $this->responseService->successResponse('Data berhasil diperbarui', $updatedData);
         });

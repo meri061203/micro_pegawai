@@ -7,8 +7,16 @@
         DataManager.fetchData(detail.replace(':id', id))
             .then(function (response) {
                 if (response.success) {
-                    $('#edit_jenis_absensi_id').val(response.data.jenis_absensi_id);
-                    $('#edit_nama').val(response.data.nama);
+                    $('#edit_jenis_absen_id').val(response.data.jenis_absen_id);
+                    $('#edit_nama_absen').val(response.data.nama_absen);
+                    $('#edit_warna').val(response.data.warna);
+                    $('#edit_kategori').val(response.data.kategori);
+
+                    if (response.data.potong_gaji == 1 || response.data.potong_gaji === true) {
+                        $('#edit_potong_gaji').prop('checked', true);
+                    } else {
+                        $('#edit_potong_gaji').prop('checked', false);
+                    }
                 } else {
                     Swal.fire('Warning', response.message, 'warning');
                 }
@@ -34,8 +42,11 @@
                 if (result.value) {
                     DataManager.openLoading();
                     const input = {
-                        jenis_absensi_id: $('#edit_jenis_absensi_id').val(),
-                        nama: $('#edit_nama').val(),
+                        jenis_absen_id: $('#edit_jenis_absen_id').val(),
+                        nama_absen: $('#edit_nama_absen').val(),
+                        kategori: $('#edit_kategori').val(),
+                        warna: $('#edit_warna').val(),
+                        potong_gaji: $('#edit_potong_gaji').is(':checked') ? 1 : 0,
 
                     };
                     const update = '{{ route('admin.absensi.jenis_absensi.update', [':id']) }}';

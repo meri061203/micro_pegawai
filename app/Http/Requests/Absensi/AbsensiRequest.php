@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Absensi;
+namespace App\Http\Requests\absensi;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AbsensiRequest extends FormRequest
+final class AbsensiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,49 +24,56 @@ class AbsensiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'absensi_id'        => 'required|string|max:20',
-            'id_sdm'            => 'required|exists:mysql.sdm,id',
-            'id_jenis_absensi'  => 'required|integer|exists:att.jenis_absensi,id',
-            'tanggal'           => 'required|date',
-            'keterangan'        => 'nullable|string|max:255',
+            'absensi_id' => 'nullable|string|max:10',
+            // 'jadwal_id' => 'required|exists:att.jadwal_kerja,id',
+            'sdm_id' => 'required|exists:mysql.sdm,id',
+            // 'jenis_absen_id' => 'required|exists:jenis_absen,jenis_absen_id',
+            'total_terlambat' => 'nullable|decimal:0,2',
+            'waktu_mulai' => 'required|date_format:H:i',
+            'waktu_selesai' => 'required|date_format:H:i',
         ];
     }
 
-    /**
-     * Custom attribute names
-     */
-    public function attributes(): array
+    public function attributes()
     {
         return [
-            'absensi_id'       => 'Absensi ID',
-            'id_sdm'           => 'Sdm',
-            'id_jenis_absensi' => 'Jenis Absensi',
-            'tanggal'          => 'Tanggal',
-            'keterangan'       => 'Keterangan',
+            'absensi_id' => 'ID Absensi',
+            'jadwal_id' => 'Jadwal Id',
+            'sdm_id' => 'Sdm Id',
+            // 'jenis_absen_id' => 'Jenis Absen Id',
+            'total_terlambat' => 'Total Terlambat',
+            'waktu_mulai' => 'Waktu Mulai',
+            'waktu_selesai' => 'Waktu Selesai',
         ];
     }
 
-    /**
-     * Custom error messages
-     */
-    public function messages(): array
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'success' => false,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()->messages(),
+            ], 422)
+        );
+    }
+
+    public function messages()
     {
         return [
-            'absensi_id.required'        => 'Absensi ID harus diisi.',
-            'absensi_id.string'          => 'Absensi ID harus berupa string.',
-            'absensi_id.max'             => 'Absensi ID maksimal 20 karakter.',
+            'jadwal_id.required' => 'Fileld :attribute wajib diisi.',
 
-            'id_sdm.required'            => 'Sdm harus dipilih.',
-            'id_sdm.exists'              => 'Sdm tidak ditemukan di database.',
+            'sdm_id.required' => 'Fileld :attribute wajib diisi.',
 
-            'id_jenis_absensi.required'  => 'Jenis absensi harus dipilih.',
-            'id_jenis_absensi.exists'    => 'Jenis absensi tidak ditemukan di database.',
+            // 'jenis_absen_id.require' => 'Fileld :attribute wajib diisi.',
 
-            'tanggal.required'           => 'Tanggal absensi harus diisi.',
-            'tanggal.date'               => 'Tanggal absensi harus berupa format tanggal yang valid.',
+            // 'total_terlambat.decimal' => 'Fileld :attribute harus berupa angka.',
 
-            'keterangan.string'          => 'Keterangan harus berupa teks.',
-            'keterangan.max'             => 'Keterangan maksimal 255 karakter.',
+            'waktu_mulai.required' => 'Fileld :attribute wajib diisi.',
+            'waktu_mulai.date_format' => 'Fileld :attribute harus berupa waktu.',
+
+            'waktu_selesai.required' => 'Fileld :attribute wajib diisi.',
+            'waktu_selesai.date_format' => 'Fileld :attribute harus berupa waktu.',
         ];
     }
 }

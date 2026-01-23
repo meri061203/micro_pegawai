@@ -1,6 +1,8 @@
 <script defer>
     $('#form_create').on('show.bs.modal', function (e) {
-    $('#bt_submit_create').off('submit').on('submit', function (e) {            e.preventDefault();
+
+        $('#bt_submit_create').on('submit', function (e) {
+            e.preventDefault();
             Swal.fire({
                 title: 'Kamu yakin?',
                 text: 'Apakah datanya benar dan apa yang anda inginkan?',
@@ -16,14 +18,15 @@
             }).then((result) => {
                 if (result.value) {
                     DataManager.openLoading();
+
                     const input = {
-                        jadwal_kerja_id: $('#jadwal_kerja_id').val(),
-                        hari: $('#hari').val(),
-                        jam_masuk: $('#jam_masuk').val(),
-                        jam_pulang: $('#jam_pulang').val(),
-                        toleransi_menit: $('#toleransi_menit').val(),
+                        jadwal_id: $('#jadwal_id').val(),
+                        nama: $('#nama').val(),
+                        jam_mulai: $('#jam_mulai').val(),
+                        jam_selesai: $('#jam_selesai').val(),
 
                     };
+                    console.log('Data yang akan dikirim:', input);
                     const action = '{{ route('admin.absensi.jadwal_kerja.store') }}';
                     DataManager.postData(action, input).then(response => {
                         if (response.success) {

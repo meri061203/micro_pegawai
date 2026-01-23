@@ -5,6 +5,7 @@ namespace App\Models\Absensi;
 use App\Traits\SkipsEmptyAudit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 
@@ -17,27 +18,33 @@ final class Absensi extends Model implements Auditable
     }
 
     protected $connection = 'att';
-    public $incrementing = true;
-    public $timestamps = false;
     protected $table = 'absensi';
+    public $timestamps = false;
+    public $incrementing = true;
     protected $primaryKey = 'id';
+    protected $dateFormat = 'Y-m-d';
     protected $fillable = [
         'absensi_id',
-        'id_sdm',
-        'id_jenis_absensi',
         'tanggal',
-        'keterangan',
-        ];
+        'jadwal_id',
+        'jenis_absen_id',
+        'total_terlambat',
+        'sdm_id',
+        'waktu_selesai',
+        'waktu_mulai'
+    ];
 
     protected $guarded = [
-        'id',
+        'id'
     ];
 
     protected $casts = [
         'id' => 'integer',
-        'id_sdm' => 'integer',
-        'id_jenis_absensi' => 'integer',
+        'tanggal' => 'date'
     ];
 
+    public function getTanggalAttribute($value): ?string
+    {
+        return $value ? Carbon::parse($value)->format('Y-m-d') : null;
+    }
 }
-

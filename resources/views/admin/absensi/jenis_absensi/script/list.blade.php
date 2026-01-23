@@ -43,12 +43,42 @@
                 orderable: false,
                 searchable: false
             }, {
-                data: 'jenis_absensi_id',
-                name: 'jenis_absensi_id'
+                data: 'jenis_absen_id',
+                name: 'jenis_absen_id'
             },
             {
-                data: 'nama',
-                name: 'nama'
+                data: 'nama_absen',
+                name: 'nama_absen'
+            },
+             {
+                data: 'kategori',
+                name: 'kategori'
+            },
+             {
+                data: 'potong_gaji',
+                name: 'potong_gaji'
+            },
+             {
+                data: 'warna',
+                name: 'warna',
+                render: function(data, type, row) {
+                    if (!data) return '';
+
+                    return `
+                        <div style="
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 4px;
+                            background-color: ${data};
+                            border: 1px solid #ccc;
+                            display: inline-block;
+                        " title="${data}">
+                        </div>
+                        <span style="margin-left: 8px;">${data}</span>
+                    `;
+                },
+                orderable: false,
+                searchable: false
             }]
         });
         const performOptimizedSearch = _.debounce(function (query) {

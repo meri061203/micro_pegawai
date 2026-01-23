@@ -42,26 +42,21 @@
                 name: 'action',
                 orderable: false,
                 searchable: false
-            }, 
-            {
-                data: 'jadwal_kerja_id',
-                name: 'jadwal_kerja_id'
+            }, {
+                data: 'jadwal_id',
+                name: 'jadwal_id'
             },
             {
-                data: 'hari',
-                name: 'hari'
+                data: 'nama',
+                name: 'nama'
             },
-            {
-                data: 'jam_masuk',
-                name: 'jam_masuk'
+             {
+                data: 'jam_mulai',
+                name: 'jam_mulai'
             },
-            {
-                data: 'jam_pulang',
-                name: 'jam_pulang'
-            },
-            {
-                data: 'toleransi_menit',
-                name: 'toleransi_menit'
+             {
+                data: 'jam_selesai',
+                name: 'jam_selesai'
             }]
         });
         const performOptimizedSearch = _.debounce(function (query) {

@@ -48,6 +48,12 @@
                     </a>
                 </div>
             </div>
+            
+            <a class="menu-link {{ request()->routeIs('admin.gaji.payroll.*') ? 'active' : '' }}"
+               href="{{ route('admin.gaji.payroll.index') }}">
+                <span class="menu-title">Hitung Gaji (Payroll)</span>
+            </a>
+
             @php
                 $masterActive = request()->routeIs('admin.master.periode.*') || request()->routeIs('admin.master.unit.*')|| request()->routeIs('admin.master.jabatan.*');
             @endphp

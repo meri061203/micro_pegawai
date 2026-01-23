@@ -12,19 +12,15 @@ final class JenisAbsensiService
         return JenisAbsensi::all();
     }
 
-    public function getListDataOrdered(string $orderBy): Collection
+    public function create(array $data) : JenisAbsensi
     {
-        return JenisAbsensi::orderBy($orderBy)->get();
-    }
-
-    public function create(array $data): JenisAbsensi
-    {
+        $data['jenis_absen_id'] = $this->generateId();
         return JenisAbsensi::create($data);
     }
 
     public function getDetailData(string $id): ?JenisAbsensi
     {
-        return JenisAbsensi::query()->where('jenis_absensi.id', $id)->first();
+        return JenisAbsensi::find($id);
     }
 
     public function findById(string $id): ?JenisAbsensi
@@ -32,10 +28,29 @@ final class JenisAbsensiService
         return JenisAbsensi::find($id);
     }
 
-    public function update(JenisAbsensi $unit, array $data): JenisAbsensi
+    public function update(JenisAbsensi $model, array $data): JenisAbsensi
     {
-        $unit->update($data);
+        $model->update($data);
+        return $model;
+    }
 
-        return $unit;
+
+    public function getListDataOrdered(string $orderBy): Collection
+    {
+        return JenisAbsensi::orderBy($orderBy)->get();
+    }
+
+    private function generateId(): string
+    {
+        $last = JenisAbsensi::orderBy('jenis_absen_id', 'desc')->first();
+
+        if (!$last) {
+            return 'JAI-001';
+        }
+        $lastNumber = intval(substr($last->jenis_absen_id, 4));
+
+        $newNumber = $lastNumber + 1;
+
+        return 'JAI-' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
     }
 }

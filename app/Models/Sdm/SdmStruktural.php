@@ -21,6 +21,8 @@ final class SdmStruktural extends Model implements Auditable
 
     public $incrementing = true;
 
+    protected $connection = 'mysql';
+
     protected $table = 'sdm_struktural';
 
     protected $primaryKey = 'id_struktural';
@@ -93,5 +95,15 @@ final class SdmStruktural extends Model implements Auditable
     public function getTanggalKeluarAttribute($v): ?string
     {
         return $v ? Carbon::parse($v)->format('Y-m-d') : null;
+    }
+
+    public function master_unit()
+    {
+        return $this->belongsTo(\App\Models\Master\MasterUnit::class, 'id_unit');
+    }
+
+    public function master_jabatan()
+    {
+        return $this->belongsTo(\App\Models\Master\MasterJabatan::class, 'id_jabatan');
     }
 }

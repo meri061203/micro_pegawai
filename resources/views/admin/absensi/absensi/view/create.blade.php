@@ -12,56 +12,33 @@
                         <div class="col-md-12">
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>ID Absensi</span>
+                                    <span>Pegawai Aktif</span>
                                 </label>
-                                <input type="text" id="absensi_id"
-                                       class="form-control form-control-sm fs-sm-8 fs-lg-6"
-                                       required>
+                                <select data-control="select2" class="form-select form-select-sm fs-sm-8 fs-lg-6"
+                                    name="sdm_id" id="sdm_id" data-allow-clear="true" data-placeholder="Pilih Pegawai"
+                                    >
+                                </select>
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="d-flex flex-column mb-2">
-                                    <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                        <span>ID Jenis Absensi</span>
-                                    </label>
-                                <select data-control="select2" id="id_jenis_absensi" name="id_jenis_absensi"
-                                        class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
-                                        data-placeholder="Pilih Komponen" required>
-                                </select>
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="d-flex flex-column mb-2">
-                                    <label class="fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                        <span>ID SDM</span>
-                                    </label>
-                                <select data-control="select2" id="id_sdm" name="id_sdm"
-                                        class="form-control form-control-sm fs-sm-8 fs-lg-6" data-allow-clear="true"
-                                        data-placeholder="Pilih NIP" required>
-                                </select>
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-                           
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Tanggal</span>
+                                    <span>Waktu Mulai</span>
                                 </label>
-                                <input type="date" id="tanggal"
+                                <input type="time" id="waktu_mulai"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="d-flex flex-column mb-2">
                                 <label class="d-flex align-items-center fs-sm-8 fs-lg-6 fw-bolder mb-1 required">
-                                    <span>Keterangan</span>
+                                    <span>Waktu Selesai</span>
                                 </label>
-                                <input type="text" id="keterangan"
+                                <input type="time" id="waktu_selesai"
                                        class="form-control form-control-sm fs-sm-8 fs-lg-6"
                                        required>
                                 <div class="invalid-feedback"></div>
                             </div>
+
                         </div>
                     </div>
                 </div>

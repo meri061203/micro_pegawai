@@ -19,6 +19,8 @@ final class MasterJabatan extends Model implements Auditable
 
     public $timestamps = false;
 
+    protected $connection = 'mysql';
+
     protected $table = 'master_jabatan';
 
     protected $primaryKey = 'id_jabatan';

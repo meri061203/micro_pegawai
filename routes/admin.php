@@ -345,6 +345,16 @@ Route::prefix('gaji')->group(function () {
        
     });
   
+    Route::prefix('payroll')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\Gaji\GajiTrxController::class, 'index'])
+            ->name('gaji.payroll.index');
+        Route::get('create', [App\Http\Controllers\Admin\Gaji\GajiTrxController::class, 'create'])
+            ->name('gaji.payroll.create');
+        Route::post('/store', [App\Http\Controllers\Admin\Gaji\GajiTrxController::class, 'store'])
+            ->name('gaji.payroll.store');
+        Route::get('show/{id}', [App\Http\Controllers\Admin\Gaji\GajiTrxController::class, 'show'])
+            ->name('gaji.payroll.show');
+    });
 });
 
 Route::prefix('absensi')->group(function () {

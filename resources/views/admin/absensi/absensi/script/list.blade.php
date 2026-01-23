@@ -42,26 +42,21 @@
                 name: 'action',
                 orderable: false,
                 searchable: false
-            },
-            {
+            }, {
                 data: 'absensi_id',
                 name: 'absensi_id'
             },
             {
-                data: 'id_jenis_absensi',
-                name: 'id_jenis_absensi'
+                data: 'nama_lengkap',
+                name: 'nama_pegawai'
             },
-            {
-                data: 'id_sdm',
-                name: 'id_sdm'
-            },
-            {
+             {
                 data: 'tanggal',
                 name: 'tanggal'
             },
-            {
-                data: 'keterangan',
-                name: 'keterangan'
+             {
+                data: 'nama_absen',
+                name: 'nama_absen',
             }]
         });
         const performOptimizedSearch = _.debounce(function (query) {

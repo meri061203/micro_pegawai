@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\admin\Absensi;
+namespace App\Http\Controllers\admin\absensi;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Absensi\JenisAbsensiRequest;
+use App\Http\Requests\absensi\JenisAbsensiRequest;
 use App\Services\Absensi\JenisAbsensiService;
 use App\Services\Tools\ResponseService;
 use App\Services\Tools\TransactionService;
@@ -49,8 +49,11 @@ final class JenisAbsensiController extends Controller
     {
         return $this->transactionService->handleWithTransaction(function () use ($request) {
             $data = $this->jenisabsensiservice->create($request->only([
-                'jenis_absensi_id',
-                'nama',
+                'jenis_absen_id',
+                'nama_absen',
+                'kategori',
+                'potong_gaji',
+                'warna'
             ]));
             return $this->responseService->successResponse('Data berhasil dibuat', $data, 201);
         });
@@ -73,8 +76,11 @@ final class JenisAbsensiController extends Controller
         }
         return $this->transactionService->handleWithTransaction(function () use ($request, $data) {
             $updatedData = $this->jenisabsensiservice->update($data, $request->only([
-                'jenis_absensi_id',
-                'nama',
+                'jenis_absen_id',
+                'nama_absen',
+                'kategori',
+                'potong_gaji',
+                'warna'
             ]));
             return $this->responseService->successResponse('Data berhasil diperbarui', $updatedData);
         });

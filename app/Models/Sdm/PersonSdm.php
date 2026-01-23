@@ -22,6 +22,8 @@ final class PersonSdm extends Model implements Auditable
     public $timestamps = false;
 
     public $incrementing = true;
+    
+    protected $connection = 'mysql';
 
     protected $table = 'sdm';
 
@@ -49,6 +51,11 @@ final class PersonSdm extends Model implements Auditable
      public function person()
     {
         return $this->belongsTo(\App\Models\Person\Person::class, 'id_person');
+    }
+
+    public function sdm_struktural()
+    {
+        return $this->hasOne(\App\Models\Sdm\SdmStruktural::class, 'id_sdm', 'id');
     }
 
     public function setNipAttribute($value): void

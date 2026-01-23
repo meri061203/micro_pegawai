@@ -1,5 +1,6 @@
 <script defer>
     $('#form_create').on('show.bs.modal', function (e) {
+
         $('#bt_submit_create').on('submit', function (e) {
             e.preventDefault();
             Swal.fire({
@@ -17,11 +18,16 @@
             }).then((result) => {
                 if (result.value) {
                     DataManager.openLoading();
+
                     const input = {
-                        jenis_absensi_id: $('#jenis_absensi_id').val(),
-                        nama: $('#nama').val(),
+                        jenis_absen_id: $('#jenis_absen_id').val(),
+                        nama_absen: $('#nama_absen').val(),
+                        kategori: $('#kategori').val(),
+                        warna: $('#warna').val(),
+                        potong_gaji: $('#potong_gaji').is(':checked') ? 1 : 0,
 
                     };
+                    console.log('Data yang akan dikirim:', input);
                     const action = '{{ route('admin.absensi.jenis_absensi.store') }}';
                     DataManager.postData(action, input).then(response => {
                         if (response.success) {

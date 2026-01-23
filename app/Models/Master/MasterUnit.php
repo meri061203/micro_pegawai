@@ -18,6 +18,8 @@ final class MasterUnit extends Model implements Auditable
     }
 
     public $timestamps = false;
+    
+    protected $connection = 'mysql';
 
     protected $table = 'master_unit';
 
